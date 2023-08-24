@@ -1,0 +1,102 @@
+\documentclass[11pt]{bgcletter}
+\usepackage{url}
+
+\newcommand{\answer}[1] {
+{\color{cyan} #1}
+}
+
+\name{Dr.\ Carlos A. Sierra}
+\email{csierra}
+\telephone{8928}
+\begin{document}
+\begin{letter}{Editor\\
+   Global Change Biology
+}
+\opening{Dear Editor,}
+Thanks for the opportunity to provide a resubmission of our article. Although the reviewers had some critical comments on our previous manuscript, they also recognized its value and the significance of the contribution to the field of soil carbon modelling and global change. We therefore, prepared a revised version of the manuscript addressing reviewers' comments. 
+
+Major changes to the manuscript include: 
+\begin{itemize}
+\item We added a section reviewing the main factors that contribute to the stabilization and destabilization of carbon in the subsoil. This new section addresses the comment of Reviewer X on the lack of focus on soil management.
+\item We included in our review additional models used to represent changes in subsoil carbon in managed ecosystems.
+\end{itemize}
+
+\textbf{Reviewer: 1}
+
+Comments to the Author \\
+In this review paper, the authors reviewed the main biophysical processes that drive the vertical carbon transport in soil profiles, as well as how these processes are typically modeled based on the advection-diffusion-reaction paradigm. Some sensitivity analyses were further implemented to investigate the controlling factors of carbon sequestration and stabilization time. They found that advective and diffusive transport may only play a secondary role in the formation of soil carbon profile, whereas the difference between lateral root inputs and decomposition may play the primary role.
+
+Overall I found this review topic very interesting, and the structure design is more interesting than a typical review paper. However, I think the materials presented were insufficient to serve the applied objective of climate change mitigation in this article. The authors need to add more reviews related to human-managed systems and management practices, in which soil carbon is more manageable. Also, the discussion of vertical transport models should be put in the context of the earth system and agroecosystem models, in addition to the toy demonstration models so as to bridge the gap between those technical studies to real-world decision-makings. I think these problems are fixable so suggested a revision instead of rejection. Please see my detailed comments below.
+
+\answer{Thanks for recognizing the value of our review and for pointing out areas of improvement. In the new version, we included a review of management practices on subsoil C, and reviewed additional models for agroecosystems. }
+
+-L60-63: I think people understand the importance of deep soil sampling in determining C stock and sequestration, but it is barely done previously because (1) the high cost to do so; and (2) traditional research is more focused on productivity so that knowing the arable layer could already serve the purpose well.
+
+\answer{We agree and modified this sentence to acknowledge these two points raised by the reviewer. }
+
+-L80: suggest using something like ``mixed results'' rather than conflicting information, because numbers reported from different places and different time frames will of course differ.
+
+\answer{Done.}
+
+-L91-93: the authors put several statements on climate change mitigation, but then surprisingly decided to not look at human-managed systems, where soil carbon is more likely to be depleted or enhanced in the coming decades. Considering management processes is very important as many conservation practices are promoting no-till, and farmers often committed to doing so for years, but a single tillage event may offset all SOC sequestrated. This becomes one of the largest uncertainty in the current carbon market, thus a review of modeling vertical redistribution of tillage should not be a missing piece in this review.
+
+\answer{Thanks for this comment. We recognize that this aspect was missing from the previous version and therefore decided to add a new section to the manuscript reviewing the main management factors that affect C dynamics in the subsoil. Because the manuscript was already at the page limit in the previous version, we had to reduce the length of section 2 on processes to make space for this new section.}
+
+-L103: Section 2, I feel I'm reading a textbook that most of the content is easy to follow but too general. Also, most of the references cited are pretty old, so I did some search myself and was able to find quite a few papers published after 2010. As a review paper, shouldn't reviewing recent research progress be one of the most important standards to follow?
+
+\answer{As review paper, we also consider important to include the older literature because some of these topics have been studied already for decades. We acknowledge that we had missing references from recent studies, and made an extra effort to add new studies. Also, as a review, we feel it is important to make the concepts easy to follow and therefore the language is approachable to newcomers to the field. Nevertheless, given the need to make reductions in length, we cut some of the sentences and paragraphs that contained the most basic information following this comment.}
+
+L104-L123: magnitude matters when discussing the many different mechanisms contributing to the vertical transport of soil carbon. It would be more informative if the authors can first present an overview figure to quantitatively show the magnitude of major pathways in different biomes, and then dive into detailed reviews of sections 2.1 - 2.4. Such a figure also helps to show what we know and unknown so far (e.g., some have larger uncertainty than others), and which pathway should be modeled with particular caution in different places.
+
+L278: there needs a Section 2.5 to review how different management practices could affect soil carbon profile. Since this review claims to tackle climate change mitigations, it would be incomplete without touching those mitigation options being currently discussed.
+
+\answer{Thanks for the suggestion. We included this new section in the manuscript. }
+
+L279: A table summarizing how different major earth system and agroecosystem models simulate vertical carbon transport is necessary. Because they represent those under active development. Current Table 1 is more focused on coefficients, but not directly connects to the contemporary models.
+
+\answer{The column expression the type of equation to which each model corresponds was aimed at indicating what type of vertical transport process was included in the model. However, we recognize that this is not the most effective way to present this information. Therefore, we change this column for a different column that indicates the type of vertical transport process included in the model.}
+
+L280: Literature is quite old in this section. Does that mean no progress in soil profile modeling in recent years or do the authors intentionally cite the origin of models? More clarification is needed.
+
+\answer{We intentionally reviewed some of the earlier models because we believe it is important to give credit to those who had the original ideas. We recognized that our previous version was missing some of the newer models. However, models of the C profile are still few!}
+
+L331: How Eqn-2 describes diffusion is clear, but how ``bioturbation'' is represented in this system is unclear. More explanation is needed.
+
+\answer{This is explained earlier in section 2.1 on bioturbation.}
+
+L380: why emphasize ``positive''? can x(t) be negative excluding those numerical rounding issues? 
+
+\answer{No, $x(t)$ cannot be negative because it represents the mass of carbon, and by definition mass is always a non-negative variable. In addition, the definition of a norm in mathematics ($\Vert \cdot \Vert$) is a generalized notion of a distance, which must also be possitive. }
+
+L445: agree, but also it is necessary to discuss and hopefully provide a crude estimate of the expected uncertainty by doing so.
+
+\answer{Our approach to deal with this issue is by exploring different values of the parameter space in the numerical examples. Table 1 give us an idea of the ranges of the parameters for vertical transport in previous models, and our numerical examples include the range of behaviors expected over the ranges of parameter values. An estimate of uncertainty would make more sense if we were doing model fits to data, but we only explore the theoreticAL behaviors of the models with no reference to particular data.}
+
+L555: somehow I feel the writing of section 4.1, unlike section 3, is quite hard to follow. Keep in mind for this review to have a broader impact, keep things simple. Eqn 21-22 make things unnecessarily complicated.
+
+\answer{We improved the description of the formulas in this section to make them more accessible to readers. These equations are essential to address the question of how long new inputs would need to travel to the subsoil and whether C stabilization can occur at timescales relevant for climate change mitigation. Therefore, we refrain from removing them from the main text, but added additional explanations to make them more accessible.}
+
+L677: I don't quite follow the logic to derive this conclusion. How do you assess the effect of vertical transport without information in ``t''? how about cases where vertical transport and decomposition are both very fast?
+
+\newpage
+
+\textbf{Reviewer: 2}
+
+Comments to the Author \\
+Soil carbon sequestration is an important topic in the context of nature-based climate solutions. This manuscript presents concise summaries of relevant processes and model realizations pertaining to subsoil carbon dynamics. It provides a thoughtful evaluation, suggesting that soils have the potential for carbon sequestration, but at a notably lower rate.
+
+The manuscript appears to resemble more of an overview rather than a comprehensive review. While it offers a broad perspective on the vertical carbon movement, it lacks critical assessment and in-depth evaluation of the underlying processes and models. The authors briefly touch upon various aspects without delving deeply into either the mechanisms or the model representations. Consequently, some parts of the manuscript appear disjointed and lack interconnectedness and focus. Specifically, part 2 and Part 3 provide simplified overviews of the processes and modeling related to the vertical movements of soil carbon but seem relatively shallow and lack of synthesis. 
+
+Regarding the modeling aspect, I would like to direct the authors' attention to a paper by Wang et al. (2021). \url{https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2020JG006205}. This paper shares significant similarities with this manuscript, in terms of methods, findings and conclusions. Wang et al. evaluated a microbial carbon model with relevant processes, compared model results with soil carbon and radiocarbon profiles, and emphasized the significance of microbial activity (decomposition) and root carbon inputs over soil carbon diffusion in simulating soil carbon profiles.
+
+Part 4 represents the novel aspect of the manuscript. The authors explore the fate of new carbon inputs within a modeling framework, which however could suffer from potential uncertainties arising from model structure and parameterization. Nevertheless, the conclusion regarding the short-lived nature of carbon in soils could serve as a wake-up call for proponents of nature-based climate solutions.
+
+Overall, I recommend that the authors convert the manuscript into a research paper to thoroughly investigate the fate of soil carbon with diverse model structures and parameterization. This contribution would be highly valuable to the community, particularly as there is currently a state of confusion regarding carbon sequestration potential in soils.
+
+ \closing{Regards,} 
+% \encl{...}
+% \cc{...}
+% \ps{PS: Hope all is well.}
+ \end{letter}
+
+ \end{document}
