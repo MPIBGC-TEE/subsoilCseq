@@ -10,7 +10,9 @@ library(pracma)
 pal1<-brewer.pal(4,"Set1")
 pal2<-brewer.pal(4,"Dark2")
 
-setwd("~/SLU/Manuscripts/subsoilCseq/")
+setwd("~/Publications/subsoilCseq/")
+source("Code/BVP.R")
+source("Code/GLSOM_BVP.R")
 
 h=0.1
 d=seq(0,100, by=h)
