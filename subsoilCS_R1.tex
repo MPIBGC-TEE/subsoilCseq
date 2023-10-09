@@ -44,7 +44,7 @@
 Soils store large quantities of carbon in the subsoil (below 0.2 m depth) that is generally old and believed to be stabilized over centuries to millennia, which suggests that subsoil carbon sequestration can be used as a strategy for climate change mitigation. In this article, we review the main biophysical processes that contribute to carbon  storage in subsoil and the main mathematical models used to represent these processes. Our guiding objective is to review whether a process understanding of soil carbon movement in the vertical profile can help us to assess carbon storage and persistence at timescales relevant for climate change mitigation. 
 Bioturbation, liquid phase transport, belowground carbon inputs, mineral association, and microbial activity, are the main processes contributing to the formation of soil carbon profiles, and these processes are represented in models using the diffusion-advection-reaction paradigm. 
 Based on simulation examples, and measurements from carbon and radiocarbon profiles across biomes, we found that advective and diffusive transport may only play a secondary role in the formation of soil carbon profiles. The difference between vertical root inputs and decomposition seems to play a primary role in determining the shape of carbon change with depth. 
-Using the transit time of carbon to assess the timescales of carbon storage of new inputs, we show that only small quantities of new carbon inputs travel through the depth profile and can be stabilized for time horizons longer than 50 years, implying that activities that promote carbon sequestration in the subsoil must take into consideration the very small quantities that can be stabilized in the long term. 
+Using the transit time of carbon to assess the timescales of carbon storage of new inputs, we show that only small quantities of new carbon inputs travel through the profile and can be stabilized for time horizons longer than 50 years, implying that activities that promote carbon sequestration in the subsoil must take into consideration the very small quantities that can be stabilized in the long term. 
 Land management activities could increase C storage in the subsoil by increasing advective vertical transport and decreasing the difference between inputs and decomposition at all depths. 
 \end{abstract}
 
@@ -163,6 +163,12 @@ Through a range of chemical mechanisms, DOC is adsorbed to surfaces of minerals 
 matter \citep{Neff2001, Kalbitz2008}.
 
 One important characteristic of representing liquid phase transport as an advective process is that carbon is moved to parts of the profile where decomposition is slow, preventing fast losses due to microbial activity. 
+
+In layers with high organic matter concentrations, an important additional transport flux occurs that is generally ignored in soil carbon profile models. Loss of mass due
+to decomposition leads to downward shift of material above, while surface litter deposition continually buries older material. This mass-loss causes advective downward or upward flow
+of material unrelated to mixing or water movement \citep{Ahrens2015}. \citep{Kaste2007} found this
+process to be relevant for the vertical distribution of 210Pbex in the organic surface
+horizon of a podzol, and \citet{Hilbert2000} for modelling subsidence of peat soils. 
 
 %DOC is not chemically well defined, but consists of a broad spectrum of organic substances ranging from small molecules to complex humic acids
 %\citep{Kalbitz2000, Michalzik2001}. The biodegradability of these substances
@@ -330,7 +336,7 @@ separation from decomposers \citep{Chabbi2009}.
 %for explicit representation of SOM stabilization mechanisms in soil carbon models.
 
 \subsection{Land management practices that affect soil C profiles}
-The distribution of C along the vertical profile can be modified by management practices on agriculture, rangeland, and forest soils. 
+The distribution of C along the vertical profile can be modified by management practices on cropland, rangeland, and forest soils. 
 Historically, the management and cultivation of soils have resulted in a significant carbon loss of about 133 PgC \citep{Sanderman2017}. \citet{HicksPries2023} categorize management practices that affect subsoil carbon in three groups, physical redistribution due to tillage, changes in the vertical distribution of root inputs due to vegetation change, and addition of exogenous C inputs applied at the surface or buried at depth. These practices tend to modify the physical mixing of particles in soil, the transport of water and advective movement of C, and the vertical distribution of root inputs and microbial activity.
 
 Practices that alter the physical structure of soils such as tillage constantly redistribute organic matter between top and subsoil, acting as a mechanism for the diffusion of organic and mineral-associated carbon particles \citep{Keyvanshokouhi2019, Mary2020, Button2022}. Deep ploughing \citep{Alcantara2016, Wang2023JCP} or deep soil flipping \citep{Schiedung2019} have also an important impact on the vertical distribution of C, but their sporadic application is more challenging to represent in models, particularly using equations for advection. 
@@ -479,7 +485,7 @@ Assuming constant diffusion ($\kappa (d, t) = \kappa$ for all $d$ and $t$), and 
 \begin{equation} \label{eq:linearSecondOrder}
  \kappa \frac{\partial^2 x(d)}{\partial d^2} - v \frac{\partial x(d)}{\partial d} + g(d) =0,
 \end{equation}
-with $g(d)$ representing the balance between inputs and decomposition at each depth, also assuming constant decomposition and transformation rates at each depth ($\mathbf{B}(\bm{x}, d,t) = \mathbf{B}(d)$ for all $\bm{x}$, and $t$), and a constant vector of inputs at each depth ($\bm{u}(\bm{x}, d, t) = \bm{u}(d)$ for all $\bm{x}$ and $t$). Therefore, 
+with $g(d)$ representing the balance between inputs and decomposition at each depth, also assuming constant decomposition and transformation rates at each depth ($\mathbf{B}(\bm{x}, d,t) = \mathbf{B}(d)$ for all  $t$), and a constant vector of inputs at each depth ($\bm{u}(\bm{x}, d, t) = \bm{u}(d)$ for all $t$). Therefore, 
 \begin{equation}
 g(d) = \Vert \bm{u}(d) + \mathbf{B}(d) \cdot \bm{x}(d) \Vert .
 \end{equation}
@@ -499,7 +505,7 @@ To interpret data from pulse response experiments, some researchers have ignored
  \kappa \frac{\partial^2 x(d)}{\partial d^2} - v \frac{\partial x(d)}{\partial d} =0.
 \end{equation}
 
-Models explicitly representing decomposition usually use one or three pools to represent decomposition as in most traditional models. More detailed representations of decomposition are presented in the model of \citet{Braakhekke2011, Braakhekke2013}, which represents five different pools, including a litter layer component clearly separating processes related to decomposition in the surface organic layer from processes more affected by vertical transport in the mineral horizons. Also, the model of \citet{Koven2013BGS} used 7 distinct C pools: coarse woody debris, three litter pools, and three mineral soil C pools. 
+Models explicitly representing decomposition usually use one or three pools to represent decomposition as in most traditional models. More detailed representations of decomposition are presented in the model of \citet{Braakhekke2011, Braakhekke2013}, which represents five different pools, including a litter layer component clearly separating processes related to decomposition in the surface organic layer from processes more affected by vertical transport in the mineral horizons. Also, the model of \citet{Koven2013BGS} used 7 distinct C pools: coarse woody debris, three litter pools, and 3 mineral soil C pools. 
 
 In the COMISSION model, not only advective DOC transport is considered, but also advective transport of litter particles similarly as in sediment models \citep{Ahrens2015, Ahrens2020}. In the latest version of the model \citep{Ahrens2020}, advective litter transfer and particle diffusion are depth dependent. The model also considers non-linear interactions among C pools, therefore it deviates from the constant linear coefficients model of equation \ref{eq:linearSecondOrder} and is in better analogy to equation \ref{eq:generalTransport}. Similarly, the models of \citet{Wang2021} and \citet{Tao2023} include nonlinear interactions among C pools, with the size of the microbial biomass pools interacting with the size of litter and mineral soil pools, but ignoring advection and treating diffusion as a constant across all depths.  
 
