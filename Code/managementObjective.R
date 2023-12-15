@@ -27,7 +27,7 @@ ref<-GLSOM(xgrid=d, D=1, a=1,k=kf,f=u, boundary=c(x0,0))
 opt<-GLSOM(xgrid=d, D=1, a=100,k=kf,f=u, boundary=c(x0,0.05))
 
 tikz(file="Figures/managementObjective.tex", standAlone = TRUE)
-par(mar=c(4,4,0,0))
+par(mar=c(4,4,0,0), las=1)
 plot(ref$U, -d, type="l", xlim=c(0,0.1), xlab=expression(paste("C concentration (g c",m^-3,")")), 
      ylab="Depth (cm)", yaxt="n", col=pal1[1], lwd=3, bty="n")
 axis(side=2,at=-ytm, labels=ytm)

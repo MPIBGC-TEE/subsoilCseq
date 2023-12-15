@@ -45,7 +45,7 @@ ytm=seq(0,100, by=20)
 
 #pdf("Figures/simulationsKappaV.pdf")
 tikz(file="Figures/simulationsKappaV.tex", standAlone = TRUE)
-par(mfrow=c(2,2), mar=c(4,4,0.5,0.5), cex=1.1)
+par(mfrow=c(2,2), mar=c(4,4,0.5,0.5), cex=1.1, las=1)
 plot(Druns[[1]], -d, type="l", xlim=c(0,0.1), xlab=expression(paste("C concentration (g c",m^-3,")")), 
      ylab="Depth (cm)", yaxt="n", col=pal1[1], lwd=3, bty="n")
 axis(side=2,at=-ytm, labels=ytm)
@@ -101,7 +101,7 @@ for(i in 1:length(betas)){
 
 #pdf("Figures/rootDecomp.pdf")
 tikz(file="Figures/rootDecomp.tex", standAlone = TRUE)
-par(mfrow=c(2,2), mar=c(4,4,0.5,0.5), lwd=2, cex=1.1)
+par(mfrow=c(2,2), mar=c(4,4,0.5,0.5), lwd=2, cex=1.1, las=1)
 plot(kdruns[[3]], -d, type="l", yaxt="n", xlab=expression(paste("C concentration (g c",m^-3,")")), 
      ylab="Depth (cm)", col=pal1[1], lwd=3, bty="n")
 axis(side=2, at=-ytm, labels=ytm)
@@ -145,24 +145,29 @@ TT2<-transitTime(A=(h^-2)*ThDs$A, u=udm, q=0.5, a=tau)
 TT3<-transitTime(A=(h^-2)*TlDf$A, u=udm, q=0.5, a=tau)
 TT4<-transitTime(A=(h^-2)*TlDs$A, u=udm, q=0.5, a=tau)
 
-save(TT1,file="Code/TT1.RData")
-save(TT2,file="Code/TT2.RData")
-save(TT3,file="Code/TT3.RData")
-save(TT4,file="Code/TT4.RData")
+# save(TT1,file="Code/TT1.RData")
+# save(TT2,file="Code/TT2.RData")
+# save(TT3,file="Code/TT3.RData")
+# save(TT4,file="Code/TT4.RData")
 
-SA1<-systemAge(A=(h^-2)*ThDf$A, u=udm, a=tau[1], q=0.5) # Only interested in mean and median ages, so tau = 0.
-SA2<-systemAge(A=(h^-2)*ThDs$A, u=udm, a=tau[1], q=0.5)
-SA3<-systemAge(A=(h^-2)*TlDf$A, u=udm, a=tau[1], q=0.5)
-SA4<-systemAge(A=(h^-2)*TlDs$A, u=udm, a=tau[1], q=0.5)
+TTnames<-paste0("Code/TT",1:4, ".RData")
+for(i in 1:4){
+ load(TTnames[i])
+}
 
-plot(SA1$meanPoolAge, -dm, type="l", xlim=c(0,50))
-lines(SA2$meanPoolAge, -dm, col=2)
-lines(SA3$meanPoolAge, -dm, col=3)
-lines(SA4$meanPoolAge, -dm, col=4)
+# SA1<-systemAge(A=(h^-2)*ThDf$A, u=udm, a=tau[1], q=0.5) # Only interested in mean and median ages, so tau = 0.
+# SA2<-systemAge(A=(h^-2)*ThDs$A, u=udm, a=tau[1], q=0.5)
+# SA3<-systemAge(A=(h^-2)*TlDf$A, u=udm, a=tau[1], q=0.5)
+# SA4<-systemAge(A=(h^-2)*TlDs$A, u=udm, a=tau[1], q=0.5)
+
+# plot(SA1$meanPoolAge, udm, type="l", xlim=c(0,50))
+# lines(SA2$meanPoolAge, -dm, col=2)
+# lines(SA3$meanPoolAge, -dm, col=3)
+# lines(SA4$meanPoolAge, -dm, col=4)
 
 #pdf("Figures/transitTimes.pdf")
 tikz(file="Figures/transitTimes.tex", standAlone = TRUE, height=7*sqrt(2))
-par(mar=c(4,4,0,0), mfrow=c(2,1))
+par(mar=c(4,4,0,0), mfrow=c(2,1), las=1)
 plot(tau, TT1$transitTimeDensity, type="l", log="y", ylim=c(0.001, 1), xlim=c(0,10), yaxt="n", xlab="Transit time (yr)", 
      ylab="Probability density", col=pal2[1], lwd=3, bty="n")
 axis(side=2, at=10^(seq(-4, 1, by=1)), labels = c("0.0001", "0.001", "0.01", "0.1", "0", "1"))
@@ -206,7 +211,7 @@ m<-length(dm)
 
 #pdf("Figures/Mt.pdf")
 tikz(file="Figures/Mt.tex", standAlone = TRUE)
-par(mfrow=c(2,2), mar=c(4,4,1,0.5))
+par(mfrow=c(2,2), mar=c(4,4,1,0.5), las=1)
 matplot(x=MTs[-((m-20):m),1,], y=-dm[-((m-20):m)], type="l", xlim=c(0,max(MTs[,1,])), lty=1, lwd=3, yaxt="n", 
         xlab=expression(paste("Proportion remaining after 1 year (c",m^-1,")")), ylab="Depth (cm)", col=pal2, bty="n")
 axis(side=2,at=-ytm, labels=ytm)
@@ -263,3 +268,68 @@ legend("topright", legend=c("Transport fast, Decomposition fast",
                             "Transport fast, Decomposition slow",
                             "Transport slow, Decomposition fast",
                             "Transport slow, Decomposition slow"), lty=1, lwd=3, col=pal2, bty="n")
+
+##############
+# Transport-decomposition runs for different inputs by biome
+
+# Data from Table S4, Xiao et al. (2023, GEB 32: 1435)
+r1<- c("Tropical/Subtropical forests",	5.5, 0.4,	17.5, 1.2)
+r2<- c("Tropical/Subtropical grasslands/savannas",	1.9, 0.4,	26.4, 5.7)
+r3<- c("Temperate forests",	6.2, 0.5,	15.7, 1.1)
+r4<- c("Temperate grasslands",	3.1, 0.3,	19.2, 1.6)
+r5<- c("Mediterranean/Montane shrublands",	5.8, 0.5, 21.2, 1.8)
+r6<- c("Boreal forests",	6.1,1.2,	11.5,1.5)
+r7<- c("Tundra",	3.2, 0.9, 9.27, 1.5)
+r8<- c("Deserts", 2.3, 0.4,30.8, 6.8)
+r9<- c("Croplands",	5.5, 0.6,	17.5, 1.8)
+r10<- c("All biomes",	4.9, 0.2,	16.4, 0.6)
+m<-rbind(r1,r2, r3, r4, r5, r6, r7, r8, r9, r10, deparse.level = 0)
+BNPP<-data.frame(lapply(split(m, col(m)), type.convert, as.is = TRUE),stringsAsFactors = FALSE)
+names(BNPP)<-c("Biome", "a", "SE_a", "b", "SE_b")
+
+bnpp_fun<-function(a,b,depth){
+  a*exp(-depth/b)*0.5 #Multiply by 0.5 to get C
+}
+
+bnpp_fun(depth=0, a=BNPP$a[1], b=BNPP$b[1])
+
+TfDf1<-GLSOM(xgrid=d,D=1,a=5,k=function(d){kf(d,k0=ks[1])},f=function(d){bnpp_fun(depth=d, a=BNPP$a[1], b=BNPP$b[1])}, boundary=c(bnpp_fun(depth=0, a=BNPP$a[1], b=BNPP$b[1])/kf(0,k0=ks[1]),0))
+TfDs1<-GLSOM(xgrid=d,D=1,a=5,k=function(d){kf(d,k0=ks[2])},f=function(d){bnpp_fun(depth=d, a=BNPP$a[1], b=BNPP$b[1])}, boundary=c(bnpp_fun(depth=0, a=BNPP$a[1], b=BNPP$b[1])/kf(0,k0=ks[2]),0))
+TsDf1<-GLSOM(xgrid=d,D=1,a=0.1,k=function(d){kf(d,k0=ks[1])},f=function(d){bnpp_fun(depth=d, a=BNPP$a[1], b=BNPP$b[1])}, boundary=c(bnpp_fun(depth=0, a=BNPP$a[1], b=BNPP$b[1])/kf(0,k0=ks[1]),0))
+TsDs1<-GLSOM(xgrid=d,D=1,a=0.1,k=function(d){kf(d,k0=ks[2])},f=function(d){bnpp_fun(depth=d, a=BNPP$a[1], b=BNPP$b[1])}, boundary=c(bnpp_fun(depth=0, a=BNPP$a[1], b=BNPP$b[1])/kf(0,k0=ks[2]),0))
+
+TfDf2<-GLSOM(xgrid=d,D=1,a=5,k=function(d){kf(d,k0=ks[1])},f=function(d){bnpp_fun(depth=d, a=BNPP$a[2], b=BNPP$b[2])}, boundary=c(bnpp_fun(depth=0, a=BNPP$a[2], b=BNPP$b[2])/kf(0,k0=ks[1]),0))
+TfDs2<-GLSOM(xgrid=d,D=1,a=5,k=function(d){kf(d,k0=ks[2])},f=function(d){bnpp_fun(depth=d, a=BNPP$a[2], b=BNPP$b[2])}, boundary=c(bnpp_fun(depth=0, a=BNPP$a[2], b=BNPP$b[2])/kf(0,k0=ks[2]),0))
+TsDf2<-GLSOM(xgrid=d,D=1,a=0.1,k=function(d){kf(d,k0=ks[1])},f=function(d){bnpp_fun(depth=d, a=BNPP$a[2], b=BNPP$b[2])}, boundary=c(bnpp_fun(depth=0, a=BNPP$a[2], b=BNPP$b[2])/kf(0,k0=ks[1]),0))
+TsDs2<-GLSOM(xgrid=d,D=1,a=0.1,k=function(d){kf(d,k0=ks[2])},f=function(d){bnpp_fun(depth=d, a=BNPP$a[2], b=BNPP$b[2])}, boundary=c(bnpp_fun(depth=0, a=BNPP$a[2], b=BNPP$b[2])/kf(0,k0=ks[2]),0))
+
+pdf("Review/exampleFig.pdf")
+par(mfrow=c(2,2), mar=c(4,4,2,1))
+plot(bnpp_fun(depth=d, a=BNPP$a[1], b=BNPP$b[1]), -d, type="l", lwd=3, yaxt="n",ylab="Depth (cm)", 
+     xlab="Root inputs (g C/ yr)", xlim=c(0,3), main=BNPP[1,1], bty="n")
+axis(side=2, at=-ytm, labels=ytm)
+
+plot(TfDf1$U[-((nd-30):nd)], -d[-((nd-30):nd)], type="l", xlim=c(0,30), lwd=3,
+     xlab=expression(paste("C concentration (g c",m^-3,")")), yaxt="n",ylab="Depth (cm)", col=pal2[1], bty="n")
+axis(side=2, at=-ytm, labels=ytm)
+lines(TfDs1$U[-((nd-50):nd)], -d[-((nd-50):nd)], col=pal2[2], lwd=3)
+lines(TsDf1$U[-((nd-30):nd)], -d[-((nd-30):nd)], col=pal2[3], lwd=3)
+lines(TsDs1$U[-((nd-30):nd)], -d[-((nd-30):nd)], col=pal2[4], lwd=3)
+
+plot(bnpp_fun(depth=d, a=BNPP$a[2], b=BNPP$b[2]), -d, type="l", lwd=3, yaxt="n",ylab="Depth (cm)", 
+     xlab="Root inputs (g C/ yr)", xlim=c(0,3), main=BNPP[2,1], bty="n")
+axis(side=2, at=-ytm, labels=ytm)
+
+
+plot(TfDf2$U[-((nd-30):nd)], -d[-((nd-30):nd)], type="l", xlim=c(0,30), lwd=3,
+     xlab=expression(paste("C concentration (g c",m^-3,")")), yaxt="n",ylab="Depth (cm)", col=pal2[1], bty="n")
+axis(side=2, at=-ytm, labels=ytm)
+lines(TfDs2$U[-((nd-50):nd)], -d[-((nd-50):nd)], col=pal2[2], lwd=3)
+lines(TsDf2$U[-((nd-30):nd)], -d[-((nd-30):nd)], col=pal2[3], lwd=3)
+lines(TsDs2$U[-((nd-30):nd)], -d[-((nd-30):nd)], col=pal2[4], lwd=3)
+legend("bottomright", legend=c("Transp. fast, Decomp. fast",
+                               "Transp. fast, Decomp. slow",
+                               "Transp. slow, Decomp. fast",
+                               "Transp. slow, Decompo. slow"), lty=1, lwd=3, col=pal2, bty="n")
+par(mfrow=c(1,1))
+dev.off()
