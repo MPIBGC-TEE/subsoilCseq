@@ -14,7 +14,7 @@ vBraakhekke2013<-c(0.0651, 0.00137) # m yr-1
 kappaBraakhekke2013<-c(0.00943*2.53/(1400*2) *10000, # Lobos. cm2 yr-1. Obtained as B*lm/(rho*2)
                        0.233*0.583/(1000*2) * 10000)  # Hainich, Mode B. We assume a bulk density of 1000 kg cm-3
 
-v<-c(vElzein1995/10, # divide by 10 cm to chage to cm yr-1
+v<-c(vElzein1995/10, # divide by 10 cm to change to cm yr-1
      vBruun2007,
      vBraakhekke2011*100, # multyply by 100 cm to get cm yr-1
      vBraakhekke2013*100 # multyply by 100 cm to get cm yr-1
@@ -28,12 +28,21 @@ Kappa<-c(kappaElzein1995,
 Pe<-v/Kappa
 round(Pe, 3)
 
-hist(Pe)
-boxplot(Pe, log="y")
-abline(h=1)
+# hist(Pe)
+# boxplot(Pe, log="y")
+# abline(h=1)
 
-plot(v, Kappa, xlim=c(0,16), ylim=c(0,16), pch=19, xlab="Advection velocity", ylab="Diffusion coefficient", bty="n")
-abline(0,1, lty=2)
-segments(-1,5,5,5, col=2)
-segments(5,5, 5, -1, col=2)
-points(c(0.25, 0.5, 0.5), c(0.5, 0.5, 0.25), pch=19, col=2)
+# plot(v, Kappa, xlim=c(0,16), ylim=c(0,16), pch=19, xlab="Advection velocity", ylab="Diffusion coefficient", bty="n")
+# abline(0,1, lty=2)
+
+## Uncertainty
+n=1000
+rnv<-abs(rnorm(n, mean=mean(v), sd=sd(v)/sqrt(length(v))))
+rnvh<-abs(rnorm(n, mean=mean(v), sd=0.5*sd(v)/sqrt(length(v))))
+rnK<-abs(rnorm(n, mean=mean(Kappa), sd=sd(Kappa)/sqrt(length(Kappa))))
+rnKh<-abs(rnorm(n, mean=mean(Kappa), sd=0.5*sd(Kappa)/sqrt(length(Kappa))))
+
+# plot(rnv, rnK, xlab="v", ylab="Kappa", pch=20, xlim=c(0,10), ylim=c(0,10), bty="n")
+# abline(v=mean(rnv))
+# abline(h=mean(rnK))
+# points(rnvh, rnKh, pch=20, col=2)

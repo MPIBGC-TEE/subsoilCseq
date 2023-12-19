@@ -9,5 +9,5 @@ GLSOM<-function(xgrid, D, a, k, f, boundary){
   return(sol)
 }
 
-testModel<-GLSOM(xgrid=d,D=2, a=1.5, k=kf, f=u, boundary = c(1,0))
-plot(testModel$U, -d,type="l")
+# testModel<-GLSOM(xgrid=d,D=2, a=1.5, k=kf, f=u, boundary = c(1,0))
+# plot(testModel$U, -d,type="l")
