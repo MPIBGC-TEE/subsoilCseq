@@ -1,6 +1,7 @@
 library(pracma)
 library(parallel)
 library(RColorBrewer)
+library(tikzDevice)
 
 no_cores <- detectCores() - 2
 cl <- makeCluster(no_cores)
@@ -72,9 +73,9 @@ krange<-data.frame(min=apply(klines, 1, min), max=apply(klines, 1, max))
 ytm=seq(0,100, by=20)
 pal<-hcl.colors(4, palette = "RdYlBu", alpha=0.5)
 
-tikzDevice::tikz("Figures/uncertainty.tex", standAlone = TRUE)
+tikz("Figures/uncertainty.tex", standAlone = TRUE)
 par(mfrow=c(2,2), mar=c(4,4,0.1, 0.1))
-plot(Ds, As, xlab="$v$", ylab="$\\kappa$", pch=20, xlim=c(0,20), ylim=c(0,10), bty="n")
+plot(Ds, As, xlab="$v$ (cm yr$^{-1}$)", ylab="$\\kappa$ (cm$^2$ yr$^{-1}$)", pch=20, xlim=c(0,20), ylim=c(0,10), bty="n")
 points(Kappa, v, pch=20, cex=2, col=2)
 legend("topright", c("Random variates for simulation", "Values from literature"), pch=20, col=1:2, bty="n")
 
@@ -102,4 +103,4 @@ legend("bottomright", c("Uncertainty $k(d)$", "Uncertainty $u(d)$"), pch=15, col
 par(mfrow=c(1,1))
 dev.off()
 
-matplot(klines, -d, type="l", lty=1, col=1, lwd=0.5)
+#matplot(klines, -d, type="l", lty=1, col=1, lwd=0.5)
