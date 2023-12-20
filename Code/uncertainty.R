@@ -44,7 +44,7 @@ kfuns<-function(efs){
   f<-function(d,k0=1,efold=efs){exp(-d/efold)*k0}
   return(f)
 }
-es<-runif(n, 10, 30)
+es<-runif(n, 10, 100)
 kds<-lapply(es, kfuns)
 
 allObjects=ls()
