@@ -87,7 +87,7 @@ polygon(x=c(Dxr$max, rev(Dxr$min)), y=c(-d, rev(-d)), border=NA, col=pal[2])
 legend("bottomright", c("Uncertainty $\\kappa$", "Uncertainty $v$"), pch=15, col=pal[1:2], bty="n")
 
 plot(NA, type="l", xlim=c(0,1), ylim=c(-100, 0), 
-     xlab=expression(paste("Input (g c", m^-3,"\\ y", r^-1, ") or decomposition (y", r^-1,")  rate")), 
+     xlab=expression(paste("Input (g c", m^-2,"\\ y", r^-1, ") or decomposition (y", r^-1,")  rate")), 
      ylab="Depth (cm)", yaxt="n", lwd=3, bty="n")
 axis(side=2,at=-ytm, labels=ytm)
 polygon(x=c(krange$max, rev(krange$min)), y=c(-d, rev(-d)), border = NA, col=pal[3])
