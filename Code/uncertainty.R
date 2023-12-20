@@ -77,7 +77,8 @@ tikz("Figures/uncertainty.tex", standAlone = TRUE)
 par(mfrow=c(2,2), mar=c(4,4,0.1, 0.1))
 plot(Ds, As, xlab="$v$ (cm yr$^{-1}$)", ylab="$\\kappa$ (cm$^2$ yr$^{-1}$)", pch=20, xlim=c(0,20), ylim=c(0,10), bty="n")
 points(Kappa, v, pch=20, cex=2, col=2)
-legend("topright", c("Random variates for simulation", "Values from literature"), pch=20, col=1:2, bty="n")
+legend("topleft", c("Random variates for simulation", "Values from literature"), pch=20, col=1:2, bty="n")
+legend("topright", legend="a", bty="n")
 
 plot(NA, type="l", xlim=c(0,0.2), ylim=c(-100, 0), xlab=expression(paste("C concentration (g c",m^-3,")")), 
      ylab="Depth (cm)", yaxt="n", lwd=3, bty="n")
@@ -85,6 +86,7 @@ axis(side=2,at=-ytm, labels=ytm)
 polygon(x=c(Vxr$max, rev(Vxr$min)), y=c(-d, rev(-d)), border=NA, col=pal[1])
 polygon(x=c(Dxr$max, rev(Dxr$min)), y=c(-d, rev(-d)), border=NA, col=pal[2])
 legend("bottomright", c("Uncertainty $\\kappa$", "Uncertainty $v$"), pch=15, col=pal[1:2], bty="n")
+legend("topright", legend="b", bty="n")
 
 plot(NA, type="l", xlim=c(0,1), ylim=c(-100, 0), 
      xlab=expression(paste("Input (g c", m^-2,"\\ y", r^-1, ") or decomposition (y", r^-1,")  rate")), 
@@ -93,6 +95,7 @@ axis(side=2,at=-ytm, labels=ytm)
 polygon(x=c(krange$max, rev(krange$min)), y=c(-d, rev(-d)), border = NA, col=pal[3])
 polygon(x=c(urange$max, rev(urange$min)), y=c(-d, rev(-d)), border = NA, col=pal[4])
 legend("bottomright", c("Uncertainty $d_e$", "Uncertainty $\\beta$"), pch=15, col=pal[3:4], bty="n")
+legend("topright", legend="c", bty="n")
 
 plot(NA, type="l", xlim=c(0,0.2), ylim=c(-100, 0), xlab=expression(paste("C concentration (g c",m^-3,")")), 
      ylab="Depth (cm)", yaxt="n",lwd=3, bty="n")
@@ -100,6 +103,7 @@ axis(side=2,at=-ytm, labels=ytm)
 polygon(x=c(kxr$max, rev(kxr$min)), y=c(-d, rev(-d)), border=NA, col=pal[3])
 polygon(x=c(Inxr$max, rev(Inxr$min)), y=c(-d, rev(-d)), border=NA, col=pal[4])
 legend("bottomright", c("Uncertainty $k(d)$", "Uncertainty $u(d)$"), pch=15, col=pal[3:4], bty="n")
+legend("topright", legend="d", bty="n")
 par(mfrow=c(1,1))
 dev.off()
 
