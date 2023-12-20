@@ -1,4 +1,7 @@
 \documentclass[11pt, oneside, a4paper]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+%DIF LATEXDIFF DIFFERENCE FILE
+%DIF DEL subsoilCS_R1.tex   Fri Nov  3 17:12:26 2023
+%DIF ADD subsoilCS_R2.tex   Wed Dec 20 12:02:48 2023
 \usepackage[margin=2cm]{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
 \geometry{a4paper}                   		% ... or a4paper or a5paper or ... 
 %\geometry{landscape}                		% Activate for for rotated page geometry
@@ -22,20 +25,122 @@
 \author[1,2]{Carlos A. Sierra\orcidlink{0000-0003-0009-4169}}
 \author[1]{Bernhard Ahrens \orcidlink{0000-0001-7226-6682}}
 \author[2]{Martin A. Bolinder \orcidlink{0000-0002-3574-3061}}
-\author[3]{Maarten C. Braakhekke \orcidlink{0000-0002-1889-2225}}
-\author[1,4]{Sophie von Fromm \orcidlink{https://orcid.org/0000-0002-1820-1455}}
+%DIF 25-26c25-26
+%DIF < \author{Maarten C. Braakhekke \orcidlink{0000-0002-1889-2225}}
+%DIF < \author[1,3]{Sophie von Fromm \orcidlink{https://orcid.org/0000-0002-1820-1455}}
+%DIF -------
+\author[3]{Maarten C. Braakhekke \orcidlink{0000-0002-1889-2225}} %DIF > 
+\author[1,4]{Sophie von Fromm \orcidlink{https://orcid.org/0000-0002-1820-1455}} %DIF > 
+%DIF -------
 \author[2]{Thomas K\"atterer \orcidlink{0000-0002-1751-007X}}
-\author[5]{Zhongkui Luo \orcidlink{0000-0002-6744-6491}}
+%DIF 28c28
+%DIF < \author[4]{Zhongkui Luo \orcidlink{0000-0002-6744-6491}}
+%DIF -------
+\author[5]{Zhongkui Luo \orcidlink{0000-0002-6744-6491}} %DIF > 
+%DIF -------
 \author[2]{Nargish Parvin \orcidlink{0000-0002-1571-575X}}
-\author[6]{Guocheng Wang \orcidlink{0009-0006-3492-7105}}
+%DIF 30c30
+%DIF < \author[5]{Guocheng Wang \orcidlink{0009-0006-3492-7105}}
+%DIF -------
+\author[6]{Guocheng Wang \orcidlink{0009-0006-3492-7105}} %DIF > 
+%DIF -------
 
-\affil[1]{Max Planck Institute for Biogeochemistry, Jena, Germany}
-\affil[2]{Department of Ecology, Swedish University of Agricultural Sciences, Uppsala, Sweden}
-\affil[3]{Wageningen Environmental Research, Wageningen UR, Wageningen, the Netherlands}
-\affil[4]{Department of Environmental Science, ETH Zurich, Switzerland}
-\affil[5]{College of Environmental and Resource Sciences, Zhejiang University, Hangzhou, China}
-\affil[6]{Faculty of Geographical Science, Beijing Normal University, Beijing, China} %, 100875}
+%DIF 32-36c32-37
+%DIF < \affil[1]{Max Planck Institute for Biogeochemistry, Germany}
+%DIF < \affil[2]{Department of Ecology, Swedish University of Agricultural Sciences, Sweden}
+%DIF < \affil[3]{Department of Environmental Science, ETH Zurich, Switzerland}
+%DIF < \affil[4]{College of Environmental and Resource Sciences, Zhejiang University, Hangzhou, China}
+%DIF < \affil[5]{Faculty of Geographical Science, Beijing Normal University, Beijing, China} %, 100875}
+%DIF -------
+\affil[1]{Max Planck Institute for Biogeochemistry, Jena, Germany} %DIF > 
+\affil[2]{Department of Ecology, Swedish University of Agricultural Sciences, Uppsala, Sweden} %DIF > 
+\affil[3]{Wageningen Environmental Research, Wageningen UR, Wageningen, the Netherlands} %DIF > 
+\affil[4]{Department of Environmental Science, ETH Zurich, Switzerland} %DIF > 
+\affil[5]{College of Environmental and Resource Sciences, Zhejiang University, Hangzhou, China} %DIF > 
+\affil[6]{Faculty of Geographical Science, Beijing Normal University, Beijing, China} %, 100875} %DIF > 
+%DIF -------
 %\date{}							% Activate to display a given date or no date
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\providecommand{\DIFaddtex}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdeltex}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+\providecommand{\DIFmodbegin}{} %DIF PREAMBLE
+\providecommand{\DIFmodend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+%DIF HYPERREF PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{\texorpdfstring{\DIFaddtex{#1}}{#1}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{\texorpdfstring{\DIFdeltex{#1}}{}} %DIF PREAMBLE
+\newcommand{\DIFscaledelfig}{0.5}
+%DIF HIGHLIGHTGRAPHICS PREAMBLE %DIF PREAMBLE
+\RequirePackage{settobox} %DIF PREAMBLE
+\RequirePackage{letltxmacro} %DIF PREAMBLE
+\newsavebox{\DIFdelgraphicsbox} %DIF PREAMBLE
+\newlength{\DIFdelgraphicswidth} %DIF PREAMBLE
+\newlength{\DIFdelgraphicsheight} %DIF PREAMBLE
+% store original definition of \includegraphics %DIF PREAMBLE
+\LetLtxMacro{\DIFOincludegraphics}{\includegraphics} %DIF PREAMBLE
+\newcommand{\DIFaddincludegraphics}[2][]{{\color{blue}\fbox{\DIFOincludegraphics[#1]{#2}}}} %DIF PREAMBLE
+\newcommand{\DIFdelincludegraphics}[2][]{% %DIF PREAMBLE
+\sbox{\DIFdelgraphicsbox}{\DIFOincludegraphics[#1]{#2}}% %DIF PREAMBLE
+\settoboxwidth{\DIFdelgraphicswidth}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\settoboxtotalheight{\DIFdelgraphicsheight}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\scalebox{\DIFscaledelfig}{% %DIF PREAMBLE
+\parbox[b]{\DIFdelgraphicswidth}{\usebox{\DIFdelgraphicsbox}\\[-\baselineskip] \rule{\DIFdelgraphicswidth}{0em}}\llap{\resizebox{\DIFdelgraphicswidth}{\DIFdelgraphicsheight}{% %DIF PREAMBLE
+\setlength{\unitlength}{\DIFdelgraphicswidth}% %DIF PREAMBLE
+\begin{picture}(1,1)% %DIF PREAMBLE
+\thicklines\linethickness{2pt} %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\framebox(1,1){}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\line( 1,1){1}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,1){\line(1,-1){1}}}% %DIF PREAMBLE
+\end{picture}% %DIF PREAMBLE
+}\hspace*{3pt}}} %DIF PREAMBLE
+} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbegin}{\DIFaddbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddend}{\DIFaddend} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbegin}{\DIFdelbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelend}{\DIFdelend} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbegin}{\DIFOaddbegin \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbegin}{\DIFOdelbegin \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbeginFL}{\DIFaddbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddendFL}{\DIFaddendFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbeginFL}{\DIFdelbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelendFL}{\DIFdelendFL} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbeginFL}{\DIFOaddbeginFL \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbeginFL}{\DIFOdelbeginFL \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+%DIF COLORLISTINGS PREAMBLE %DIF PREAMBLE
+\RequirePackage{listings} %DIF PREAMBLE
+\RequirePackage{color} %DIF PREAMBLE
+\lstdefinelanguage{DIFcode}{ %DIF PREAMBLE
+%DIF DIFCODE_UNDERLINE %DIF PREAMBLE
+  moredelim=[il][\color{red}\sout]{\%DIF\ <\ }, %DIF PREAMBLE
+  moredelim=[il][\color{blue}\uwave]{\%DIF\ >\ } %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstdefinestyle{DIFverbatimstyle}{ %DIF PREAMBLE
+	language=DIFcode, %DIF PREAMBLE
+	basicstyle=\ttfamily, %DIF PREAMBLE
+	columns=fullflexible, %DIF PREAMBLE
+	keepspaces=true %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim}{\lstset{style=DIFverbatimstyle}}{} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim*}{\lstset{style=DIFverbatimstyle,showspaces=true}}{} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
 
 \begin{document}
 \maketitle
@@ -46,7 +151,8 @@ Soils store large quantities of carbon in the subsoil (below 0.2 m depth) that i
 Bioturbation, liquid phase transport, belowground carbon inputs, mineral association, and microbial activity, are the main processes contributing to the formation of soil carbon profiles, and these processes are represented in models using the diffusion-advection-reaction paradigm. 
 Based on simulation examples, and measurements from carbon and radiocarbon profiles across biomes, we found that advective and diffusive transport may only play a secondary role in the formation of soil carbon profiles. The difference between vertical root inputs and decomposition seems to play a primary role in determining the shape of carbon change with depth. 
 Using the transit time of carbon to assess the timescales of carbon storage of new inputs, we show that only small quantities of new carbon inputs travel through the profile and can be stabilized for time horizons longer than 50 years, implying that activities that promote carbon sequestration in the subsoil must take into consideration the very small quantities that can be stabilized in the long term. 
-%Land management activities could increase C storage in the subsoil by increasing advective vertical transport and decreasing the difference between inputs and decomposition at all depths. 
+\DIFdelbegin \DIFdel{Land management activities could increase C storage in the subsoil by increasing advective vertical transport and decreasing the difference between inputs and decomposition at all depths. 
+}\DIFdelend %DIF > Land management activities could increase C storage in the subsoil by increasing advective vertical transport and decreasing the difference between inputs and decomposition at all depths. 
 \end{abstract}
 
 \vspace{1cm}
@@ -442,7 +548,7 @@ If we ignore vertical transport, soil carbon would display temporal dynamics rel
 \begin{equation} \label{eq:compartmentalSystem}
 \frac{\mathrm{d} \bm{x}}{\mathrm{d}t} = \bm{u}(\bm{x}, t) + \mathbf{B}(\bm{x}, t) \cdot \bm{x}(t) .
 \end{equation}
-This general model is expressed in vector (lower case bold) and matrix (upper case bold) form because it is assumed that soil organic carbon is highly heterogeneous, and different proportions  decompose at different rates. Therefore, the vector $\bm{x}(t) \in \mathbb{R}^n$ represents the mass of soil carbon in $n$ number of compartments at time $t$. The total mass at time $t$, $x(t)$, can be simply obtained as the sum of the elements of this vector, i.e. $x(t) = \Vert \bm{x}(t) \Vert$ (the vertical bars represent a norm). Mass inputs to this system are represented by the vector $\bm{u}(\bm{x}, t)$, which expresses the amount of organic matter inputs that would enter each compartment. Because above and belowground litter inputs can differ in their chemical and physical properties, different proportions of the total mass may enter different compartments. In addition, the inputs may depend on the amount of carbon in particular compartments; for example, if exudation rates depend on the amount of mycorrhiza. For this reason, the inputs $\bm{u}$ are expressed as dependent on the amount of mass present in the compartments at any given time. 
+This general model is expressed in vector (lower case bold) and matrix (upper case bold) form because it is assumed that soil organic carbon is highly heterogeneous, and different proportions  decompose at different rates. Therefore, the vector $\bm{x}(t) \in \mathbb{R}^n$ represents the mass of soil carbon in $n$ number of compartments at time $t$. The total mass at time $t$, $x(t)$, can be simply obtained as the sum of the elements of this vector, i.e. $x(t) = \Vert \bm{x}(t) \Vert$ (the vertical bars represent a norm\DIFdelbegin \DIFdel{and indicate a sum of the positive elements of a vector}\DIFdelend ). Mass inputs to this system are represented by the vector $\bm{u}(\bm{x}, t)$, which expresses the amount of organic matter inputs that would enter each compartment. Because above and belowground litter inputs can differ in their chemical and physical properties, different proportions of the total mass may enter different compartments. In addition, the inputs may depend on the amount of carbon in particular compartments; for example, if exudation rates depend on the amount of mycorrhiza. For this reason, the inputs $\bm{u}$ are expressed as dependent on the amount of mass present in the compartments at any given time. 
 
 Rates of decomposition and transfer of carbon among compartments are expressed in the matrix $\mathbf{B}(\bm{x}, t)$ of equation \ref{eq:compartmentalSystem}. This matrix is called compartmental because it has important mathematical properties related to mass conservation: all diagonal elements are non-positive, all off-diagonal elements are non-negative, and the column sums are non-positive \citep{Metzler2018MG, Sierra2018JAMES}.
 
@@ -506,7 +612,7 @@ To interpret data from pulse response experiments, some researchers have ignored
  \kappa \frac{\partial^2 x(d)}{\partial d^2} - v \frac{\partial x(d)}{\partial d} =0.
 \end{equation}
 
-Models explicitly representing decomposition usually use one or three pools to represent decomposition as in most traditional models. More detailed representations of decomposition are presented in the model of \citet{Braakhekke2011, Braakhekke2013}, which represents five different pools, including a litter layer component clearly separating processes related to decomposition in the surface organic layer from processes more affected by vertical transport in the mineral horizons. Also, the model of \citet{Koven2013BGS} used 7 distinct C pools: coarse woody debris, three litter pools, and three mineral soil C pools. 
+Models explicitly representing decomposition usually use one or three pools to represent decomposition as in most traditional models. More detailed representations of decomposition are presented in the model of \citet{Braakhekke2011, Braakhekke2013}, which represents five different pools, including a litter layer component clearly separating processes related to decomposition in the surface organic layer from processes more affected by vertical transport in the mineral horizons. Also, the model of \citet{Koven2013BGS} used 7 distinct C pools: coarse woody debris, three litter pools, and \DIFdelbegin \DIFdel{3 }\DIFdelend \DIFaddbegin \DIFadd{three }\DIFaddend mineral soil C pools. 
 
 In the COMISSION model, not only advective DOC transport is considered, but also advective transport of litter particles similarly as in sediment models \citep{Ahrens2015, Ahrens2020}. In the latest version of the model \citep{Ahrens2020}, advective litter transfer and particle diffusion are depth dependent. The model also considers non-linear interactions among C pools, therefore it deviates from the constant linear coefficients model of equation \ref{eq:linearSecondOrder} and is in better analogy to equation \ref{eq:generalTransport}. Similarly, the models of \citet{Wang2021} and \citet{Tao2023} include nonlinear interactions among C pools, with the size of the microbial biomass pools interacting with the size of litter and mineral soil pools, but ignoring advection and treating diffusion as a constant across all depths.  
 
@@ -609,9 +715,9 @@ The function used to represent decomposition rates by depth was extracted from \
 \begin{equation} \label{eq:kd}
 k(d) = k_0 \exp \left(\frac{-d}{d_e} \right),
 \end{equation}
-with the maximum decomposition rate at the surface given by $k_0 = k(d=0)$, and $d_e$ representing the e-folding depth of decomposition rates. In our simulations, we used values of $k_0 : \{1, 0.1, 0.01 \}$ yr$^{-1}$ and a constant value of $d_e = 90$ cm. Equation \ref{eq:kd} is an empirical function that accounts for unresolved processes such as changes in oxygen availability or microbial activity with depth, and therefore it could be considered as a place holder for other mechanistic representations of depth dependent microbial dynamics. 
+with the maximum decomposition rate at the surface given by $k_0 = k(d=0)$, and $d_e$ representing the e-folding depth of decomposition rates. In our simulations, we used values of $k_0 : \{1, 0.1, 0.01 \}$ yr$^{-1}$ and a constant value of $d_e = 90$ cm\DIFdelbegin \DIFdel{(the model showed little sensitivity to different values of $d_e$)}\DIFdelend . Equation \ref{eq:kd} is an empirical function that accounts for unresolved processes such as changes in oxygen availability or microbial activity with depth, and therefore it could be considered as a place holder for other mechanistic representations of depth dependent microbial dynamics. 
 
-The results from this second set of simulations evaluating the effect of lateral root inputs and decomposition showed that slowing down decomposition can have a significant effect on the shape of the vertical soil C profile (Figure \ref{fig:rootDecomp}). These results seem counterintuitive because equation \ref{eq:simpleCase} suggests that the negative term of the equation should be affected by larger values of $k(d)$, but because with slow decomposition higher amounts of C are obtained at steady-state, the entire term $k(d) x(d)$ is large, promoting a strong soil C gradient. The vertical distribution of root inputs has also a significant effect on the shape of the soil C profile, with shallow root inputs promoting a strong vertical gradient and deep rooting systems a more pronounced gradient with lower values of the first derivative (Figure \ref{fig:rootDecomp}). In this set of simulations, we observed also a maximum rate of change of C at the upper layers where the value of the first derivative reached a maximum. 
+The results from this second set of simulations evaluating the effect of lateral root inputs and decomposition showed that slowing down decomposition can have a significant effect on the shape of the vertical soil C profile (Figure \ref{fig:rootDecomp}). These results seem counterintuitive because equation \ref{eq:simpleCase} \DIFdelbegin \DIFdel{suggest }\DIFdelend \DIFaddbegin \DIFadd{suggests }\DIFaddend that the negative term of the equation should be affected by larger values of $k(d)$, but because with slow decomposition higher amounts of C are obtained at steady-state, the entire term $k(d) x(d)$ is large, promoting a strong soil C gradient. The vertical distribution of root inputs has also a significant effect on the shape of the soil C profile, with shallow root inputs promoting a strong vertical gradient and deep rooting systems a more pronounced gradient with lower values of the first derivative (Figure \ref{fig:rootDecomp}). In this set of simulations, we observed also a maximum rate of change of C at the upper layers where the value of the first derivative reached a maximum. 
 
 \begin{figure}[htbp]
    \centering
@@ -621,28 +727,35 @@ The results from this second set of simulations evaluating the effect of lateral
    \label{fig:rootDecomp}
 \end{figure}
 
-Parameter values for diffusion, advection, root input distribution, and decomposition rates with depth are highly uncertainty and there is little information on their global distribution across biomes. To test uncertainty in the components of equation \ref{eq:simpleCase}, we performed an uncertainty analysis following a Monte Carlo uncertainty approach. We chose 1000 random variates of the parameters $\kappa$ and $v$ from a uniform distribution within the range of observed values in Table \ref{tab:Models}, and ran simulations to obtain an estimate of prediction uncertainty in C concentration across depth (Figure \ref{fig:uncertainty}). These simulations clearly show that uncertainty due to the diffusion parameter $\kappa$ is much smaller than prediction uncertainty due to parameter $v$ (Figure \ref{fig:uncertainty}b). Similarly, we ran simulations with 1000 random variates of parameters $\beta$ and $d_e$ to test the effect of uncertainty in root inputs and decomposition rates, respectively. The results showed that prediction uncertainty is larger due to the depth distribution of decomposition than to the depth distribution of root inputs (Figure \ref{fig:uncertainty}d), and both process dominate prediction uncertainty in comparison to uncertainty in transport processes ($\kappa$ and $v$ uncertainty).
+\DIFaddbegin \DIFadd{Parameter values for diffusion, advection, root input distribution, and decomposition rates with depth are highly uncertainty and there is little information on their global distribution across biomes. To test uncertainty in the components of equation \ref{eq:simpleCase}, we performed an uncertainty analysis following a Monte Carlo uncertainty approach. We chose 1000 random variates of the parameters $\kappa$ and $v$ from a uniform distribution within the range of observed values in Table \ref{tab:Models}, and ran simulations to obtain an estimate of prediction uncertainty in C concentration across depth (Figure \ref{fig:uncertainty}). These simulations clearly show that uncertainty due to the diffusion parameter $\kappa$ is much smaller than prediction uncertainty due to parameter $v$ (Figure \ref{fig:uncertainty}b). Similarly, we ran simulations with 1000 random variates of parameters $\beta$ and $d_e$ to test the effect of uncertainty in root inputs and decomposition rates, respectively. The results showed that prediction uncertainty is larger due to the depth distribution of decomposition than to the depth distribution of root inputs (Figure \ref{fig:uncertainty}d), and both process dominate prediction uncertainty in comparison to uncertainty in transport processes ($\kappa$ and $v$ uncertainty).
+}
 
 \begin{figure}[t]
    \centering
-   \includegraphics[width=\textwidth]{Figures/uncertainty.pdf} % requires the graphicx package
-   \caption{Uncertainty analysis based on the components of equation \eqref{eq:simpleCase} using a Monte Carlo uncertainty approach in which 1000 random variates of model parameters were chosen from a uniform distribution. (a) Set of 1000 random variates of parameters $\kappa$ and $v$, and the set of values available from the literature (Table \ref{tab:Models}). (b) Prediction uncertainty in carbon concentration due to uncertainty in $\kappa$ and $v$. (c) Uncertainty in the distribution of root inputs ($u(d)$) due to uncertainty in parameter $\beta$, and uncertainty in decomposition rate distribution ($k(d)$) due to uncertainty in parameter $d_e$. (d) Prediction uncertainty in carbon concentration due to uncertainty in root input distribution and decomposition rate distribution. }
+   \includegraphics[width=\textwidth]{Figures/uncertainty.pdf} %DIF >  requires the graphicx package
+   \caption{\DIFaddFL{Uncertainty analysis based on the components of equation \eqref{eq:simpleCase} using a Monte Carlo uncertainty approach in which 1000 random variates of model parameters were chosen from a uniform distribution. (a) Set of 1000 random variates of parameters $\kappa$ and $v$, and the set of values available from the literature (Table \ref{tab:Models}). (b) Prediction uncertainty in carbon concentration due to uncertainty in $\kappa$ and $v$. (c) Uncertainty in the distribution of root inputs ($u(d)$) due to uncertainty in parameter $\beta$, and uncertainty in decomposition rate distribution ($k(d)$) due to uncertainty in parameter $d_e$. (d) Prediction uncertainty in carbon concentration due to uncertainty in root input distribution and decomposition rate distribution. }}
    \label{fig:uncertainty}
 \end{figure}
 
-Overall, the sensitivity analysis presented in Figures \ref{fig:AdvectionDiffusion} and \ref{fig:rootDecomp}, and the uncertainty analysis in Figure \ref{fig:uncertainty} indicate that the vertical distribution of root inputs and decomposition play a larger role in determining the shape of soil carbon profiles than transport processes represented as diffusion and advection. 
+\DIFadd{Overall, the sensitivity analysis presented in Figures \ref{fig:AdvectionDiffusion} and \ref{fig:rootDecomp}, and the uncertainty analysis in Figure \ref{fig:uncertainty} indicate that the vertical distribution of root inputs and decomposition play a larger role in determining the shape of soil carbon profiles than transport processes represented as diffusion and advection. 
+}
 
-\section{Assessing C sequestration and the fate of new C inputs}
+\DIFaddend \section{Assessing C sequestration and the fate of new C inputs}
 \subsection{Fate, transit time, and carbon sequestration in the subsoil}
-In the context of climate change mitigation, we are generally interested in evaluating the capacity of soils for storing carbon at relevant timescales associated with management and policy outcomes. In many cases, we are interested in comparing different soils; and in other cases, we are interested in evaluating the effectiveness of different soil management practices. In any case, we need to use appropriate metrics to evaluate the environmental benefit of carbon sequestration. 
+In the context of climate change mitigation, we are generally interested in evaluating the capacity of soils for storing carbon at relevant timescales associated with management and policy outcomes. In many cases\DIFaddbegin \DIFadd{, }\DIFaddend we are interested in comparing different soils; and in other cases, we are interested in evaluating the effectiveness of different soil management practices. In any case, we need to use appropriate metrics to evaluate the environmental benefit of carbon sequestration. 
 
 If we aim at promoting soil C sequestration, it is then important to analyze the fate of new inputs entering the soil, assess for how long the new carbon remains stored, and how much warming can be avoided while the C is stored \citep{Sierra2021BGS, Crow2022}. For this purpose, we can use the following metrics: fate, transit time, and carbon sequestration, which are mathematically defined as follows.
 
-For a compartmental system in equilibrium, where carbon inputs are balanced with C losses, the fate of C entering at a time $t_0$ can be obtained as a function that predicts the mass of C remaining in the soil at time $t$, thus we define $\tau = t- t_0$, and  
-\begin{equation} \label{eq:m}
-\bm{m}(\tau) = e^{\tau \mathbf{B}} \ \bm{u},
+For a compartmental system in equilibrium, where carbon inputs are balanced with C losses, the fate of C entering at a time $t_0$ can be obtained as a function that predicts the mass of C remaining in the soil at \DIFdelbegin \DIFdel{any given time $t > t_0$ \mbox{%DIFAUXCMD
+\citep{Sierra2021JE}
+}\hskip0pt%DIFAUXCMD
+}\DIFdelend \DIFaddbegin \DIFadd{time $t$, thus we define $\tau = t- t_0$, and  
+}\DIFaddend \begin{equation} \DIFaddbegin \label{eq:m}
+\DIFaddend \bm{m}(\DIFdelbegin \DIFdel{t}\DIFdelend \DIFaddbegin \DIFadd{\tau}\DIFaddend ) = e^{\tau \mathbf{B}} \ \bm{u},
 \end{equation}
-as in \citet{Sierra2021JE}, where $\bm{m}(\tau)$ is a vector with the mass remaining for each compartment. This mass remaining is related to the transit time of carbon, which is defined as the time it takes carbon atoms to pass through the entire network of compartments until C leaves the soil system \citep{Bolin1973, Manzoni2009JGR, Sierra2018JAMES}. The transit time distribution of carbon can be expressed as \citep{Metzler2018MG}
+\DIFdelbegin \DIFdel{where $\bm{m}(t)$ }\DIFdelend \DIFaddbegin \DIFadd{as in \mbox{%DIFAUXCMD
+\citet{Sierra2021JE}}\hskip0pt%DIFAUXCMD
+, where $\bm{m}(\tau)$ }\DIFaddend is a vector with the mass remaining for each compartment. This mass remaining is related to the transit time of carbon, which is defined as the time it takes carbon atoms to pass through the entire network of compartments until C leaves the soil system \citep{Bolin1973, Manzoni2009JGR, Sierra2018JAMES}. The transit time distribution of carbon can be expressed as \citep{Metzler2018MG}
 \begin{equation} \label{eq:transitTime}
 f_T(\tau) = -\bm{1}^{\top} \ \mathbf{B} \ e^{\tau \mathbf{B}} \frac{\bm{u}}{\Vert \bm{u} \Vert},
 \end{equation}
@@ -659,7 +772,7 @@ For a compartmental system at equilibrium, CS can be obtained as \citep{Sierra20
 \end{equation}
 which is the integral of the total amount of mass remaining in the soil from a cohort of inputs entering at $t_0$.
 
-If a particular transport-decomposition model can be discretized and expressed as a compartmental system following standard numerical methods \citep{LeVeque2007, Lanczos}, one can use equations \ref{eq:m}, \ref{eq:transitTime}, and \ref{eq:CS} to quantify the fate, transit time and CS of a particular soil and compare results with those from another soil, or with the outcomes of different forms of management. 
+If a particular transport-decomposition model can be discretized and expressed as a compartmental system following standard numerical methods \citep{LeVeque2007, Lanczos}, one can use \DIFdelbegin \DIFdel{equation }\DIFdelend \DIFaddbegin \DIFadd{equations \ref{eq:m}, \ref{eq:transitTime}, and }\DIFaddend \ref{eq:CS} to quantify the fate, transit time and CS of a particular soil and compare results with those from another soil, or with the outcomes of different forms of management. 
 
 Alternatively, $\bm{m}(t)$ and $f_T(\tau)$ can be obtained using impulse response experiments with existing transport models that are difficult to express as a compartmental system \citep{Thompson1999, Metzler2018MG}. The approach consists of running a model until reaching equilibrium, and at this point add a pulse of carbon and observe the mass remaining of the pulse over time, which is an approximation to $\bm{m}(t) $. One can also observe the respiration flux after the addition of the pulse, which is an approximation to the transit time distribution $f_T(\tau)$ \citep{Metzler2018MG}. The results from pulse-response experiments should provide very valuable information to assess the fate of new inputs entering the soil and whether they remain for relevant periods of time. 
 
@@ -691,8 +804,8 @@ $\beta$ & 0.950 & 0.950 & 0.950 & 0.950\\
 Proportion remaining after 1 yr & 0.449   & 0.914 & 0.424  & 0.875\\
 Proportion remaining after 10 yr & 0.002  & 0.480 & 0.001 &  0.392 \\
 Proportion remaining after 50 yr & 0.000  & 0.000 & 0.000  & 0.022 \\
-Mean transit time (yr) & 1.333  & 9.699 & 1.217 & 11.498 \\
-Median transit time (yr) & 0.859  & 9.444 & 0.799  & 7.096 \\
+Mean transit time (yr\DIFdelbeginFL \DIFdelFL{$^{-1}$}\DIFdelendFL ) & 1.333  & 9.699 & 1.217 & 11.498 \\
+Median transit time (yr\DIFdelbeginFL \DIFdelFL{$^{-1}$}\DIFdelendFL ) & 0.859  & 9.444 & 0.799  & 7.096 \\
 CS($t \to \infty$) & 16.028 & 363.721 &12.587 &133.416 \\
 \bottomrule
 \end{tabular}
@@ -728,25 +841,37 @@ The International Soil Radiocarbon Database (ISRaD) is a comprehensive and well 
 
 \begin{figure}[htbp]
    \centering
-   \includegraphics[width=\textwidth]{Figures/profiles.pdf} % requires the graphicx package
-   \caption{Soil carbon concentrations with 1st and 2nd derivatives with respect to depth obtained from the International Soil Radiocarbon Database, with data from 600 profiles aggregated by biogeographical regions. Thick lines for each group represent the mean across available observations and fitted to a spline curve. Horizontal lines represent standard deviation across available observations. }
+   \DIFdelbeginFL %DIFDELCMD < \includegraphics[width=\textwidth]{Figures/ISRaD_msp_SOC_climate_depth_profile_deriv_2023-04-11.jpeg} %%%
+\DIFdelendFL \DIFaddbeginFL \includegraphics[width=\textwidth]{Figures/profiles.pdf} \DIFaddendFL % requires the graphicx package
+   \caption{Soil carbon concentrations \DIFdelbeginFL \DIFdelFL{at different depths }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{with 1st and 2nd derivatives with respect to depth obtained }\DIFaddendFL from the International Soil Radiocarbon Database, with data from 600 profiles aggregated by biogeographical regions. Thick lines for each group represent the mean across available observations and fitted to a spline curve. Horizontal lines represent standard deviation across available observations. }
    \label{fig:Cprofiles}
 \end{figure}
 
 Soil carbon decreased rapidly with depth in most soil profiles reaching values close to zero at 1 m depth (Figure \ref{fig:Cprofiles}), with the exception of soils from tundra/polar regions and volcanic soils, which still contain relatively large quantities of C at 90 cm depth. Please note that these values are reported as concentrations with respect to mass of soil. Bulk density data is not commonly reported for individual profiles and much less for individual depth horizons. Therefore, comparisons with the simulation experiments from previous sections must be done only with respect to qualitative aspects and not with respect to quantitative values. 
 
-%\begin{figure}[htbp]
-%   \centering
-%   \includegraphics[width=\textwidth]{Figures/ISRaD_msp_14C_SOC_climate_depth_deriv_2023-03-13.jpeg} % requires the graphicx package
-%   \caption{First and second derivative of soil C profiles extracted from ISRaD and grouped by biogeographical region, with the exception of volcanic soils.}
-%   \label{fig:Derivatives}
-%\end{figure}
+\DIFdelbegin %DIFDELCMD < \begin{figure}[htbp]
+%DIFDELCMD <    \centering
+%DIFDELCMD <    \includegraphics[width=\textwidth]{Figures/ISRaD_msp_14C_SOC_climate_depth_deriv_2023-03-13.jpeg} %%%
+%DIF <  requires the graphicx package
+   %DIFDELCMD < \caption{%
+{%DIFAUXCMD
+\DIFdelFL{First and second derivative of soil C profiles extracted from ISRaD and grouped by biogeographical region, with the exception of volcanic soils.}}
+   %DIFAUXCMD
+%DIFDELCMD < \label{fig:Derivatives}
+%DIFDELCMD < \end{figure}
+%DIFDELCMD < %%%
+\DIFdelend %DIF > \begin{figure}[htbp]
+%DIF >    \centering
+%DIF >    \includegraphics[width=\textwidth]{Figures/ISRaD_msp_14C_SOC_climate_depth_deriv_2023-03-13.jpeg} % requires the graphicx package
+%DIF >    \caption{First and second derivative of soil C profiles extracted from ISRaD and grouped by biogeographical region, with the exception of volcanic soils.}
+%DIF >    \label{fig:Derivatives}
+%DIF > \end{figure}
 
-The first derivative of soil C concentrations with respect to depth ($\partial x(d)/ \partial d$, Figure \ref{fig:Cprofiles})  was negative for all groups, indicating that soil C always decreases with depth for these aggregated profiles. This is in  agreement with our previous simulations in which the first derivatives were always negative. We observed for all groups a peak in the first derivative where it reaches a maximum negative value, indicating that soil C decreases more strongly at some intermediate depth between 10 and 20 cm (Figure \ref{fig:Cprofiles}). According to equation \ref{eq:simpleCase}, a maximum negative value of the first derivative can only occur at depths where the microbial decomposition flux ($k(d) x(d)$) has its maximum value, i.e. when microbes are consuming the maximum amount of carbon possible.
+The first derivative of soil C concentrations with respect to depth ($\partial x(d)/ \partial d$, Figure \DIFdelbegin \DIFdel{\ref{fig:Derivatives}}\DIFdelend \DIFaddbegin \DIFadd{\ref{fig:Cprofiles}}\DIFaddend )  was negative for all groups, indicating that soil C always decreases with depth for these aggregated profiles. This is in  agreement with our previous simulations in which the first derivatives were always negative. We observed for all groups a peak in the first derivative where it reaches a maximum negative value, indicating that soil C decreases more strongly at some intermediate depth between 10 and 20 cm (Figure \DIFdelbegin \DIFdel{\ref{fig:Derivatives}}\DIFdelend \DIFaddbegin \DIFadd{\ref{fig:Cprofiles}}\DIFaddend ). According to equation \ref{eq:simpleCase}, a maximum negative value of the first derivative can only occur at depths where the microbial decomposition flux ($k(d) x(d)$) has its maximum value, i.e. when microbes are consuming the maximum amount of carbon possible.
 
 The value of the first derivative had the largest values overall for volcanic soils, and the lowest values for arid soils. In both cases decomposition rates may be slow compared to other soils; in volcanic soils the presence of amorphous non-crystalline surfaces promote sorption of organic matter to minerals and therefore slow decomposition and strong C accumulation \citep{Marin-Spiotta2011, Crow2015}; in arid soils low moisture availability leads to slow decomposition rates, but also low primary productivity leads to low carbon stocks \citep{Moyano2013, Sierra2015JAMES}. Therefore, negative values of the first derivative are strongly dependent on the C stocks ($x(d)$), and to a lesser extend on the decomposition rate ($k(d)$). The decomposition rate obviously plays a major role in determine the size of the C stock in conjunction with the input fluxes at depth, but the rate of decline of C with depth is mostly influenced by the resulting C stock. In addition, the last term of equation \ref{eq:simpleCase} also reveals that for systems with slow advection velocities $v$ approaching zero, small differences between lateral inputs and decomposition may be amplified. In other words, the large values of the negative derivative for the volcanic soils may be the result of very low advective movement of DOC, amplifying small differences between lateral inputs and decomposition.
 
-Overall, the data from soil C profiles aggregated by regional groups and volcanic soils provide evidence supporting the idea that vertical transport may play a secondary role in determining the rate of soil C decrease with depth. The difference between lateral root inputs and decomposition may play a primary role in determining the shape of soil C profiles, and this difference may be amplified at low advection velocity rates. Diffusive movement of soil C seems to play a small role in these aggregated groups, something suggested by the low values of the second derivative (Figure \ref{fig:Cprofiles}); however, diffusion may have some control on the peak of C decrease found close to the surface in these profiles. 
+Overall, the data from soil C profiles aggregated by regional groups and volcanic soils provide evidence supporting the idea that vertical transport may play a secondary role in determining the rate of soil C decrease with depth. The difference between lateral root inputs and decomposition may play a primary role in determining the shape of soil C profiles, and this difference may be amplified at low advection velocity rates. Diffusive movement of soil C seems to play a small role in these aggregated groups, something suggested by the low values of the second derivative (Figure \DIFdelbegin \DIFdel{\ref{fig:Derivatives}}\DIFdelend \DIFaddbegin \DIFadd{\ref{fig:Cprofiles}}\DIFaddend ); however, diffusion may have some control on the peak of C decrease found close to the surface in these profiles. 
 
 \subsection{Transit times of C from vertical profiles}
 Using data from ISRaD and a dataset on root input profiles, \citet{Xiao2022} obtained estimates of mean ages and mean transit times for soil C profiles at the global scale. The global averages revealed that mean transit times of C are always younger than the mean age of C stored at all soil depths (Figure \ref{fig:AgeTTprofiles}). In other words, despite the C stored in the soil being hundreds to thousands of years old, the C respired is only a few years to decades old. This result is consistent with our transit time simulations that showed mean transit times of only a few years (Figure \ref{fig:transitTime}, Table \ref{tab:simulationSetup}). However, the actual values of mean transit time obtained from the data are actually much higher than those from the model results. This is to be expected given that the model used for the example only considered one single pool with a relatively fast decomposition rate, but in reality soil carbon is highly heterogeneous and a significant proportion of its total carbon cycles at much slower rates, which would contribute to longer transit times.  In addition, sorption of OM to mineral surfaces may increase with depth, making the overall decomposition of C at depth more limited \citep{Ahrens2020}. Nevertheless, model simulations and observations agree in that new C inputs to soil only remain stored in timescales of years to decades. 
@@ -758,8 +883,9 @@ However, it is important to keep in mind that productivity in these high-latitud
 
 \begin{figure}[htbp]
    \centering
-   \includegraphics[scale=0.65]{Figures/biomeTT.pdf} % requires the graphicx package
-   \caption{Estimates of mean age and mean transit time of carbon based on measurements of root inputs and soil radiocarbon obtained from ISRaD. The left panel shows global-scale average values of mean age and mean transit time. The lower panel shows averages of mean transit time aggregated by biome.}
+   \DIFdelbeginFL %DIFDELCMD < \includegraphics[width=\textwidth]{Figures/biomeTransitTimes.pdf} %%%
+\DIFdelendFL \DIFaddbeginFL \includegraphics[scale=0.65]{Figures/biomeTT.pdf} \DIFaddendFL % requires the graphicx package
+   \caption{Estimates of mean age and mean transit time of carbon based on measurements of root inputs and soil radiocarbon obtained from ISRaD. The left panel shows global-scale average values of mean age and mean transit time. The \DIFdelbeginFL \DIFdelFL{right }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{lower }\DIFaddendFL panel shows averages of mean transit time \DIFdelbeginFL \DIFdelFL{averaged }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{aggregated }\DIFaddendFL by biome.}
    \label{fig:AgeTTprofiles}
 \end{figure}
 
