@@ -1,7 +1,7 @@
 \documentclass[11pt, oneside, a4paper]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
 %DIF LATEXDIFF DIFFERENCE FILE
 %DIF DEL subsoilCS_R1.tex   Fri Nov  3 17:12:26 2023
-%DIF ADD subsoilCS_R2.tex   Wed Dec 20 13:33:22 2023
+%DIF ADD subsoilCS_R2.tex   Thu Dec 21 08:45:31 2023
 \usepackage[margin=2cm]{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
 \geometry{a4paper}                   		% ... or a4paper or a5paper or ... 
 %\geometry{landscape}                		% Activate for for rotated page geometry
@@ -733,7 +733,7 @@ The results from this second set of simulations evaluating the effect of lateral
 \begin{figure}[t]
    \centering
    \includegraphics[width=\textwidth]{Figures/uncertainty.pdf} %DIF >  requires the graphicx package
-   \caption{\DIFaddFL{Uncertainty analysis based on the components of equation \eqref{eq:simpleCase} using a Monte Carlo uncertainty approach in which 1000 random variates of model parameters were chosen from a uniform distribution $U$. (a) Set of 1000 random variates of parameters $\kappa \sim U(0.09, 16.58)$ and $v \sim U(0.01, 6.51)$, and the set of values available from the literature (Table \ref{tab:Models}). (b) Prediction uncertainty in carbon concentration due to uncertainty in $\kappa$ and $v$. (c) Uncertainty in the distribution of root inputs ($u(d)$) due to uncertainty in parameter $\beta \sim U(0.9, 1.0)$, and uncertainty in decomposition rate distribution ($k(d)$) due to uncertainty in parameter $d_e \sim U(10, 100)$. (d) Prediction uncertainty in carbon concentration due to uncertainty in root input distribution and decomposition rate distribution. }}
+   \caption{\DIFaddFL{Uncertainty analysis based on the components of equation \eqref{eq:simpleCase} using a Monte Carlo uncertainty approach in which 1000 random variates of model parameters were chosen from a uniform distribution $U$. (a) Set of 1000 random variates of parameters $\kappa \sim U(0.09, 16.58)$ and $v \sim U(0.01, 6.51)$, and the set of values available from the literature (Table \ref{tab:Models}). (b) Prediction uncertainty in carbon concentration due to uncertainty in diffusion coefficient $\kappa$ and advection velocity $v$. (c) Uncertainty in the distribution of root inputs ($u(d)$) due to uncertainty in parameter $\beta \sim U(0.9, 1.0)$, and uncertainty in decomposition rate distribution ($k(d)$) due to uncertainty in parameter $d_e \sim U(10, 100)$. (d) Prediction uncertainty in carbon concentration due to uncertainty in root input distribution ($u(d)$) and decomposition rate distribution ($k(d)$). }}
    \label{fig:uncertainty}
 \end{figure}
 
