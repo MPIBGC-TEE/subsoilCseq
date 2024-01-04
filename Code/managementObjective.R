@@ -47,7 +47,7 @@ dev.off()
 pal2<-c("white", rgb(5,5,1, maxColorValue = 255))
 
 tikz(file="GraphicalAbstract/managementObjective.tex", bg=rgb(204, 186, 150, maxColorValue = 255))
-par(mar=c(4,4,0,0), las=1)
+par(mar=c(5,4,0,0), las=1)
 plot(ref$U, -d, type="l", xlim=c(0,0.1), xlab="Carbon stock ($x$)", xaxt="n", 
      ylab="Depth ($d$, cm)", yaxt="n",  col=pal2[1], lwd=3, bty="n")
 axis(side=2,at=-ytm, labels=ytm)
