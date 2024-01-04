@@ -1,0 +1,824 @@
+\documentclass[11pt, oneside, a4paper]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage[margin=2cm]{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb, amsmath}
+\usepackage{bm}
+\usepackage{natbib}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{pdflscape}
+\usepackage{tablefootnote}
+\usepackage{tikz}
+\usepackage[inline]{enumitem}
+\usepackage{orcidlink}
+\usepackage{authblk}
+\usepackage{lineno}
+
+%\usepackage[sfdefault,scaled=.85]{FiraSans}
+%\usepackage{newtxsf}
+
+%\usepackage{sansmathfonts}
+%\usepackage[T1]{fontenc}
+%\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+
+
+\title{\bf Carbon sequestration in the subsoil and the time required to stabilize carbon for climate change mitigation}
+\author[1,2]{Carlos A. Sierra\orcidlink{0000-0003-0009-4169}}
+\author[1]{Bernhard Ahrens \orcidlink{0000-0001-7226-6682}}
+\author[2]{Martin A. Bolinder \orcidlink{0000-0002-3574-3061}}
+\author[3]{Maarten C. Braakhekke \orcidlink{0000-0002-1889-2225}}
+\author[1,4]{Sophie von Fromm \orcidlink{https://orcid.org/0000-0002-1820-1455}}
+\author[2]{Thomas K\"atterer \orcidlink{0000-0002-1751-007X}}
+\author[5]{Zhongkui Luo \orcidlink{0000-0002-6744-6491}}
+\author[2]{Nargish Parvin \orcidlink{0000-0002-1571-575X}}
+\author[6]{Guocheng Wang \orcidlink{0009-0006-3492-7105}}
+
+\affil[1]{Max Planck Institute for Biogeochemistry, Jena, Germany}
+\affil[2]{Department of Ecology, Swedish University of Agricultural Sciences, Uppsala, Sweden}
+\affil[3]{Wageningen Environmental Research, Wageningen UR, Wageningen, the Netherlands}
+\affil[4]{Department of Environmental Science, ETH Zurich, Switzerland}
+\affil[5]{College of Environmental and Resource Sciences, Zhejiang University, Hangzhou, China}
+\affil[6]{Faculty of Geographical Science, Beijing Normal University, Beijing, China} %, 100875}
+%\date{}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+
+\linenumbers
+\begin{abstract} \noindent
+Soils store large quantities of carbon in the subsoil (below 0.2 m depth) that is generally old and believed to be stabilized over centuries to millennia, which suggests that subsoil carbon sequestration can be used as a strategy for climate change mitigation. In this article, we review the main biophysical processes that contribute to carbon  storage in subsoil and the main mathematical models used to represent these processes. Our guiding objective is to review whether a process understanding of soil carbon movement in the vertical profile can help us to assess carbon storage and persistence at timescales relevant for climate change mitigation. 
+Bioturbation, liquid phase transport, belowground carbon inputs, mineral association, and microbial activity, are the main processes contributing to the formation of soil carbon profiles, and these processes are represented in models using the diffusion-advection-reaction paradigm. 
+Based on simulation examples, and measurements from carbon and radiocarbon profiles across biomes, we found that advective and diffusive transport may only play a secondary role in the formation of soil carbon profiles. The difference between vertical root inputs and decomposition seems to play a primary role in determining the shape of carbon change with depth. 
+Using the transit time of carbon to assess the timescales of carbon storage of new inputs, we show that only small quantities of new carbon inputs travel through the profile and can be stabilized for time horizons longer than 50 years, implying that activities that promote carbon sequestration in the subsoil must take into consideration the very small quantities that can be stabilized in the long term. 
+%Land management activities could increase C storage in the subsoil by increasing advective vertical transport and decreasing the difference between inputs and decomposition at all depths. 
+\end{abstract}
+
+\vspace{1cm}
+\noindent
+\textbf{Keywords}: Climate change mitigation, soil carbon sequestration, transit time, diffusion-advection-reaction, microbial decomposition, organic matter stabilization, radiocarbon
+
+%\newpage
+%
+%\tableofcontents
+%
+\newpage
+
+\section{Introduction}
+Soil carbon stocks below the topsoil (below  0.2 m depth) are not only one of the largest carbon (C) reservoir of the terrestrial surface, but are also relatively old as demonstrated by radiocarbon measurements \citep{Mathieu2015, He2016, Shi2020, Heckman2022}. These radiocarbon measurements along the vertical profile have shown that the age of carbon increases significantly with depth, indicating that carbon may be stabilized for centuries to millennia in the subsoil. It is therefore reasonable to think that soils could act as a large sink for fossil-fuel derived carbon if subsoil carbon sequestration is promoted, particularly in agricultural and managed lands \citep{Rumpel2012, Button2022}. 
+
+% Parvin, Bolinder, Kaetterer
+The subsoil has a large influence on ecosystem productivity and the supply of ecosystem services. It has been estimated that between 10 and 80\% of the nutrient and water requirement of plants are provided by the subsoil \citep{Hinzmann2021}. Carbon stored in subsoils generally contributes to more than half of the total stocks within a soil profile. However, the amount of organic C stored in soil varies among biomes; relative to the first meter, between 43 and 71\% of soil organic carbon (SOC) is found at depths below 20 cm \citep{Jobbagy2000}. In agricultural soils, the amount of soil organic carbon stored in subsoils (up to 1 m depth) is similar to that in the topsoil arable layer \citep{Morari2019}. Due to cost limitations and focus on productivity, studies in agroecosystems often consider only the arable layer ($>90$ \% observations), where most changes in soil C are assumed to occur because C cycling is more dynamic in topsoil compared to deeper soil layers \citep{Bolinder2020}. However, subsoil C is not insensitive to agricultural management practices. There is evidence from long-term field experiments that management practices affect C stocks at decadal timescales in the upper part of the subsoil or even deeper \citep[e.g.][]{Kirchmann2013, Kaetterer2014, Menichetti2015, Borjesson2018, DalFerro2020, Slessarev2020}.
+
+Furthermore, effects on subsoil carbon are evident when comparing annual versus perennial crops with more well developed root systems or versus other deep rooting species \citep{Carter2010, Collins2010, VandenBygaart2011, Guan2016}. Major land-use changes such as cropland to grassland, or cropland to forest and vice versa, may also in some cases induce changes in subsoil carbon \citep{Guo2002, Poeplau2013}. \citet{Button2022} reviewed several other options than the traditional management practices for increasing subsoil C, such as burial of organic matter or biochar addition to the subsoil. There is a need for including subsoil carbon in model-based estimates of carbon sequestration \citep{Button2022, HicksPries2023}, but the mechanisms governing the effect of changes in subsoil carbon are understudied, which has been identified as a major knowledge gap \citep{Lorenz2005, Chenu2019} while raising awareness of the potential for subsoils to promote SOC sequestration \citep{Kautz2013, Chen2018}.
+
+%Luo
+Indeed, the use of deep-rooting plant species has been suggested as a land management strategy to promote carbon input to subsoil and thus sequestering soil carbon and mitigating climate change in cropping systems \citep{Kell2011, Thorup2020}. However, there are mixed results regarding the time new carbon inputs to subsoil would be stabilized on decadal timescales. Recent quantifications of the transit time of carbon inputs across soil depth showed that carbon inputs transit fast in all soil layer depths, challenging the efficiency of promoting carbon inputs to subsoil for soil carbon sequestration \citep{Xiao2022, Wang2023}. 
+
+
+Managing soils for C sequestration purposes implies that the fate and transit time of new carbon inputs can be accurately quantified \citep{Crow2022}. Mathematical models of subsoil carbon dynamics play an important role for this purpose, and can be used to estimate the amount and persistence of new carbon due to land management. 
+
+In this review, we survey the main processes that contribute to soil carbon storage and dynamics in the subsoil, with particular emphasis on mathematical models of subsoil carbon dynamics. 
+%We focus on most natural processes, but we do not consider the vertical redistribution of C along the profile through tillage or other human interferences, which can cause a sudden change in SOC distribution that may have impact on C dynamics.
+Our guiding question is whether a process understanding of soil C movement through the vertical profile can help us to assess C storage and persistence at timescales relevant for climate change mitigation. 
+For this purpose, we first review process understanding of subsoil C dynamics, and then review mathematical models used in the past to represent these processes. Based on this review, we show that most previous models can be generalized under one single modeling paradigm, and through examples, we show the main contribution of different processes in shaping soil carbon profiles. 
+In addition, we present a conceptual framework to assess the fate of new carbon inputs as they move through the subsoil. We use the theoretical framework provided by the transit time distribution of carbon in compartmental systems \citep{Sierra2017GCB, Sierra2018GBC, Metzler2018MG}, and discuss our results in the context of  soil carbon management for climate change mitigation.
+
+\section{Processes contributing to the formation of soil carbon profiles}
+A number of physical, chemical, and biological processes contribute to the formation of soil carbon profiles, which have been reviewed with some detail elsewhere \citep[e.g.][]{Button2022,HicksPries2023}. Here, we briefly review some of these processes grouping them according to their most common representation in models. Our objetive is to make a parallel between process understanding and mathematical representations in models, which are reviewed in section \ref{sec:models}.
+
+%The accumulation of organic carbon in the vertical profile is an important part of soil formation \citep{Jenny1980, vanBreemen1997, HicksPries2023}, taking place on timescales of
+%decades to millennia. Overall, soil carbon dynamics is determined by the gain and loss (above and belowground) of carbon inputs, and decomposition. When studying the
+%vertical distribution of soil carbon, the depth dependence of these processes is relevant, as
+%well as vertical transport, erosion and deposition.
+%Vertical organic matter transport can have a major effect on the soil carbon profile and is generally caused by mixing processes and transport of mobile fractions with the liquid
+%phase \citep{vanBreemen1997, Rumpel2011}. In terrestrial soils, mixing of the soil—referred to as “pedoturbation” \citep{Hole1961}—can
+%occur by several processes, including the reworking activity of soil fauna (bioturbation), freezing and thawing (cryoturbation) \citep{Johnson1987} and human disturbance such as tillage. Cryoturbation
+%occurs mainly in permafrost affected soils, which cover large regions at high latitudes. 
+%%Since these ecosystems are unfavorable to soil fauna, this process forms a
+%%relatively large contribution to organic matter redistribution in high-latitude soils (Bockheim, 2007). 
+%In other systems however, bioturbation and liquid phase transport are the main transport processes that redistribute carbon vertically. 
+
+%In layers with high organic matter concentrations, an important additional transport flux occurs that is generally ignored in soil carbon profile models. Loss of mass due
+%to decomposition leads to downward shift of material above, while surface litter deposition continually buries older material. This mass-loss causes advective downward or upward flow
+%of material unrelated to mixing or water movement \citep{Ahrens2015}. \citep{Kaste2007} found this
+%process to be relevant for the vertical distribution of 210Pbex in the organic surface
+%horizon of a podzol, and \citet{Hilbert2000} for modelling subsidence of peat soils. 
+%This may be simulated by tracking “cohorts”: layers of litter
+%that are deposited within specific time intervals, and thus have similar age. Such
+%models have been applied to simulate peat accumulation (Heinemeyer et al., 2010).
+
+\subsection{Pedoturbation as diffusive vertical movement}
+Processes that mix the soil are commonly referred to as pedoturbation \citep{Hole1961, Martin2017}, which include the reworking activity of soil fauna (bioturbation), freezing and thawing cycles (cryoturbation) \citep{Johnson1987, Bockheim2007, Beer2022},  uprooting of trees \citep{Schaetzl1990}, swelling and translocation of clays \citep{Finke2012}, and human disturbances such as tillage \citep{Martin2017, Keyvanshokouhi2019}. Bioturbation and tillage are the pedoturbation processes most commonly considered in models of soil carbon profiles, mostly represented in analogy to particle diffusion. 
+%Cryoturbation
+%occurs mainly in permafrost affected soils, a process that contributes to the vertical redistribution of organic matter at high latitudes \citep{Bockheim2007}. 
+%Since these ecosystems are unfavorable to soil fauna, this process forms a
+%relatively large contribution to organic matter redistribution in high-latitude soils (Bockheim, 2007). 
+
+%Bioturbation is defined as the biological reworking of soils and sediments by different kinds of organisms, including plant rooting systems, and most importantly, burrowing animals \citep{Meysman2006}. 
+%\citet{Chapin2002} noted that in temperate
+%regions the mixing activity of earthworms represents a force that is orders of magnitude
+%larger than other geomorphic processes such as erosion. The potential effects of
+%bioturbators on their habitat are so severe that they have been called “ecosystem
+%engineers” \citep{Meysman2006}.
+%The rate of soil displacement by bioturbating organisms is usually estimated by
+%measuring deposition of mounds at the soil surface. 
+%\citet{Paton1995} reviewed a range of quantitative estimates for different organisms and concluded that the
+%most important animal groups contributing to bioturbation are earthworms, ants, mammals, and termites, with rates
+%of mounding that can range from 0.0063 to 27 kg m$^{-2}$ yr$^{-1}$ . 
+%These estimates may not be completely reliable for assessment of rates at regional to global scales since studies tend
+%to focus on sites with high bioturbation rates, and because not all mixing activity is
+%expressed as mounding at the surface.
+
+Soil mixing by bioturbation has a homogenizing effect on soil properties: it increases
+dispersal of particles, reduces concentration gradients, and destroys layering \citep{Johnson1987}. Hence, bioturbation leads to organic matter diffusion and potentially to deepening of the soil profile. 
+In croplands, tillage contributes to vertical mixing of soil carbon, altering the depth distribution of root inputs and crop residues \citep{Luo2010}. Depending on ploughing depth, the effects of tillage may only concentrate on the topsoil and may be difficult to observe at depths below 40 cm \citep{Luo2010,Keyvanshokouhi2019, Mary2020}. Due to this mixing effect, both bioturbation and tillage are commonly represented in models as a process of particle diffusion. 
+
+%However, at small spatial scales the effects of bioturbation are
+%more complex, for several reasons: (i) Certain fractions may be transported preferentially. For example, since mixing by earthworms is mostly related to feeding, it is
+%more likely to affect (fresh) litter rather  than mineral fractions \citep{Johnson2005}. The
+%coarsest fractions, including stones, may be completely unaffected by bioturbation.
+%(ii) Mixing may occur more strongly in one direction than in others (anisotropic mixing). For example termites bring clay particles from considerable depths to the soil
+%surface for incorporation into their surface mounds \citep{Paton1995}. (iii) The
+%distance of particle translocation may be in some cases quite large compared to the scale of a single
+%soil profile \citep{Boudreau1986b}.
+
+%Although the relevance of bioturbation for organic matter redistribution is well
+%recognized \citep{vanBreemen1997, Chapin2002, Hoosbeek2009}, very few empirical studies have been performed on its effects on
+%the shape of the soil C profile \citep{Tonneijck2008, Yoo2011}, particularly on
+%long timescales. Based on micromorphological analysis and radiocarbon measurements,
+%\citet{Tonneijck2008} showed that bioturbation was the main mechanism
+%for carbon input at depth in a volcanic ash soil, more important than liquid phase
+%transport and root input. On shorter time scales, studies of earthworm invasions
+%in forests have demonstrated dramatic effects on organic surface layers \citep{Alban1994, Bohlen2004}. For example, \citet{Alban1994} found that
+%increasing earthworm populations in a temperate podzol led to a reduction of forest
+%floor mass by 85 \% and disappearance of the eluviation horizon in 14 years.
+
+\subsection{Advective transport in liquid phase}
+A small part of organic matter in soils is dissolved in the liquid phase. Concentrations of dissolved organic carbon (DOC) are typically so low that total organic
+carbon in solution is negligible compared to the immobile fraction \citep{Michalzik2001}. However, leaching and decomposition fluxes of dissolved organic matter may
+be important terms in shaping the dynamics of soil carbon at depth \citep{Neff2001, Kalbitz2008, Kindler2011, Kaiser2012}. DOC is highly relevant for the formation of the soil profile since it is subject to potentially very fast transport with downward water fluxes and represents a
+mechanism of organic matter input at depths well below the zone where bioturbation and root input are relevant \citep{Rumpel2012}. Furthermore, adsorption of
+DOC to the mineral phase is one of the main mechanisms for organic carbon stabilization and persistence \citep{Kalbitz2008}.
+
+The concentration of DOC in soils covaries with precipitation \citep{Liu2021} as water acts as the main medium for DOC transport. Therefore, rates of vertical water movement are commonly used to estimate DOC vertical transfer as an advective process \citep{Ota2013}. 
+
+A considerable part of DOC is easily degradable, with low molecular weigh compounds decreasing strongly with depth \citep{Roth2019}.  An important mechanism for DOC removal
+is immobilization due to interactions with the solid phase and (co-)precipitation.
+Through a range of chemical mechanisms, DOC is adsorbed to surfaces of minerals (particularly Al and Fe hydroxides and clay) and to a lesser extent to solid organic
+matter \citep{Neff2001, Kalbitz2008}.
+
+One important characteristic of representing liquid phase transport as an advective process is that carbon is moved to parts of the profile where decomposition is slow, preventing fast losses due to microbial activity. 
+
+In layers with high organic matter concentrations, an important additional transport flux occurs that is generally ignored in soil carbon profile models. Loss of mass due
+to decomposition leads to downward shift of material above, while surface litter deposition continually buries older material. This mass-loss causes advective downward or upward flow
+of material unrelated to mixing or water movement \citep{Ahrens2015}. \citep{Kaste2007} found this
+process to be relevant for the vertical distribution of 210Pbex in the organic surface
+horizon of a podzol, and \citet{Hilbert2000} for modelling subsidence of peat soils. 
+
+%DOC is not chemically well defined, but consists of a broad spectrum of organic substances ranging from small molecules to complex humic acids
+%\citep{Kalbitz2000, Michalzik2001}. The biodegradability of these substances
+%ranges over several orders of magnitude \citep{Kalbitz2000}, with more resistant
+%compounds generally increasing with depth \citep{Kalbitz2000, Sanderman2008}.
+
+%DOC may originate from several sources, with their relative contribution being highly variable for different ecosystems
+%\citep{Kalbitz2000, Chantigny2003}. Leaching of fresh litter contributes strongly to
+%DOC production in the surface organic layer. However, for most plant
+%species litter leachate is relatively labile, and thus may not contribute strongly to
+%DOC in the mineral soil \citep{Neff2001}. More complex and recalcitrant
+%dissolved organic substances may be formed predominantly as a byproduct of decomposition, 
+%contributing more to DOC in the mineral soil. 
+
+%DOC also enters the soil by
+%throughfall \citep{Michalzik2001}, and root exudation \citep{Neff2001}, 
+%and it is removed from the soil solution by uptake and decomposition by microbes. 
+%A considerable part of DOC is easily degradable, with low molecular weigh compounds decreasing strongly
+%with depth \citep{Roth2019}. Another important mechanism for DOC removal
+%is immobilization due to interactions with the solid phase and (co-)precipitation.
+%Through a range of chemical mechanisms, DOC is adsorbed to surfaces of minerals (particularly Al and Fe hydroxides and clay) and to a lesser extent to solid organic
+%matter \citep{Neff2001}. These interactions are highly variable and depend
+%on the chemical properties of DOC, the sorbent, and the soil solution. 
+%Furthermore,
+%in acid soils DOC may (co-)precipitate with Al and Fe ions, which is an important
+%process for the formation of the illuviation horizon in podzols \citep{vanBreemen1997}. As a result of these interactions, the apparent vertical transport of DOC is significantly lower than that of water, and DOC concentrations are often much lower in
+%the deep soil than near the surface. 
+
+%Furthermore, the fact that certain compounds are
+%more susceptible to adsorption than others leads to changes of DOM chemistry along
+%the profile (“chromatographic effect”). Since immobilization of DOM dramatically
+%reduces its susceptibility to decomposition, it is considered to be a highly relevant
+%mechanism of soil carbon stabilization (Kaiser and Guggenberger, 2000), particularly
+%in the deep soil (Rumpel et al., 2012). However, the adsorption capacity of minerals
+%is not unlimited, which restricts the capacity for soil layers to store carbon by this
+%mechanism (Hassink, 1997).
+%The relevance of DOM transport for the SOM profile is often discussed in the context of podzolization (van Breemen and Buurman, 1997). However, it is presumably
+%an important mechanism for SOM transport in all soils where significant downward
+%water fluxes occur (Rumpel and Kögel-Knabner, 2011). DOM movement has been
+%found to be more important in forest soils, particular those with acidic conditions.
+%Nevertheless, very little research has been performed on the effects of liquid phase
+%transport on SOM profile formation over long time scales. DOM dynamics are a very
+%poorly understood part of SOM cycling, as shown by several review studies (Kalbitz et al., 2000; Michalzik et al., 2001; Neff and Asner, 2001). Production, ad- and
+%desorption, and mineralization of DOM all occur by a range of mechanisms that are
+%sensitive to physical, chemical, and biological factors. As a result, laboratory experiments are usually not representative for field conditions, while in field studies
+%effects on various mechanisms are highly confounded, often resulting in conflicting
+%findings. Furthermore, DOM transport occurs for the most part during short storm
+%events and with macropore flow (Kalbitz et al., 2000).
+
+\subsection{Depth dependence of organic matter input}
+%Total litter input to soil can be divided into an aboveground fraction: leaves/needles, stems, branches,
+%and fruits; and a belowground fraction, also referred to as rhizodeposition: root
+%mortality, sloughing off of root tissue, and secretion of mucilage and root exudates
+%\citep{Nguyen2009}. 
+The relative distribution of litter input between above- and belowground fractions,
+as well as the vertical distribution of the belowground input, is highly relevant for the
+carbon profile. \citet{Jobbagy2000} found a significant relationship between
+vertical soil carbon distribution and plant functional type, which is partially explained by
+ecosystem-level root/shoot ratios and the vertical distribution of root biomass.
+Since net primary production (NPP) is the source of litter input, its partition between above- and below-ground biomass is a good predictor of the relative proportions of aboveground litter
+fall and rhizodeposition \citep{Raich1989, Xiao2023}. 
+%For instance, herbaceous vegetation types
+%and shrubs allocate the highest fraction of NPP belowground, and forests the lowest fraction \citep{Chapin2002}. \citet{Saugier2001} compiled NPP estimates and
+%concluded that on average 67 \% and 57 \% of NPP is allocated belowground for grasslands and arctic tundra, respectively, whereas for temperate and boreal forests this
+%fraction is 39 \% and 44 \%. 
+%The proportion for common annual agricultural crops and perennial forages represents about 20 \% and 50 \%, respectively \citep{Bolinder2007}.
+%Root to shoot biomass ratios follow a similar pattern \citep{Jackson1996}. Due to the difficulty of measuring NPP, particularly belowground,
+%these figures should be considered carefully \citep{Clark2001}. 
+
+Synthesizing global data sets including NPP measurements from 725 soil profiles, root biomass and its depth distribution from 559 soil profiles, \citet{Xiao2023} recently mapped depth-resolved belowground NPP (BNPP) at 1 km resolution across the globe. They found that global average BNPP allocated to the 0–20 cm soil layer is estimated to be 1.1 Mg C ha$^{-1}$ yr$^{-1}$, accounting for $\sim$60\% of total BNPP. Across the globe, the depth distribution of BNPP varies largely but mostly follows a decreasing trend with depth, and more BNPP is allocated to deeper layers in hotter and drier regions. 
+The highest levels of BNPP and carbon inputs to subsoil are in tropical and subtropical latitudes as well as in temperate forests and grasslands, while lowest levels of BNPP are in desserts and high latitude regions \citep{Xiao2023}. 
+%Edaphic, climatic and topographic properties (in order of importance) explain $>80$\% of such variability; and the direction and magnitude of the influence of individual properties are soil depth- and biome-dependent \citep{Xiao2023}. 
+%Furthermore,
+%plants may change their allocation pattern and rooting profile when changes in nutrient and water availability and other environmental factors occur \citep{Jackson2000}.
+
+%Decomposition dynamics of above and belowground litter differ substantially
+%due to differences in chemical composition and environmental factors at the deposition site—at the surface or directly within the profile. Root litter has repeatedly been
+%found to be more chemically complex than aboveground litter due to the presence
+%of substances such as lignin, cutin, and suberin \citep{Rasse2005}. Furthermore,
+%since root input occurs predominantly in the mineral soil, it is subject to stabilization
+%mechanisms related to the mineral phase such as adsorption and occlusion in aggregates \citep{Rasse2005}. 
+%Most of the aboveground litter fall is foliar (leaves), which
+%is generally more degradable. Woody litter (stems, branches) is much more resistant,
+%being mainly degraded by certain fungi (Berg and McClaugherty, 2008). However,
+%although woody debris may contribute considerably to the soil carbon stock, woody
+%litter fall constitutes generally only a small fraction of the aboveground litter flux,
+%since wood tissue is not subject to senescence (Berg and McClaugherty, 2008).
+
+%Rhizodeposition is vertically distributed over the mineral soil profile and organic
+%surface layers. 
+%\citet{Jackson2000} analysed a global data set of root distribution
+%measurements and found that tundra, boreal forests and temperate grasslands generally have the shallowest profiles with 80–90 \% of the roots occurring at the top 30 cm
+%of the soil. Deserts and temperate coniferous forests had the deepest
+%rooting profiles with only 50 \% of the roots in the top 30 cm. 
+
+In croplands, the belowground distribution of root inputs is associated with crop type and whether annual or perennial cropping systems are in place \citep{Mosier2021, HicksPries2023}.
+In a review for temperate agricultural crops, \citet{Fan2016} showed that 50\% of the roots mostly accumulate in the upper 8 -- 20 cm, and \citet{Bolinder2007} found that the proportion of total NPP allocated belowground for common agricultural crops and perennial forages represents about 20\% and 50\%, respectively.
+
+Independent of vegetation or crop type, root distribution seems to be mostly determined by soil hydrology, as
+demonstrated by significant relationships between annual potential evapotranspiration, precipitation, and soil texture \citep{Schenk2002a}. In more water limited ecosystems, plants tend to have deeper root profiles to maximize water uptake
+\citep{Schenk2002b}. Roots may also preferentially grow in the organic surface layer, if present, due to the high nutrient and moisture availability there \citep{Jordan1980, Schenk2002a}.
+
+%Although rhizodeposition and root biomass are strongly related, they may not
+%have exactly the same vertical distribution, since not all roots contribute equally to rhizodeposition. Fine roots have higher mortality rates and excrete more exudates since they
+%play a greater role in water and nutrient uptake \citep{Anderson2003}. Hence, it
+%is likely that organic matter input by roots is more closely related to the fine root
+%profile, which is more shallow than the overall distribution of roots. Furthermore,
+%radiocarbon analysis shows that also within the fine root fraction, production and mortality rates decrease with depth \citep{Gaudinski2010}.
+%In a study with pulse-labelled $^{13}$C-CO$_2$, \citet{Hirte2018} found that the proportion of rhizodeposition C of belowground inputs increased with soil depth for maize and wheat. Thus, rhizodeposition remains to be one of the most difficult C input sources to quantify, with a wide range of estimates that also depends on plant species/cultivars and growth stages \citep[e.g.][]{Amos2006, Pausch2018}.
+
+
+\subsection{Depth dependence of decomposition and microbial activity}
+%The chemical properties of soils change along the vertical profile \citep{Rumpel2011, Vancampenhout2012}. Most well-known are the decrease of
+%C/N ratio with depth, and the enrichment of $^{13}$C and $^{15}$N \citep{Ehleringer2000, Nadelhoffer1988, Hogberg1997, Paul2020}. These gradients indicate a change from plant derived
+%to more decomposed and microbial derived organic matter with depth \citep{Rumpel2002, Rumpel2011, Baisden2002}. It has been suggested that microbial residues are more effectively stabilized by organo-mineral interactions, which have been found to be an important mechanism in the deep soil
+%\citep{Rumpel2012}.
+
+A distinct property of most soils is the decrease of radiocarbon ($^{14}$C) activity with
+depth, indicating a higher average age of carbon since plant uptake from the atmosphere and a decrease in decomposition rates with depth \citep{Mathieu2015, He2016, Lawrence2020, Rumpel2011, Heckman2022, Scheibe2023, HicksPries2023}. Potential factors responsible for this age gradient include
+ \citep[c.f.][]{Ahrens2020}:  the slow
+downward transport of carbon fractions that are either very recalcitrant, or recurrently recycled by microbes \citep{Elzein1995, Gleixner2013, Kaiser2012, Roth2019};
+decreasing microbial activity along
+the profile \citep{Jenkinson2008, Persson2000, Koven2013BGS, Wang2021}, and increasing role of organo-mineral associations with depth \citep{Rumpel2011, Eusterhues2003, Rasmussen2018, Cotrufo2022, Georgiou2022, HicksPries2023}. The reason for this gradient is not fully understood
+yet and needs further exploration \citep{Guo2023}. It may be caused by the selective preservation of recalcitrant compounds combined with downward transport \citep{Elzein1995, Luo2020} as well as nonlinear interactions among C fractions such as priming \citep{Guenet2013, Liang2018, Wang2021}. 
+%Also, the dominant
+%source of organic matter in deep soils is root input, which is chemically more recalcitrant than aboveground litter \citep{Rasse2005}.
+
+%Another cause of the decreasing decomposition rates with depth is the increased occurrence of certain stabilization mechanisms. Several studies have found that organic
+%matter in subsoils is predominantly associated with minerals \citep{Rumpel2011, Eusterhues2003, Rasmussen2018} or occluded within aggregates \citep{Moni2010}. 
+A further cause of stabilization in deep soil is physical disconnection between microbes and substrates \citep{Don2013, Gleixner2013}. Most microbial activity in deep soils is located in
+so-called hot spots: root and earthworm channels and preferential water flow paths
+(e.g. cracks). Organic matter outside of these zones may be stabilized due to spatial
+separation from decomposers \citep{Chabbi2009}. 
+%Finally, 
+%Fontaine et al. (2007)
+%found that energy limitation of microbes caused by lack of fresh organic matter input may be an important mechanism in subsoils.
+
+
+%\section{Models of soil organic matter decomposition}
+%Numerical modelling is an important part of soil carbon research. In a comprehensive review, Manzoni and Porporato (2009) listed some 250 models that were
+%developed in the last 80 years. They showed that the number of models is growing
+%exponentially. These models are applied at a variety of spatial and temporal scales,
+%ranging from centimeters to the globe, and hours to hundreds of years, respectively.
+%The mathematical structure of models also varies widely, but Manzoni and Porporato (2009) found that most models are based on similar kinetic laws.
+%
+%A critical part of a soil carbon model is the formulation of breakdown of organic
+%matter by decomposers. The most widely used and possibly simplest formulation is
+%first order kinetics. This approach does not explicitly account for microbial biomass
+%and activity, but assumes that decomposer community is in equilibrium with the
+%substrate, resulting in a simple linear differential equation (Wutzler and Reichstein,
+%2008). Since decomposition is mainly a catalytic process, it may be represented more
+%realistically by the Michaelis-Menten formulation, which accounts for the limitation
+%of decomposition by enzyme availability (Blagodatsky and Richter, 1998). Models
+%in which decomposition is linked to an explicitly simulated microbial pool have also
+%been proposed (Fontaine and Barot, 2005; Wutzler and Reichstein, 2008).
+%Studies using radiocarbon analysis have shown that the heterogeneous nature of
+%SOM in terms of turnover rate needs to be considered in order to correctly reproduce
+%dynamics at different time scales (Trumbore and Torn, 2005). Models have been proposed that describe SOM as a continuous distribution along a quality axis that relates
+%to decomposability (e.g. Bosatta and Ågren, 1985). However, the majority of models describe SOM as several discrete pools or compartments with different kinetic
+%parameters (Manzoni and Porporato, 2009; Schimel et al., 1994; Jenkinson, 1990). Effective turnover rates of these pools range from days, for the most labile substrates,
+%to millennia, for stabilized SOM. Whether SOM pools in models correspond to actual existing fractions or should be seen as artificial constructs is a subject of debate
+%(Christensen, 1996; Smith et al., 2002). In recent publications it has been suggested
+%that chemical recalcitrance of organic matter molecules is of minor importance for
+%SOM decomposition (Kleber, 2010; Schmidt et al., 2011). These authors have called
+%for explicit representation of SOM stabilization mechanisms in soil carbon models.
+
+\subsection{Land management practices that affect soil C profiles}
+The distribution of C along the vertical profile can be modified by management practices on cropland, rangeland, and forest soils. 
+Historically, the management and cultivation of soils have resulted in a significant carbon loss of about 133 PgC \citep{Sanderman2017}. \citet{HicksPries2023} categorize management practices that affect subsoil carbon in three groups, physical redistribution due to tillage, changes in the vertical distribution of root inputs due to vegetation change, and addition of exogenous C inputs applied at the surface or buried at depth. These practices tend to modify the physical mixing of particles in soil, the transport of water and advective movement of C, and the vertical distribution of root inputs and microbial activity.
+
+Practices that alter the physical structure of soils such as tillage constantly redistribute organic matter between top and subsoil, acting as a mechanism for the diffusion of organic and mineral-associated carbon particles \citep{Keyvanshokouhi2019, Mary2020, Button2022}. Deep ploughing \citep{Alcantara2016, Wang2023JCP} or deep soil flipping \citep{Schiedung2019} have also an important impact on the vertical distribution of C, but their sporadic application is more challenging to represent in models, particularly using equations for advection. 
+
+Vegetation change due to management alters the partitioning of primary production between above and belowground components, and also the vertical distribution of root inputs and rhizodeposition \citep{Rumpel2011}. In models, changes in vegetation can have an influence on the total amount of carbon inputs entering the soil system, the shape of the decline of root inputs by depth, its partitioning between labile and stable fractions, and the production of DOC \citep{Ota2013}. 
+
+Exogenous C inputs such as biochar, compost or biosolids to subsoil can be considered as C inputs differing in chemical and physical properties in comparison to regular C inputs from roots \citep{Paustian2016}. They alter the total amount and the vertical distribution of inputs to soils, and can modify rates of microbial activity if the new inputs are highly degraded or strongly bound to mineral surfaces \citep{Rumpel2012, Button2022}. 
+
+%Soils used for agriculture and forestry are under regular and flexible management activities that offer the opportunity to intervene the processes of C-inputs and losses in the soil, e.g., by harvest residue management or tillage. Historically, the cultivation of soils resulted in C losses of about 78 Pg C (Lal 2004) of which parts can be recovered by agricultural measures such as cultivation of cover crops. Several estimates on SOC-sequestration potential at regional, national and global scale have been published (Lal 2004, Wiesmeier et al. 2020, Pellerin et al. 2019, Lugato et al. 2014, Smith 1997, Freibauer et al. 2004, Vleeshouwers \& Verhagen 2002). However, none of these studies have focused on the effects of management on subsoil carbon.
+
+%Studies for common management practices in agroecosystems are often only considering the arable layer, where most SOC changes is assumed to occur, because C cycling is more dynamic in topsoil compared to deeper soil layers (Bolinder et al., 2020). Nevertheless, there is clear evidence, particularly from analyses of several long-term field experiments (LTEs) that common management practices are affecting SOC stocks at decadal time scales, in the upper part of the subsoil or deeper (e.g., Börjesson et al., 2018; Dal Ferro et al. 2020; Kätterer et al., 2014; Kirchmann et al., 2013; Menichetti et al., 2015), although this is not always the case at all sites (Börjesson et al., 2018; Jarvis et al., 2017).
+%
+%The effect of management on deeper soil layers is obvious when for example comparing tillage practices, where it significantly influences the overall conclusions made on total SOC stock changes since tillage is affecting the depth-distribution of SOC (Angers and Eriksen-Hamel, 2008; Luo et al. 2010; Meurer et al., 2018). Including subsoil is also evident when evaluating and comparing annual vs. perennial crops with more well-developed root systems or vs. other deep rooting species (Carter and Gregorich, 2010; Collins et al. 2010; VandenBygaart et al., 2011; Guan et al.,2016). It has also been shown that major land-use changes such as cropland to grassland or pasture or cropland to forest, and vice versa, may in some cases also induce changes in subsoil C (Guo and Gifford, 2002; Poeplau and Don, 2013). 
+
+%Most SOC models are simulating changes for the top 30 cm of soil considering a uniform arable layer having the same C dynamics (Stockmann et al. 2013). However, some attempts have been made to modify SOC models to account for multiple layers and for including subsoil C. For example, Mary et al. (2020) developed a modified version of the AMG model, simulating the arable soil in multiple layers with layer- specific decomposition rates. Modified versions of the C-TOOL and RothC models are simulating SOC to a depth of 1 m, by including the vertical transfer of C and a lowering of decay rates with depth (Taghizadeh-Toosi et al. 2014; Jenkinson and Coleman, 2008). While Keyvanshokouhi et al. (2019) recently developed a SOC depth distribution (to 1.2 m) model (OC-VEN), allowing to test hypotheses regarding soil mixing from bioturbation and tillage, root distribution functions and depth-variable decomposition rates. Although site-specific applications have been shown to work well, there is a lack of data for subsoil C allowing a more generic parameterization of models.
+
+
+\section{Soil carbon profile models} \label{sec:models}
+While the overwhelming majority of soil carbon models do not represent spatial processes \citep{Manzoni2009}, a small number of models have been published that in some way account for the
+vertical soil carbon profile. For example, some models vertically distribute simulated total soil organic carbon or extrapolate topsoil carbon downwards using a predefined
+depth-function, in order to determine lateral soil carbon transport due to erosion
+\citep{Rosenbloom2001, Hilinski2001}. Several models represent carbon pools in
+predefined soil layers that differ with respect to physical and chemical parameters,
+as well as temperature, moisture, and root input \citep{vanVeen1981, Grant1993}. In some cases heat or water transport between layers is included to account for the effects of temperature and moisture on decomposition, or to simulate
+leaching of mineral nitrogen \citep{Hansen1991, Li1992}. However, these
+models do not consider explicitly vertical transfer of organic matter between layers.
+A number of models of DOC dynamics have been
+proposed \citep{Michalzik2003, Neff2001, Gjettermann2008, Brovelli2012}. These models account explicitly for production and mineralization of DOC, as well as vertical transport with water flow and ad- and desorption. Transport is usually represented as advection, based on measured or simulated
+water fluxes. These schemes are mainly developed to reproduce DOC fluxes and
+concentrations at small scales, and usually require site level calibration or detailed
+information on soil texture.
+
+The effects of bioturbation in terrestrial soils have been modeled in relation to
+transport of radionuclides \citep[e.g.][]{Muller1996, Kaste2007, Bunzl2002} and soil formation \citep{Kirkby1977, Salvador2007}.
+%More literature exists on modelling of benthic bioturbation and its effects on chemical species in sediments at the bottom of oceans and lakes \citep[e.g.][]{Boudreau1986b, Meysman2005, Meysman2010, Sarmiento2006, Arndt2013}. Bioturbation in these systems is usually modeled as a diffusive process, although it has been shown that this approach is not generally valid \citep{Meysman2003, Meysman2010}. Alternatively, other schemes have been proposed to represent diffusive processes, which includes both deterministic \citep{Boudreau1986a, Boudreau1989} and stochastic approaches \citep{Bunzl2002, Choi2002, Meysman2008}.
+
+Perhaps the first model truly aimed at dynamically simulating the soil carbon profile
+was developed by \citet{Kirkby1977}, as part of a soil formation model. Since then, a
+number of models have been developed that combine decomposition with vertical
+transport, represented either as diffusion \citep{OBrien1978, vanDam1997, Koven2009}, advection \citep{Nakane1978, Dorr1989, Bosatta1996, Feng1999, Baisden2002, Jenkinson2008}, or both \citep{Elzein1995, Bruun2007, Freier2010, Guenet2013, Koven2013BGS, Braakhekke2011, Braakhekke2013}. Most of these models were developed to
+explain measurements of carbon and tracer profiles. Increasingly, more models are now developed to represent soil carbon cycling and predict land-atmosphere carbon exchange \citep{Huang2018, Koven2013BGS, Tifafi2018, Ahrens2020, Luo2020, Wang2021, Tao2023}, and the effect of land management practices on carbon sequestration in soils \citep{Jenkinson2008, Taghizadeh2014, Keyvanshokouhi2019, Mary2020}.
+%Furthermore, little attempt has been made to relate transport mechanisms to
+%bioturbation and liquid phase transport. With some exceptions (Chertov and Komarov, 1997; Chertov et al., 2001; Bottcher and Springob, 2001) most models do not
+%explicitly simulate organic matter in the surface organic layer.
+
+\subsection{A general model of soil carbon transport and decomposition with depth}
+The main processes involved in the formation of soil carbon profiles, bioturbation, liquid phase transport, rhizodeposition, and decomposition, are commonly represented in models using the mathematical paradigms of diffusion, advection, and reaction, respectively.
+It is therefore useful to conceptualize models of SOM transport and dynamics by a general paradigm expressed as
+\begin{equation} \label{eq:continuity}
+\frac{\partial x(d, t)}{\partial t} = \mathrm{Diffusion} + \mathrm{Advection} + \mathrm{Reaction},
+\end{equation}
+where the variable $x$ represents soil organic matter or carbon, and variable $t$ represents time. We use here partial derivatives (the $\partial$ symbol) to represent the change of soil carbon with respect to time, assuming that it can also change along a variable $d$ that denotes soil depth. Therefore, we are also interested in representing changes in $x$ with depth; i.e. $\partial x/\partial d$. Equation \ref{eq:continuity} is a continuity equation, expressing how the conserved quantity $x$, which obeys mass conservation, changes continually with soil depth and time. 
+
+Our main postulate is that all models of vertical SOC transport are special cases of \ref{eq:continuity}, expressing different forms of diffusion, advection and reaction. This general approach to modeling vertical dynamics has been identified previously for diverse systems such as marine organic matter \citep{Sarmiento2006} or sediments \citep{Arndt2013}.
+
+\subsubsection{Diffusion}
+Processes related to bioturbation and tillage are commonly represented in models using diffusion equations. 
+A simple general model of soil carbon profile dynamics including only vertical diffusion and inputs can be expressed as
+\begin{equation} \label{eq:diffusion}
+\frac{\partial x(d,t)}{\partial t} = \frac{\partial}{\partial d} \left( \kappa(d, t) \frac{\partial x(d, t)}{\partial d} \right) + u (d, t),
+\end{equation}
+where $\kappa(d, t)$ is a function that represents how mass diffusivity depends on soil depth and time. Mass diffusivity is a soil property that generally does not change considerably over short timescales. Some models represent changes in diffusion with depth as a function of bulk density. In the most simple case it can be expressed as a constant $\kappa$ with no depth dependence. The function $u(d, t)$ expresses how litter and root inputs change with depth and time, and can take multiple forms depending on attributes of the vegetation such as phenology, allocation, and rhizodeposition. 
+
+Models of the form of equation $\ref{eq:diffusion}$ can only be solved (analytically or numerically) if initial conditions $x(d, 0)$ are known as well as the carbon contents or their change at two points along the vertical profile, between a depth at the surface $d_0$ and some maximum depth $d_{\max}$. The latter  are called the boundary conditions, and must be known a priori in order to obtain solutions of these models. 
+
+To obtain an intuitive understanding of potential solutions to this model, it is useful to assume mass diffusivity as a constant ($\kappa$) and that inputs of organic matter to the soil are constant over time according to some function $u(d)$ where the inputs change with depth. Under these conditions, the soil carbon content along the profile reaches a steady-state in which it does not change over time; i.e.,
+$$
+\frac{\partial x(d, t)}{\partial t} = 0, 
+$$
+and the steady-state carbon content along the profile $x(d)$ is the solution to the second order ordinary-differential equation
+\begin{equation} \label{eq:xpp}
+\frac{\partial^2 x}{\partial d^2} = - \frac{u(d)}{\kappa}.
+\end{equation}
+
+Again, this equation can be solved using boundary conditions, integrating with respect to $d$ to obtain the distribution of carbon content with depth $x(d)$. Equation \ref{eq:xpp} implies that the steady-state carbon content in a diffusion controlled environment is mostly defined by the relation between the depth distribution of inputs and the mass diffusivity of the soil. The vertical distribution of inputs is mostly a property of the vegetation and the rhizosphere system, while mass diffusivity is mostly a property of the soil and the organisms that act as bio-engineers. 
+
+\subsubsection{Advection}
+The other main mathematical paradigm used to represent vertical processes in soil carbon profiles is advection; i.e., the transport of organic carbon dissolved in water. 
+Following mass conservation, advection can be expressed as
+\begin{equation} \label{eq:advection}
+\frac{\partial x(d, t)}{\partial t} = - \frac{\partial }{\partial d} f(x(d, t)),
+\end{equation}
+where $f(x(d, t))$ is the flux or flow rate of mass at depth $d$ and time $t$. In other words, the mass of soil carbon can only change over time due to the flow rate of the fluid along a vertical direction. If the fluid is flowing at a constant velocity $v$, equation \ref{eq:advection} can be simplified to
+\begin{equation} \label{eq:constVel}
+\frac{\partial x(d, t)}{\partial t} = -v \frac{\partial x(d, t)}{\partial d}.
+\end{equation}
+Intuitively, this implies that soil carbon is removed from a depth $d$ at the velocity at which the fluid is passing through, and the gradient at which carbon content changes with depth. Flow velocity is determined by the combination of all the physical, chemical, and biological factors that affect water flow in saturated and unsaturated soils. Although flow velocity may not be constant in most cases, equation \ref{eq:constVel} helps to understand its role in modeling SOM transport mechanisms in soils.  
+
+To better understand the role of $f(x(d, t))$ in equation \ref{eq:advection}, it is useful to think of $x(d, t)$ as a density function \citep{LeVeque1990} that represents the mass concentration of SOM at a particular depth and time. Therefore, the total mass of carbon between two depths $d_1$ and $d_2$ at time $t$ is given by
+$$
+\int_{d_1}^{d_2} x(d, t) \ \mathrm{d}d.
+$$
+Because in an advection only system the total mass between the depths $d_1$ and $d_2$ only changes due to the flux at the end points, we can assume that
+\begin{equation} \label{eq:flow}
+\frac{\mathrm{d}}{\mathrm{d}t} \int_{d_1}^{d_2} x(d, t) \mathrm{d}d = f(x(d_2, t)) -f(x(d_1, t)).
+\end{equation}
+The function $x(d, t)$ is not know explicitly, therefore we do not have explicit formulas for the flow rates $f$. Nevertheless, equation \ref{eq:flow} helps to understand the role of the flow rate function $f$ in equation \ref{eq:advection}; it represents the flow rate of soil carbon at any given depth and time. 
+
+
+\subsubsection{Reaction (decomposition)}
+If we ignore vertical transport, soil carbon would display temporal dynamics related to the action of microorganisms and how they consume organic matter. This process of decomposition has been studied extensively, and there are hundreds of mathematical models that represent these dynamics ignoring vertical transport processes \citep{Manzoni2009}. Despite the large variety of models, most of these models can be expressed in a general expression of the form \citep{Sierra2015EM, Sierra2018JAMES}
+\begin{equation} \label{eq:compartmentalSystem}
+\frac{\mathrm{d} \bm{x}}{\mathrm{d}t} = \bm{u}(\bm{x}, t) + \mathbf{B}(\bm{x}, t) \cdot \bm{x}(t) .
+\end{equation}
+This general model is expressed in vector (lower case bold) and matrix (upper case bold) form because it is assumed that soil organic carbon is highly heterogeneous, and different proportions  decompose at different rates. Therefore, the vector $\bm{x}(t) \in \mathbb{R}^n$ represents the mass of soil carbon in $n$ number of compartments at time $t$. The total mass at time $t$, $x(t)$, can be simply obtained as the sum of the elements of this vector, i.e. $x(t) = \Vert \bm{x}(t) \Vert$ (the vertical bars represent a norm). Mass inputs to this system are represented by the vector $\bm{u}(\bm{x}, t)$, which expresses the amount of organic matter inputs that would enter each compartment. Because above and belowground litter inputs can differ in their chemical and physical properties, different proportions of the total mass may enter different compartments. In addition, the inputs may depend on the amount of carbon in particular compartments; for example, if exudation rates depend on the amount of mycorrhiza. For this reason, the inputs $\bm{u}$ are expressed as dependent on the amount of mass present in the compartments at any given time. 
+
+Rates of decomposition and transfer of carbon among compartments are expressed in the matrix $\mathbf{B}(\bm{x}, t)$ of equation \ref{eq:compartmentalSystem}. This matrix is called compartmental because it has important mathematical properties related to mass conservation: all diagonal elements are non-positive, all off-diagonal elements are non-negative, and the column sums are non-positive \citep{Metzler2018MG, Sierra2018JAMES}.
+
+Linear models such as Century and RothC as well as nonlinear microbial models such as those proposed by soil ecologists \citep[e.g][]{Schimel2003, Allison2010} are especial cases of the general model of equation \ref{eq:compartmentalSystem} \citep{Sierra2015EM}, whose internal structure helps to study particular aspects of decomposition processes that are independent of vertical transport. These processes include: differences in the decomposability of different types of organic matter, organo-mineral interactions, effects of abiotic variables such as temperature, moisture, and pH on the rates of organic matter processing, interactions between substrates and microbial groups, among others. 
+
+To incorporate vertical transport processes in this model, we can assume that at any given depth $d$, reaction (decomposition) processes are expressed as
+\begin{equation}
+\frac{\partial x(d, t)}{\partial t} = \left\Vert \frac{\mathrm{d} \bm{x}(d, t)}{\mathrm{d} t} \right\Vert
+\end{equation}
+where the sum is over all the compartment contents at any given depth and time. Notice that this expression contains all the litter inputs entering the soil, split according to the compartments at which they enter. 
+
+\subsubsection{Combining transport and decomposition}
+In the previous sections, we analyzed the processes of diffusion, advection, and decomposition separately. Now we can combine them following the general paradigm expressed in equation \ref{eq:continuity}. This general model has the form
+\begin{equation} \label{eq:generalTransport}
+\begin{aligned}
+\frac{\partial x(d, t)}{\partial t} &= \frac{\partial}{\partial d} \left( \kappa(d, t) \frac{\partial x(d, t)}{\partial d} \right) 
+                                                  - \frac{\partial }{\partial d} f(x(d, t))
+                                                  + \left\Vert \frac{\mathrm{d} \bm{x}(d, t)}{\mathrm{d} t} \right\Vert, \\
+ &=  \frac{\partial}{\partial d} \left( \kappa(d, t) \frac{\partial x(d, t)}{\partial d} \right) 
+                                                  - \frac{\partial }{\partial d} f(x(d, t))
+                                                  + \left\Vert \left( \bm{u}(\bm{x}, d, t) + \mathbf{B}(\bm{x}, d, t) \cdot \bm{x}(d, t)  \right) \right\Vert.
+\end{aligned}
+\end{equation}
+
+Most mathematical models of vertical carbon transport and decomposition should be special cases of this equation. It can lead to very complex dynamics resulting from the simultaneous effect of physical, chemical and biological processes related to transport and decomposition. 
+
+Equation \ref{eq:generalTransport} cannot be solved analytically, but it can be discretized in time and space to obtain numerical solutions. The discretization approach consists of defining a fixed number $k$ of depth intervals $\Delta d$ where the solution of the partial differential equation is approximated using algebraic equations, and the system is then moved forward in time at discrete intervals $\Delta t$. Most numerical methods to approximate solutions to equation \ref{eq:generalTransport} would attempt to find a vector $\bm{X} \in \mathbb{R}^{k+2}$ for $k$ depth intervals by solving a linear equation of the form
+\begin{equation} \label{eq:discreteSystem}
+\mathbf{A} \cdot \bm{X} = \bm{F},
+\end{equation}
+where the matrix $\mathbf{A}$ and the vector $\bm{F}$ result from the discretization of the original system using a finite-difference or a finite-element method \citep{Lanczos,LeVeque2007}. The dimension of this system is $(k+2) \times (k+2)$, with the 2 additional dimensions incorporating information based on the boundary conditions, which must be added to the discretized system and become an integral part of the new linear differential operator \citep{Lanczos}. Because after the discretization, mass conservation must be preserved, we postulate that the new system of equations must be compartmental. In other words, a discretized system representing transport and decomposition of organic matter can be expressed as a compartmental system of the form of equation \ref{eq:compartmentalSystem}. There are a few examples from the previous literature that may help to confirm this assertion. For instance, \citet{Metzler2020JAMES} showed that the soil carbon module of the ELM model \citep{Koven2013BGS}, which contains 10 discrete depth layers and 7 pools in each layer, can be approximated with a compartmental system that produces the exact same numerical solution as the original model that was developed with partial differential equations. Similarly, \citep{Huang2018} expressed the same model of \citet{Koven2013BGS} as a system of linear equations in matrix form and found exact approximations to the original model.
+
+The approximation of the nonlinear model expressed with partial differential equations is possible if the system is assumed at steady-state. In the general model of equation \ref{eq:generalTransport}, the steady state solution $x_{ss}(d)$ is obtained when $\partial x(d, t)/\partial t =0 $. At this steady-state, the amount of carbon stored in the system does not change over time and nonlinear interactions vanish. Therefore, the behavior of $x_{ss}(d)$ and a tracer such as $^{14}$C, which is commonly used to parameterize SOC transport models, becomes linear with constant coefficients \citep{Anderson1983}. 
+Thus, models of SOC dynamics with vertical transport can be expressed as linear systems with compartmental structure assuming the system is at near steady-state. 
+
+\subsection{The constant coefficient model and its steady-state solution}
+Despite the generality of the model of equation (\ref{eq:generalTransport}) to represent vertical patterns of diffusion and advection, most of the models previously reported in the literature use constant diffusion and advection as well as  constant decomposition and transformation rates (Table \ref{tab:Models}). Furthermore, most previous studies solve the model for the steady-state carbon content and analyze the resulting vertical patterns. Therefore, it is important to study in more detail a simplified version of the general model of equation \ref{eq:generalTransport} for the case of constant coefficients at the steady-state.
+
+Assuming constant diffusion ($\kappa (d, t) = \kappa$ for all $d$ and $t$), and constant flow velocity ($f(x(d,t) = v \, x(d)$, with $v$ constant for all $d$ and $t$), we can write a steady-state version of equation \ref{eq:generalTransport} by making the time derivative equal to zero as
+
+\begin{equation} \label{eq:linearSecondOrder}
+ \kappa \frac{\partial^2 x(d)}{\partial d^2} - v \frac{\partial x(d)}{\partial d} + g(d) =0,
+\end{equation}
+with $g(d)$ representing the balance between inputs and decomposition at each depth, also assuming constant decomposition and transformation rates at each depth ($\mathbf{B}(\bm{x}, d,t) = \mathbf{B}(d)$ for all  $t$), and a constant vector of inputs at each depth ($\bm{u}(\bm{x}, d, t) = \bm{u}(d)$ for all $t$). Therefore, 
+\begin{equation}
+g(d) = \Vert \bm{u}(d) + \mathbf{B}(d) \cdot \bm{x}(d) \Vert .
+\end{equation}
+
+Equation \ref{eq:linearSecondOrder} is a general form of a linear second order differential equation with constant coefficients, for which a numerical solution can be obtained by discretizing the system along fixed depth intervals and solving the resulting system of linear equations as in equation \ref{eq:discreteSystem}.
+
+Two further simplified forms of the general equation can be found in the literature. The case in which advective transport is not considered relevant \citep[e.g.][]{OBrien1978} and therefore
+\begin{equation} \label{eq:linearDiffusion}
+ \kappa \frac{\partial^2 x(d)}{\partial d^2}  + g(d) =0,
+\end{equation}
+or the case in which diffusive transport is not considered relevant \citep[e.g.][]{Feng1999, Baisden2002, Baisden2007}
+\begin{equation} \label{eq:linearAdvection}
+- v \frac{\partial x(d)}{\partial d} + g(d) =0.
+\end{equation}
+To interpret data from pulse response experiments, some researchers have ignored the inputs and decomposition part of the model \citep[e.g.][]{Bruun2007} using an equation of the form
+\begin{equation} \label{eq:noDecomposition}
+ \kappa \frac{\partial^2 x(d)}{\partial d^2} - v \frac{\partial x(d)}{\partial d} =0.
+\end{equation}
+
+Models explicitly representing decomposition usually use one or three pools to represent decomposition as in most traditional models. More detailed representations of decomposition are presented in the model of \citet{Braakhekke2011, Braakhekke2013}, which represents five different pools, including a litter layer component clearly separating processes related to decomposition in the surface organic layer from processes more affected by vertical transport in the mineral horizons. Also, the model of \citet{Koven2013BGS} used 7 distinct C pools: coarse woody debris, three litter pools, and three mineral soil C pools. 
+
+In the COMISSION model, not only advective DOC transport is considered, but also advective transport of litter particles similarly as in sediment models \citep{Ahrens2015, Ahrens2020}. In the latest version of the model \citep{Ahrens2020}, advective litter transfer and particle diffusion are depth dependent. The model also considers non-linear interactions among C pools, therefore it deviates from the constant linear coefficients model of equation \ref{eq:linearSecondOrder} and is in better analogy to equation \ref{eq:generalTransport}. Similarly, the models of \citet{Wang2021} and \citet{Tao2023} include nonlinear interactions among C pools, with the size of the microbial biomass pools interacting with the size of litter and mineral soil pools, but ignoring advection and treating diffusion as a constant across all depths.  
+
+\begin{landscape}
+
+% Table
+\begin{table}[h]
+   \centering
+   \caption{Summary of models representing C dynamics along the vertical profile using the diffusion-advection-reaction (DAR) paradigm. Column on processes indicates the combination of diffusion (D), advection (A), and reaction/decomposition (R) included in the models together with the main equation that generalizes the model. Modified and updated from \citet{Koven2013BGS}.} \small
+   \begin{tabular}{@{} lccccccr @{}} % Column formatting, @{} suppresses leading/trailing space
+      \toprule
+      Model/reference    & Processes & $d_{\mathrm{max}}$ (m) & Ecosystem/location & $n$ & $v$ & $\kappa$ & P\'eclet number\\
+      \midrule
+      \citet{OBrien1978} & DR, Eq. \ref{eq:linearDiffusion} & 1.00 & Managed pasture, NZ & 1 & & 13.2 cm$^2$ yr$^{-1}$ & 0 \\
+      \citet{Elzein1995}   & DAR, Eq. \ref{eq:linearSecondOrder} & 1.65 & Kattinkar, India & 3 & 0.13 mm yr$^{-1}$ & 5.15  cm$^2$ yr$^{-1}$ & 0.003 \\
+      \citet{Elzein1995}   & DAR, Eq. \ref{eq:linearSecondOrder} & 1.95 & Par\'a, Brazil  & 3 & 0.34 mm yr$^{-1}$ & 16.58  cm$^2$ yr$^{-1}$  & 0.002 \\
+      \citet{Elzein1995}   & DAR, Eq. \ref{eq:linearSecondOrder} & 1.63 & Bahia, Brazil & 3 & 0.48 mm yr$^{-1}$ & 5.29  cm$^2$ yr$^{-1}$ & 0.009 \\
+      \citet{Elzein1995}   & DAR, Eq. \ref{eq:linearSecondOrder} & 0.52 & Forest, Bezange, France & 3 & 0.6 mm yr$^{-1}$ & 0.94  cm$^2$ yr$^{-1}$ & 0.064 \\
+      \citet{Elzein1995}   & DAR, Eq. \ref{eq:linearSecondOrder} & 1.00 & Forest, Marly, France & 3 & 0.42 mm yr$^{-1}$ & 1.48  cm$^2$ yr$^{-1}$ & 0.028 \\
+      \citet{Feng1999}  & AR, Eq. \ref{eq:linearAdvection}  & 1.00 & Oak chaparral, USA & 1 & 1.51 cm yr$^{-1}$ & & $\infty$ \\
+      \citet{Feng1999}  & AR,  Eq. \ref{eq:linearAdvection}  & 1.00 & Pine, USA & 1 & 1.67 cm yr$^{-1}$ & & $\infty$ \\
+      \citet{Feng1999}  & AR, Eq. \ref{eq:linearAdvection}  & 1.00 & Ceanothus chaparral, USA & 1 & 1.56 cm yr$^{-1}$ & & $\infty$ \\
+      \citet{Feng1999}  & AR, Eq. \ref{eq:linearAdvection}  & 1.00 & Chamise chaparral, USA & 1 & 1.52 cm yr$^{-1}$ & & $\infty$ \\
+      \citet{Baisden2002} \tablefootnote{The model considers three separate values of $v$ for each C pool
+} & AR, Eq. \ref{eq:linearAdvection}  & & $< 3$ ky old grassland soil, USA & 3 & [4.0, 0.47, 0.40] mm yr$^{-1}$ & & $\infty$ \\
+      \citet{Baisden2002} & AR, Eq. \ref{eq:linearAdvection}  & & 200 ky old grassland soil, USA & 3 & [4.0, 0.49, 0.39] mm yr$^{-1}$ & & $\infty$ \\
+      \citet{Baisden2002} & AR, Eq. \ref{eq:linearAdvection}  & & 600 ky old grassland soil, USA & 3 & [3.2, 0.28, 0.43] mm yr$^{-1}$ & & $\infty$ \\
+      \citet{Baisden2002} & AR, Eq. \ref{eq:linearAdvection}  & & 3 My old grassland soil, USA & 3 & [0.5, 0.26, 0.10] mm yr$^{-1}$ & & $\infty$ \\
+      \citet{Bruun2007} & DA, Eq. \ref{eq:noDecomposition}  & 0.55 & Cropland, Denmark & 0& 0.0081 cm yr$^{-1}$ & 0.71 cm$^2$ yr$^{-1}$ & 0.011 \\
+      \citet{Baisden2007} & AR, Eq. \ref{eq:linearAdvection}  & 1.00 & 15 ky old grassland soil, NZ & 3 & [6.2, 0.9, 0.19] mm yr$^{-1}$ & & $\infty$ \\
+      \citet{Baisden2007} & AR, Eq. \ref{eq:linearAdvection}  & 1.00 & 200 ky old grassland soil, NZ & 3 & [0.6, 1.3, 0.25] mm yr$^{-1}$ & & $\infty$ \\
+      \citet{Baisden2007} & AR, Eq. \ref{eq:linearAdvection}  & 1.00 & 600 ky old grassland soil, NZ & 3 & [0.5, 0.5, 0.5] mm yr$^{-1}$ & & $\infty$ \\
+      \citet{Braakhekke2011} & DAR, Eq. \ref{eq:linearSecondOrder}  & 0.7 & Deciduous forest, Germany & 5 & 0.002 m yr$^{-1}$ & 0.6 cm$^{2}$ yr$^{-1}$ \tablefootnote{Assuming a bulk density of 1000 kg cm$^{-3}$} & 0.333 \\
+      \citet{Ota2013} & DAR, Eq. \ref{eq:linearSecondOrder}  & 1.5 & Mediterranean grassland, USA & 3 & & & NA  \\
+      \citet{Braakhekke2013} & DAR, Eq. \ref{eq:linearSecondOrder}  & 2.0 & Pine forest, Netherlands & 5 & 0.0651 m yr$^{-1}$ & 0.0852 cm$^{2}$ yr$^{-1}$ & 76.402 \\
+      \citet{Braakhekke2013} & DAR, Eq. \ref{eq:linearSecondOrder}  & 0.7 & Deciduous forest, Germany & 5 & 0.00137 m yr$^{-1}$ & 0.6792 cm$^{2}$ yr$^{-1}$ & 0.202 \\
+      \citet{Koven2013BGS} & DR, Eq. \ref{eq:linearDiffusion} & 3.8 & Global, non-permafrost & 7 & & 1 cm$^2$ yr$^{-1}$ & 0 \\
+      \citet{Ahrens2015} & DAR, Eq. \ref{eq:linearSecondOrder}  & 0.9 & Coniferous forest, Germany & 4 & NA & $3.24 \times 10^{-10}$ m$^2$ s$^{-1}$ & NA \\
+%      \citet{Tifafi2018} \\
+      \citet{Wang2021} & DR, Eq. \ref{eq:linearDiffusion} & 1.2 & Global, non-permafrost & 7 & & $8.55 \times 10^{-5}$ cm$^2$ h$^{-1}$ & 0 \\
+      \bottomrule
+   \end{tabular}
+   \label{tab:Models}
+\end{table}
+
+\end{landscape}
+
+Particularly interesting is the model of \citet{Elzein1995}, which follows the form of equation \ref{eq:linearSecondOrder} and includes advection, diffusion, and decomposition of three distinct pools. This model is rather useful because it includes a minimum of complexity to represent most relevant processes of a carbon transport model. It is also a useful model for parameterization against data on C and $^{14}$C concentrations in vertical profiles. 
+
+Returning to our steady-state analysis of the constant coefficient model, we can solve the system for the first derivative and analyze individual components of this equation
+
+\begin{equation} \label{eq:firstDeriv}
+\frac{\partial x(d)}{\partial d} = \frac{\kappa}{v} \frac{\partial^2 x(d)}{\partial d^2} + \frac{g(d)}{v}.
+\end{equation}
+
+For the special case of one single pool with vertical root inputs represented by $u(d)$ and vertical decomposition rates by $k(d)$,
+\begin{equation} \label{eq:simpleCase}
+\frac{\partial x(d)}{\partial d} = \frac{\kappa}{v} \frac{\partial^2 x(d)}{\partial d^2} + \frac{u(d) - k(d) x(d)}{v}.
+\end{equation}
+
+Equation \ref{eq:simpleCase} is very useful to analyze the shape of soil C profiles for cases in which the equilibrium assumption is reasonable. 
+First, equation \ref{eq:simpleCase} shows that the vertical change of C in a soil profile is inversely proportional to the advective movement of C such as in the case of DOC transport. For large values of advection velocity ($v$) the rate of change of C by depth would be small and the vertical C profile would resemble a vertical line. Second, the sign of the rate of change of C by depth is mostly determined by the difference between belowground C inputs and decomposition. At depths where the decomposition flux ($k(d) \ x(d)$) is larger than belowground inputs, the decrease of C by depth is maximum (maximum negative value). Third, the ratio between diffusion and advection velocity ($\kappa / v$), the inverse of the Péclet number (see below), influences how second order transport processes affect the shape of the rate of change of the vertical C profile (Figure \ref{fig:Peclet}). 
+
+\begin{figure}[h]
+   \centering
+   \includegraphics[scale=0.8]{Figures/AdvectionDiffusion.pdf} % requires the graphicx package
+   \caption{Schematic representation of the role of the Péclet number, which is the inverse of the ratio of diffusion to advection $\kappa/v$, on the type of vertical C transfer in a soil assuming a pulse of aboveground inputs. For a Péclet number of zero and $\kappa/v = \infty$, C entering the soil only moves due to diffusion (top); for a Péclet number and $\kappa/v = 1$, both diffusion and advection moves the carbon vertically (center); for a Péclet number of $\infty$ and $\kappa/v = 0$, C is only moved vertically by advective processes as in the case of DOC transport (bottom). }
+   \label{fig:Peclet}
+\end{figure}
+
+In the analysis of partial differential equations, the Péclet number, defined as the ratio of advection to diffusion, plays a very important role in determining characteristics of the solution such as its numerical stability \citep{LeVeque2007}. In addition, the Péclet number can be used to determine the degree by which diffusion or advection may dominate the shape of a soil C profile (Figure \ref{fig:Peclet}). 
+
+If soil C always decreases with depth \citep{Jobbagy2000}, the decomposition flux in equation \ref{eq:simpleCase} must be dominant across the entire soil profile so the rate of change with depth remains negative. In fact, this analysis suggests that the balance between lateral C inputs and decomposition is one of the main factors that affect the shape of soil C profiles where a continuous decrease in soil C is commonly observed. 
+
+A corollary or implication provided by equation \ref{eq:simpleCase} is that if the decrease in soil C with depth follows a simple exponential function, the right hand side of equation \ref{eq:simpleCase} must be a constant value for all depths. This situation seems unlikely given the different interacting process that occur in a soil, and in fact, mathematical functions different than the simple exponential provide the best fit to observed data \citep{Jobbagy2000}.
+
+\subsection{Numerical example} \label{sec:ex1}
+We used equation \ref{eq:simpleCase} to investigate the role of diffusion, advection, decomposition and lateral inputs on the shape of idealized soil carbon profiles. 
+We chose values of $\kappa$ and $v$ within the range of values obtained in previous models (Table \ref{tab:Models}) as well as representative functions for $k(d)$ and $u(d)$ within the range of previous studies \citep[e.g.][]{Elzein1995, Jackson1996, Jackson1997,Koven2013BGS}.
+
+To investigate the effect of diffusion and advection, we ran simulations with values of $\kappa = \{0.1, 1, 5, 15\}$ cm$^2$ yr$^{-1}$ and $v = \{0.1, 1, 5, 10 \}$ cm yr$^{-1}$  (Figure \ref{fig:AdvectionDiffusion}), with root inputs and decomposition following equations \ref{eq:ud} and \ref{eq:kd} as described below. The results show that vertical transport processes tend to create a horizon with largest rate of change in concentrations of C with depth (1st derivative) close to the surface. This layer could be the result of either advection or diffusion (Figure \ref{fig:AdvectionDiffusion}). Because in these simulations, lateral root inputs and decomposition decrease with depth (see equations \ref{eq:ud}, and \ref{eq:kd} below), there is a general trend of C concentrations to decline to values close to zero. Therefore, vertical transport do not seem to play a major role in transporting carbon below 50 cm depth within the range of advection and diffusion values used in these simulations, which covers the entire range of values obtained in previous studies (Table \ref{tab:Models}). Only at high advection velocities ($v=10$ cm yr$^{-1}$) some carbon is transported below 50 cm depth, but this advection velocity is much higher than what has been used before in other models (Table \ref{tab:Models}).
+
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[width=\textwidth]{Figures/simulationsKappaV.pdf} % requires the graphicx package
+   \caption{Numerical simulations of soil C depth profiles using the linear model with constant coefficients of equation \ref{eq:simpleCase}. The top panels show the C concentration and the first derivative of C concentrations for different values of the diffusion coefficient $\kappa$ and a fixed value of advection velocity $v = 1$ cm yr$^{-1}$. The bottom panels show C concentrations and their first derivative for different values of $v$ and a constant value of $\kappa = 1$ cm$^2$ yr$^{-1}$. }
+   \label{fig:AdvectionDiffusion}
+\end{figure}
+
+The first derivative of the C concentration profiles with respect to depth from these simulations (Figure \ref{fig:AdvectionDiffusion} right panels), showed negative derivatives for the entire depth profile. According to equation \ref{eq:simpleCase}, the first derivative can only be positive if lateral root inputs and transport processes dominate over the decomposition flux, which is not the case in these simulations. The decomposition flux dominates over all other processes making the first derivative negative although approaching zero at deeper layers. As advection velocity increased, the first derivatives were less negative, indicating that as advective transport increases the change in C concentrations by depth is less pronounced.
+
+In a second set of simulations, we practically removed advection and diffusion by making the value of these coefficients very small ($\kappa = v =0.01$) and represented lateral root inputs with the function
+
+\begin{equation} \label{eq:ud}
+u(d) = - \beta^d \ \ln \beta .
+\end{equation}
+This function predicts vertical root distributions and was originally proposed by \citet{Gale1987} and used by \citet{Jackson1996, Jackson1997} to obtain vertical root distributions at the biome level. The original function predicts the fraction of root biomass for each depth, and multiplied by an average root turnover rate of 1 yr$^{-1}$ \citep{Gill2000}, gives the proportion of root inputs per depth interval $u(d)$. For the simulations, we used values of $\beta : \{0.92, 0.95, 0.98 \}$ that include the observed extremes of values for shallow root systems ($\beta =0.92$) and deep root systems ($\beta = 0.98$) \citep{Gale1987, Jackson1996}.
+
+The function used to represent decomposition rates by depth was extracted from \citet{Koven2013BGS}
+\begin{equation} \label{eq:kd}
+k(d) = k_0 \exp \left(\frac{-d}{d_e} \right),
+\end{equation}
+with the maximum decomposition rate at the surface given by $k_0 = k(d=0)$, and $d_e$ representing the e-folding depth of decomposition rates. In our simulations, we used values of $k_0 : \{1, 0.1, 0.01 \}$ yr$^{-1}$ and a constant value of $d_e = 90$ cm. Equation \ref{eq:kd} is an empirical function that accounts for unresolved processes such as changes in oxygen availability or microbial activity with depth, and therefore it could be considered as a place holder for other mechanistic representations of depth dependent microbial dynamics. 
+
+The results from this second set of simulations evaluating the effect of lateral root inputs and decomposition showed that slowing down decomposition can have a significant effect on the shape of the vertical soil C profile (Figure \ref{fig:rootDecomp}). These results seem counterintuitive because equation \ref{eq:simpleCase} suggests that the negative term of the equation should be affected by larger values of $k(d)$, but because with slow decomposition higher amounts of C are obtained at steady-state, the entire term $k(d) x(d)$ is large, promoting a strong soil C gradient. The vertical distribution of root inputs has also a significant effect on the shape of the soil C profile, with shallow root inputs promoting a strong vertical gradient and deep rooting systems a more pronounced gradient with lower values of the first derivative (Figure \ref{fig:rootDecomp}). In this set of simulations, we observed also a maximum rate of change of C at the upper layers where the value of the first derivative reached a maximum. 
+
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[width=\textwidth]{Figures/rootDecomp.pdf} % requires the graphicx package
+%\input{Figures/rootDecomp.tex}
+   \caption{Numerical simulations of soil C depth profiles using the linear model with constant coefficients of equation \ref{eq:simpleCase}. The top panels show C concentration and its first derivative with respect to depth for different functions representing decomposition rate $k(d)$ (equation \ref{eq:kd}). The different lines are the results of the model for different values of the maximum decomposition rate at the surface $k_0$, with the value of $k_0 =1$ yr$^{-1}$ representing fast decomposition and $k_0 = 0.01$ yr$^{-1}$ slow decomposition. The lower panels represent the results of simulation for different shapes of the root input profile according to equation \ref{eq:ud}, with the parameter $\beta = 0.98$ representing deep root inputs, and $\beta = 0.92$ shallow root inputs.}
+   \label{fig:rootDecomp}
+\end{figure}
+
+Parameter values for diffusion, advection, root input distribution, and decomposition rates with depth are highly uncertainty and there is little information on their global distribution across biomes. To test uncertainty in the components of equation \ref{eq:simpleCase}, we performed an uncertainty analysis following a Monte Carlo uncertainty approach. We chose 1000 random variates of the parameters $\kappa$ and $v$ from a uniform distribution within the range of observed values in Table \ref{tab:Models}, and ran simulations to obtain an estimate of prediction uncertainty in C concentration across depth (Figure \ref{fig:uncertainty}). These simulations clearly show that uncertainty due to the diffusion parameter $\kappa$ is much smaller than prediction uncertainty due to parameter $v$ (Figure \ref{fig:uncertainty}b). Similarly, we ran simulations with 1000 random variates of parameters $\beta$ and $d_e$ to test the effect of uncertainty in root inputs and decomposition rates, respectively. The results showed that prediction uncertainty is larger due to the depth distribution of decomposition than to the depth distribution of root inputs (Figure \ref{fig:uncertainty}d), and both process dominate prediction uncertainty in comparison to uncertainty in transport processes ($\kappa$ and $v$ uncertainty).
+
+\begin{figure}[t]
+   \centering
+   \includegraphics[width=\textwidth]{Figures/uncertainty.pdf} % requires the graphicx package
+   \caption{Uncertainty analysis based on the components of equation \eqref{eq:simpleCase} using a Monte Carlo uncertainty approach in which 1000 random variates of model parameters were chosen from a uniform distribution $U$. (a) Set of 1000 random variates of the diffusion coefficient $\kappa \sim U(0.09, 16.58)$ and the advection velocity $v \sim U(0.01, 6.51)$, and the set of values available from the literature (Table \ref{tab:Models}). (b) Prediction uncertainty in carbon concentration due to uncertainty in diffusion coefficient $\kappa$ and advection velocity $v$. (c) Uncertainty in the distribution of root inputs ($u(d)$) due to uncertainty in parameter $\beta \sim U(0.9, 1.0)$, and uncertainty in decomposition rate distribution ($k(d)$) due to uncertainty in parameter $d_e \sim U(10, 100)$. (d) Prediction uncertainty in carbon concentration due to uncertainty in root input distribution ($u(d)$) and decomposition rate distribution ($k(d)$). }
+   \label{fig:uncertainty}
+\end{figure}
+
+Overall, the sensitivity analysis presented in Figures \ref{fig:AdvectionDiffusion} and \ref{fig:rootDecomp}, and the uncertainty analysis in Figure \ref{fig:uncertainty} indicate that the vertical distribution of root inputs and decomposition play a larger role in determining the shape of soil carbon profiles than transport processes represented as diffusion and advection. 
+
+\section{Assessing C sequestration and the fate of new C inputs}
+\subsection{Fate, transit time, and carbon sequestration in the subsoil}
+In the context of climate change mitigation, we are generally interested in evaluating the capacity of soils for storing carbon at relevant timescales associated with management and policy outcomes. In many cases, we are interested in comparing different soils; and in other cases, we are interested in evaluating the effectiveness of different soil management practices. In any case, we need to use appropriate metrics to evaluate the environmental benefit of carbon sequestration. 
+
+If we aim at promoting soil C sequestration, it is then important to analyze the fate of new inputs entering the soil, assess for how long the new carbon remains stored, and how much warming can be avoided while the C is stored \citep{Sierra2021BGS, Crow2022}. For this purpose, we can use the following metrics: fate, transit time, and carbon sequestration, which are mathematically defined as follows.
+
+For a compartmental system in equilibrium, where carbon inputs are balanced with C losses, the fate of C entering at a time $t_0$ can be obtained as a function that predicts the mass of C remaining in the soil at time $t$, thus we define $\tau = t- t_0$, and  
+\begin{equation} \label{eq:m}
+\bm{m}(\tau) = e^{\tau \mathbf{B}} \ \bm{u},
+\end{equation}
+as in \citet{Sierra2021JE}, where $\bm{m}(\tau)$ is a vector with the mass remaining for each compartment. This mass remaining is related to the transit time of carbon, which is defined as the time it takes carbon atoms to pass through the entire network of compartments until C leaves the soil system \citep{Bolin1973, Manzoni2009JGR, Sierra2018JAMES}. The transit time distribution of carbon can be expressed as \citep{Metzler2018MG}
+\begin{equation} \label{eq:transitTime}
+f_T(\tau) = -\bm{1}^{\top} \ \mathbf{B} \ e^{\tau \mathbf{B}} \frac{\bm{u}}{\Vert \bm{u} \Vert},
+\end{equation}
+and represents the relative proportion of carbon leaving the system at a time $\tau$. In soils, transit time distributions generally have a long tail, indicating that most carbon entering soils are respired quickly but small proportions can stay for long times \citep{Sierra2018GBC}. 
+
+
+Carbon Sequestration (CS) is the storage of a certain amount of carbon over a certain period of time. It evaluates the fate of new inputs entering the soil integrated over a time horizon. The amount of sequestration quantified by the CS metric depends on both the amount of inputs entering the soil and the time it takes this carbon to return to the atmosphere in the form of respiration. This amount of time is proportional to the transit time of carbon. 
+
+
+%\subsection{The transit time distribution as a tool to assess C sequestration}
+For a compartmental system at equilibrium, CS can be obtained as \citep{Sierra2021BGS}
+\begin{equation} \label{eq:CS}
+ \mathrm{CS}(t) = \int_{t_0}^t \Vert e^{\tau \ \mathbf{B}} \ \bm{u} \Vert \mathrm{d} \tau,
+\end{equation}
+which is the integral of the total amount of mass remaining in the soil from a cohort of inputs entering at $t_0$.
+
+If a particular transport-decomposition model can be discretized and expressed as a compartmental system following standard numerical methods \citep{LeVeque2007, Lanczos}, one can use equations \ref{eq:m}, \ref{eq:transitTime}, and \ref{eq:CS} to quantify the fate, transit time and CS of a particular soil and compare results with those from another soil, or with the outcomes of different forms of management. 
+
+Alternatively, $\bm{m}(t)$ and $f_T(\tau)$ can be obtained using impulse response experiments with existing transport models that are difficult to express as a compartmental system \citep{Thompson1999, Metzler2018MG}. The approach consists of running a model until reaching equilibrium, and at this point add a pulse of carbon and observe the mass remaining of the pulse over time, which is an approximation to $\bm{m}(t) $. One can also observe the respiration flux after the addition of the pulse, which is an approximation to the transit time distribution $f_T(\tau)$ \citep{Metzler2018MG}. The results from pulse-response experiments should provide very valuable information to assess the fate of new inputs entering the soil and whether they remain for relevant periods of time. 
+
+%the transit time distribution can be obtained by the expression \citep{Metzler2018MG}
+%\begin{equation} \label{eq:transitTime}
+%f(\tau) = -\bm{1}^{\top} \ \mathbf{B} \ e^{\tau \mathbf{B}} \ \bm{u}
+%\end{equation}
+
+%\subsection{Example: a pulse response experiment with the COMISSION model}
+
+\subsection{Numerical example}
+In the previous example, we saw that transport, decomposition, and lateral root inputs play an important role in determining the shape of soil C profiles at equilibrium. We evaluate now with an example how fast/slow transport, combined with fast/slow decomposition in soil profiles can affect the fate, transit time and carbon sequestration of a soil. Our aim is to assess the fate of new carbon inputs and whether they remain in soil for timescales relevant for climate change mitigation.
+
+Given that our previous example showed that diffusion plays a minor role in comparison to advection for moving carbon downwards, we set a fixed value of $\kappa = 1$ cm$^2$ yr$^{-1}$ and varied the values of $v$. For simulations with fast transport, the values were $v = 5$ cm yr$^{-1}$, and for simulations with slow transport $v = 0.1$ cm yr$^{-1}$. Decomposition rates were considered fast with values of $k_0 = 1$ yr$^{-1}$ and slow with $k_0 = 0.1$ yr$^{-1}$ at the surface (Table \ref{tab:simulationSetup}) and declining with depth according to equation \ref{eq:kd}. In all simulations, we considered a root input profile with an intermediate value of $\beta = 0.95$, i.e. not too shallow nor too deep roots. 
+
+% Requires the booktabs if the memoir class is not being used
+\begin{table}[h]
+   \centering
+   \caption{Parameters used and results obtained for simulations evaluating the effect of transport and decomposition on the fate, transit time and carbon sequestration of new inputs. Tf--Df: transport fast, decomposition fast; Tf--Ds: transport fast, decomposition slow; Ts--Df: transport slow, decomposition fast; Ts-Ds: transport slow, decomposition slow.}
+   \begin{tabular}{@{} lcccr @{}} % Column formatting, @{} suppresses leading/trailing space
+%\begin{tabular}{l|r|r|r|r}
+\toprule
+ & Tf--Df & Tf--Ds & Ts--Df & Ts--Ds\\
+\midrule
+$\kappa$ (cm$^2$ yr$^{-1}$) & 1.000 & 1.000 & 1.000 & 1.000\\
+$v$ (cm yr$^{-1}$) & 5.000 & 5.000 & 0.100 & 0.100\\
+$k_0$ (yr$^{-1}$) & 1.000 & 0.100 & 1.000 & 0.100\\
+$\beta$ & 0.950 & 0.950 & 0.950 & 0.950\\
+Proportion remaining after 1 yr & 0.449   & 0.914 & 0.424  & 0.875\\
+Proportion remaining after 10 yr & 0.002  & 0.480 & 0.001 &  0.392 \\
+Proportion remaining after 50 yr & 0.000  & 0.000 & 0.000  & 0.022 \\
+Mean transit time (yr) & 1.333  & 9.699 & 1.217 & 11.498 \\
+Median transit time (yr) & 0.859  & 9.444 & 0.799  & 7.096 \\
+CS($t \to \infty$) & 16.028 & 363.721 &12.587 &133.416 \\
+\bottomrule
+\end{tabular}
+   \label{tab:simulationSetup}
+\end{table}
+
+Simulation results showed that most C inputs entering at any given time only stay in the soil a few years, and only under slow decomposition, some C may remain for a few decades (Figure \ref{fig:Mt}, Table \ref{tab:simulationSetup}). Decomposition rates seem to play a stronger control on the fate of C inputs than vertical transport rates. Under fast decomposition, most carbon was lost in 5 years independently from transport velocity, and very small proportions travelled through the soil profile because the carbon was decomposed before it had a chance to move downwards. Under slow decomposition and fast transport, some carbon is preserved longer because it decomposes at slower rates at deeper layers, but eventually this transported carbon is also decomposed in a few decades (Figure \ref{fig:Mt}).
+
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[width=\textwidth]{Figures/Mt.pdf} % requires the graphicx package
+   \caption{Proportion of C remaining in a soil profile of an amount of lateral inputs entering the soil at $t=0$ represented with equation \ref{eq:ud} with $\beta = 0.95$. After 50 years most of the carbon that entered at $t=0$ is not present in the soil, even for the scenario with slow transport and decomposition rates. }
+   \label{fig:Mt}
+\end{figure}
+
+The transit time distribution of C through the entire soil profile for these different simulations showed that the large majority of C entering the soil at any given time is lost within the first year (Figure \ref{fig:transitTime}a). Fifty percent of the C that enters the soil is lost in 0.86 years in the scenario with fast decomposition and fast transport, while in the scenario with slow decomposition and fast transport 50\% of the new carbon is lost in 9.4 years (Table \ref{tab:simulationSetup}). The slow decomposition scenarios showed a very different tail in the transit time distribution compared to the fast decomposition scenarios, with a larger proportion of carbon staying for longer times under slow decomposition. Therefore, the mean transit time is influenced by these long tails, with the mean transit time in the fast transport slow decomposition scenario of 1.3 years, and 11.5 years in the slow transport slow decomposition scenario (Table \ref{tab:simulationSetup}a). Despite slow decomposition however, most of the new inputs do not stay for timescales beyond a few decades at the maximum. 
+
+At steady-state, significantly more carbon is stored in the case of slow decomposition, particularly in the scenario of fast transport and slow decomposition (Figure \ref{fig:transitTime}b). However, to reach this large steady-state C concentrations, very long timescales of carbon accumulation are required. According to the transit time distributions, very small amounts of new C inputs remain in the long-term, therefore it would take a considerably long time (beyond decades) to reach these steady-state C values. 
+
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[width=\textwidth]{Figures/transitTimes.pdf} % requires the graphicx package
+   \caption{(a) Transit time distributions for four different scenarios of transport and decomposition in the subsoil. These distributions represent the proportion of C leaving the soil system at different times since the C entered the soil. Note the logarithmic y axis. (b) Values of C concentration along the depth profile at steady-state.}
+   \label{fig:transitTime}
+\end{figure}
+
+\section{Empirical evidence from soil profiles}
+The two numerical examples from the previous section suggest that (i) the change of soil C with depth is largely influenced by the difference between root inputs and decomposition, and to a lesser degree by vertical transport processes such as diffusion and advection; (ii) most new carbon inputs entering the soil do not remain stored for long timescales. In the following section, we will explore global-scale datasets of soil C profiles to test whether these theoretical model predictions have empirical support on observations.
+
+\subsection{The shape of the vertical C profile across regions}
+The International Soil Radiocarbon Database (ISRaD) is a comprehensive and well curated collection of soil carbon and radiocarbon data  \citep{Lawrence2020}. We used version 1.7.8 of the database and extracted information on soil C concentration with depth down to 1 m. Data from 600 individual profiles were grouped by K\"oppen-Geiger climate zones \citep{Beck2018} and averaged by 1 cm depth increments. Volcanic soils (classified as such in the field) were treated as a separate group given their distinct vertical C profile. A mass-preserving spline function (equal-area quadratic smoothing spline) was applied to each profile to account for the varying depth intervals in which samples across profiles were taken \citep{Ponce1986,Bishop1999}. This spline function interpolates C concentration for a continuum of depths, i.e. an approximation to the function $x(d)$ for each of the groups (Figure \ref{fig:Cprofiles}). 
+
+
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[width=\textwidth]{Figures/profiles.pdf} % requires the graphicx package
+   \caption{Soil carbon concentrations with 1st and 2nd derivatives with respect to depth obtained from the International Soil Radiocarbon Database, with data from 600 profiles aggregated by biogeographical regions. Thick lines for each group represent the mean across available observations and fitted to a spline curve. Horizontal lines represent standard deviation across available observations. }
+   \label{fig:Cprofiles}
+\end{figure}
+
+Soil carbon decreased rapidly with depth in most soil profiles reaching values close to zero at 1 m depth (Figure \ref{fig:Cprofiles}), with the exception of soils from tundra/polar regions and volcanic soils, which still contain relatively large quantities of C at 90 cm depth. Please note that these values are reported as concentrations with respect to mass of soil. Bulk density data is not commonly reported for individual profiles and much less for individual depth horizons. Therefore, comparisons with the simulation experiments from previous sections must be done only with respect to qualitative aspects and not with respect to quantitative values. 
+
+%\begin{figure}[htbp]
+%   \centering
+%   \includegraphics[width=\textwidth]{Figures/ISRaD_msp_14C_SOC_climate_depth_deriv_2023-03-13.jpeg} % requires the graphicx package
+%   \caption{First and second derivative of soil C profiles extracted from ISRaD and grouped by biogeographical region, with the exception of volcanic soils.}
+%   \label{fig:Derivatives}
+%\end{figure}
+
+The first derivative of soil C concentrations with respect to depth ($\partial x(d)/ \partial d$, Figure \ref{fig:Cprofiles})  was negative for all groups, indicating that soil C always decreases with depth for these aggregated profiles. This is in  agreement with our previous simulations in which the first derivatives were always negative. We observed for all groups a peak in the first derivative where it reaches a maximum negative value, indicating that soil C decreases more strongly at some intermediate depth between 10 and 20 cm (Figure \ref{fig:Cprofiles}). According to equation \ref{eq:simpleCase}, a maximum negative value of the first derivative can only occur at depths where the microbial decomposition flux ($k(d) x(d)$) has its maximum value, i.e. when microbes are consuming the maximum amount of carbon possible.
+
+The value of the first derivative had the largest values overall for volcanic soils, and the lowest values for arid soils. In both cases decomposition rates may be slow compared to other soils; in volcanic soils the presence of amorphous non-crystalline surfaces promote sorption of organic matter to minerals and therefore slow decomposition and strong C accumulation \citep{Marin-Spiotta2011, Crow2015}; in arid soils low moisture availability leads to slow decomposition rates, but also low primary productivity leads to low carbon stocks \citep{Moyano2013, Sierra2015JAMES}. Therefore, negative values of the first derivative are strongly dependent on the C stocks ($x(d)$), and to a lesser extend on the decomposition rate ($k(d)$). The decomposition rate obviously plays a major role in determine the size of the C stock in conjunction with the input fluxes at depth, but the rate of decline of C with depth is mostly influenced by the resulting C stock. In addition, the last term of equation \ref{eq:simpleCase} also reveals that for systems with slow advection velocities $v$ approaching zero, small differences between lateral inputs and decomposition may be amplified. In other words, the large values of the negative derivative for the volcanic soils may be the result of very low advective movement of DOC, amplifying small differences between lateral inputs and decomposition.
+
+Overall, the data from soil C profiles aggregated by regional groups and volcanic soils provide evidence supporting the idea that vertical transport may play a secondary role in determining the rate of soil C decrease with depth. The difference between lateral root inputs and decomposition may play a primary role in determining the shape of soil C profiles, and this difference may be amplified at low advection velocity rates. Diffusive movement of soil C seems to play a small role in these aggregated groups, something suggested by the low values of the second derivative (Figure \ref{fig:Cprofiles}); however, diffusion may have some control on the peak of C decrease found close to the surface in these profiles. 
+
+\subsection{Transit times of C from vertical profiles}
+Using data from ISRaD and a dataset on root input profiles, \citet{Xiao2022} obtained estimates of mean ages and mean transit times for soil C profiles at the global scale. The global averages revealed that mean transit times of C are always younger than the mean age of C stored at all soil depths (Figure \ref{fig:AgeTTprofiles}). In other words, despite the C stored in the soil being hundreds to thousands of years old, the C respired is only a few years to decades old. This result is consistent with our transit time simulations that showed mean transit times of only a few years (Figure \ref{fig:transitTime}, Table \ref{tab:simulationSetup}). However, the actual values of mean transit time obtained from the data are actually much higher than those from the model results. This is to be expected given that the model used for the example only considered one single pool with a relatively fast decomposition rate, but in reality soil carbon is highly heterogeneous and a significant proportion of its total carbon cycles at much slower rates, which would contribute to longer transit times.  In addition, sorption of OM to mineral surfaces may increase with depth, making the overall decomposition of C at depth more limited \citep{Ahrens2020}. Nevertheless, model simulations and observations agree in that new C inputs to soil only remain stored in timescales of years to decades. 
+
+Fast mean transit times were observed for tropical forest, grassland and cropland soils, while long transit times in the order of decades to centuries were only observed for tundra and boreal forest soils (Figure \ref{fig:AgeTTprofiles}). These results are consistent with the idea that low temperatures and energy limitation may play a significant role in controlling the transit time of C at the biome level \citep{Lu2018, Xiao2022, Sierra2023PTRS}, with fast transit times in warm regions and longer transit times in cold high-latitude regions.
+
+Because transit times are directly related to Carbon Sequestration CS (equations \ref{eq:transitTime} and \ref{eq:CS}), we expect only tundra and boreal forest soils to store C in the subsoil at timescales relevant for climate change mitigation, i.e. in the order of decades to centuries. In fact, previous studies have found that a large proportion of carbon used by microorganisms in the subsoil is recent and does not contribute to C stabilization in the subsoil \citep{Balesdent2018, Scheibe2023}. Therefore, we would expect lower values of CS for tropical forests, grasslands and cropland soils in comparison with boreal forests and tundra soils. 
+However, it is important to keep in mind that productivity in these high-latitude regions is relatively low compared to temperate and equatorial latitudes \citep{Xiao2023}. CS as defined in equation \ref{eq:CS} accounts for this trade-off between the amount of inputs and its transit time through the soil, and it can be used to more specifically assess the climate mitigation potential of specific amounts of C added to the soil.
+
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[scale=0.65]{Figures/biomeTT.pdf} % requires the graphicx package
+   \caption{Estimates of mean age and mean transit time of carbon based on measurements of root inputs and soil radiocarbon obtained from ISRaD. The left panel shows global-scale average values of mean age and mean transit time. The lower panel shows averages of mean transit time aggregated by biome.}
+   \label{fig:AgeTTprofiles}
+\end{figure}
+
+\section{Implications for soil C management}
+Our analysis of a general model of soil C profile formation, together with the analysis of observations of soil carbon concentrations and transit times, provide relevant insights that can inform land management for carbon sequestration and climate change mitigation. 
+Even though current observations show that C concentrations decrease strongly with depth in most soils and new C inputs transit relatively fast, there are potentials to increase C storage with depth and increase the transit time of carbon across the entire profile. 
+
+%Data on C concentrations and their change with depth in global soil profiles (Figures \ref{fig:Cprofiles} and \ref{fig:Derivatives}) show that C stocks decline strongly with depth for most soils. 
+If soils would be managed to increase subsoil C storage, the change of C concentrations with depth should be less dramatic and change less with respect to topsoil (Figure \ref{fig:managementObjective}). From equation \ref{eq:firstDeriv}, it can be inferred that a management objective could be framed in terms of keeping the first derivative of C concentration with respect to depth close to zero, so the storage of carbon in subsoil remains relatively similar to levels in topsoil. Using the model of constant advection and diffusion coefficients at steady-state (equation \ref{eq:firstDeriv}), we can frame this management objective as 
+\begin{equation}
+\frac{\partial x(d)}{\partial d} = \frac{\kappa}{v} \frac{\partial^2 x(d)}{\partial^2 d} + \frac{g(d)}{v} = 0,
+\end{equation} 
+and because the derivative of a constant value of zero is equals to zero, the second derivative term vanishes from this equation and the management objective reduces to
+\begin{equation} \label{eq:objective}
+ \frac{g(d)}{v} = 0.
+\end{equation} 
+
+
+\begin{figure}[htbp]
+   \centering
+   \includegraphics[width=\textwidth]{Figures/managementObjective.pdf} % requires the graphicx package
+   \caption{Graphical example for defining a management objective to increase C storage in the subsoil. By decreasing the ratio $g(d)/v$ as close to zero as possible, the decrease of C concentration with depth is less steep and more carbon can be stored in the subsoil. For this example, advection velocity was increased from 1 to 100 cm yr$^{1}$.}
+   \label{fig:managementObjective}
+\end{figure}
+
+This equation suggest that an effective way to achieve the goal of increasing C storage in the subsoil would be through increasing advective transport of C from top to subsoil; i.e. increasing values of $v$ so the ratio of equation \ref{eq:objective} approaches zero (Figure \ref{fig:managementObjective}). Provided C inputs are high, their vertical advective movement should contribute to increase total carbon storage. In other words, even though vertical C transfer does not seem to play a significant role in explaining current data on soil C profiles, management activities could be implemented to increase vertical C transfers to horizons where it can be stabilized on available mineral surfaces \citep[cf.][]{Ahrens2020, Georgiou2022} and protect it from decomposition. Equation \ref{eq:firstDeriv} also suggest that a small difference between C inputs and decomposition across all depths ($g(d) \approx 0$) helps to decrease the gradient of C decline with depth. For example, exogenous amendments of organic matter with low decomposition rates could help to reduce this difference and reduce C decline with depth. There may be many other ways to achieve this management goal, and a challenge for future research would be to test this theoretical prediction through innovative experiments.
+
+Equation \ref{eq:objective} also suggests that changes in particle diffusion have little or no effect in contributing to increase carbon storage in the subsoil. This may imply that the diffusive mixing of carbon due to tillage plays no relevant role for increasing carbon in the entire profile. 
+
+\section{Summary and conclusions}
+We reviewed the main processes that contribute to the formation of soil C profiles, and the mathematical models that are used to represent them. 
+Our main findings were: 
+\begin{enumerate*}
+\item The main processes that contribute to the formation of soil C profiles are root productivity and rhizodeposition, microbial decomposition, advective processes such as liquid phase transport, and diffusive processes such as bioturbation, cryoturbation, and tillage. 
+\item These processes can be expressed in models under the general paradigm of the diffusion-advection-reaction equation, with most previously proposed models being a special case of this general paradigm. 
+\item Advective and diffusive processes seem to be of secondary importance in explaining the shape of vertical soil C profiles. The difference between vertical carbon inputs and decomposition seems to play a primary role in explaining the decline of soil C with depth. 
+\item The transit time of C is only a few years to decades in most soils, which implies that promoting the addition of new C inputs to soils would only contribute to climate change mitigation in timescales of years to decades. Carbon sequestration at longer timescales is only possible in slow cycling systems such as tundra and boreal forest soils, but primary production is relatively low in these regions.
+\item Increasing C storage in the subsoil could be achieved by increasing rates of vertical transport through advective processes, or by reducing the difference between plant inputs and decomposition at all depths according to equation (\ref{eq:objective}). Innovative experiments and management practices are needed to test this prediction based on current theoretical understanding of carbon dynamics in the subsoil. 
+\end{enumerate*}
+
+Although soils store large quantities of C in the subsoil and this carbon is hundreds to thousands of years old, our review suggest that new carbon that enters the soil is cycled quickly by the activity of microorganisms with relatively fast transit times. Therefore, promoting new C inputs to subsoil may not have a significant contribution to climate change mitigation as it could be inferred from carbon stocks and ages in the subsoil alone. Conservation of existing subsoil C stocks seems to be a more relevant and important aspect because the timescales required to form existing soil C stocks were on the order of centuries to millenia and there are important risks that through land use change, or non-sustainable agricultural practices, important portions of these existing stocks may be lost quickly. 
+
+\section*{Acknowledgements}
+CAS would like to acknowledge financial support provided by the Faculty of Forest Sciences at the Swedish University of Agricultural Sciences, and the Max Planck Society. SvF received funding from the International Max Planck Research School for Global Biogeochemical Cycles (IMPRS-gBGC). This study has also received funding from the European Unions’ Horizon 2020 research and innovation programme under grant agreement No. 862695 EJP SOIL.
+
+\section*{Data availability and reproducibility of results}
+All code and data required to reproduce the results of this manuscript is available at . 
+
+
+\bibliographystyle{apalike}
+\bibliography{refsDepth.bib}
+
+
+\end{document}  
