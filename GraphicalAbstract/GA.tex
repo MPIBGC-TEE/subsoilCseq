@@ -1,0 +1,54 @@
+\documentclass{standalone}
+
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}
+\fill[fill=gray!50!yellow!10] (-6,-18) rectangle (6,-0.2);
+
+\draw (0,-1) node {\Large $\frac{\partial x}{\partial d} = $ Diffusion +  Advection + Decomposition};
+%\draw (-4,-5) node {$Pe = 1$};
+%\draw (4, -5) node {$\frac{\kappa}{v} = 1$};
+
+\draw (-5,-2) -- (5,-2) ;
+\draw[very thick, teal!70!yellow] [latex-] (0,-4) -- (0,-3) ;
+
+\fill[teal!70!yellow] (0, -6) circle (0.1) ;
+\foreach \x in{1,...,6}
+\fill[teal!70!yellow!90!red] (0, -6) ++(\x *72:0.2) circle (0.1) ;
+
+\foreach \x in{1,...,10}
+\fill[teal!70!yellow!80!red] (0, -6) ++(\x * 36:0.4) circle (0.1) ;
+
+\foreach \x in {1,...,20}
+\fill[teal!70!yellow!70!red] (0, -6) ++(\x * 36:0.6) circle (0.1) ;
+
+\fill[teal!70!yellow] (0, -10) circle (0.1) ;
+\foreach \x in{1,...,5}
+\fill[teal!70!yellow!90!red] (0, -10) ++(\x *72:0.225) circle (0.1) ;
+
+\foreach \x in{1,...,10}
+\fill[teal!70!yellow!80!red] (0, -10) ++(\x * 36:0.45) circle (0.1) ;
+
+\foreach \x in {1,...,20}
+\fill[teal!70!yellow!70!red] (0, -10) ++(\x * 36:0.675) circle (0.1) ;
+
+\fill[teal!70!yellow] (0, -15) circle (0.1) ;
+\foreach \x in{1,...,5}
+\fill[teal!70!yellow!90!red] (0, -15) ++(\x *72:0.25) circle (0.1) ;
+
+\foreach \x in{1,...,10}
+\fill[teal!70!yellow!80!red] (0, -15) ++(\x * 36:0.5) circle (0.1) ;
+
+\foreach \x in {1,...,20}
+\fill[teal!70!yellow!70!red] (0, -15) ++(\x * 36:0.75) circle (0.1) ;
+
+\foreach \x in{1,...,30}
+\fill[teal!70!yellow!60!red] (0, -15) ++(\x *36+18:0.95) circle (0.1) ;
+
+\end{tikzpicture}
+
+\input{managementObjective.tex}
+
+\end{document}

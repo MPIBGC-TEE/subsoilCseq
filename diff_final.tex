@@ -1,4 +1,7 @@
 \documentclass[11pt, oneside, a4paper]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+%DIF LATEXDIFF DIFFERENCE FILE
+%DIF DEL subsoilCS_R2.tex      Thu Dec 21 10:38:59 2023
+%DIF ADD subsoilCS_final.tex   Thu Jan  4 10:58:26 2024
 \usepackage[margin=2cm]{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
 \geometry{a4paper}                   		% ... or a4paper or a5paper or ... 
 %\geometry{landscape}                		% Activate for for rotated page geometry
@@ -18,14 +21,16 @@
 \usepackage{authblk}
 \usepackage{lineno}
 
-%\usepackage[sfdefault,scaled=.85]{FiraSans}
-%\usepackage{newtxsf}
-
-%\usepackage{sansmathfonts}
-%\usepackage[T1]{fontenc}
-%\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
-
-
+%DIF 21a21-28
+%\usepackage[sfdefault,scaled=.85]{FiraSans} %DIF > 
+%\usepackage{newtxsf} %DIF > 
+ %DIF > 
+%\usepackage{sansmathfonts} %DIF > 
+%\usepackage[T1]{fontenc} %DIF > 
+%\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif %DIF > 
+ %DIF > 
+ %DIF > 
+%DIF -------
 \title{\bf Carbon sequestration in the subsoil and the time required to stabilize carbon for climate change mitigation}
 \author[1,2]{Carlos A. Sierra\orcidlink{0000-0003-0009-4169}}
 \author[1]{Bernhard Ahrens \orcidlink{0000-0001-7226-6682}}
@@ -44,6 +49,87 @@
 \affil[5]{College of Environmental and Resource Sciences, Zhejiang University, Hangzhou, China}
 \affil[6]{Faculty of Geographical Science, Beijing Normal University, Beijing, China} %, 100875}
 %\date{}							% Activate to display a given date or no date
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF UNDERLINE PREAMBLE %DIF PREAMBLE
+\RequirePackage[normalem]{ulem} %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\providecommand{\DIFaddtex}[1]{{\protect\color{blue}\uwave{#1}}} %DIF PREAMBLE
+\providecommand{\DIFdeltex}[1]{{\protect\color{red}\sout{#1}}}                      %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+\providecommand{\DIFmodbegin}{} %DIF PREAMBLE
+\providecommand{\DIFmodend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+%DIF HYPERREF PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{\texorpdfstring{\DIFaddtex{#1}}{#1}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{\texorpdfstring{\DIFdeltex{#1}}{}} %DIF PREAMBLE
+\newcommand{\DIFscaledelfig}{0.5}
+%DIF HIGHLIGHTGRAPHICS PREAMBLE %DIF PREAMBLE
+\RequirePackage{settobox} %DIF PREAMBLE
+\RequirePackage{letltxmacro} %DIF PREAMBLE
+\newsavebox{\DIFdelgraphicsbox} %DIF PREAMBLE
+\newlength{\DIFdelgraphicswidth} %DIF PREAMBLE
+\newlength{\DIFdelgraphicsheight} %DIF PREAMBLE
+% store original definition of \includegraphics %DIF PREAMBLE
+\LetLtxMacro{\DIFOincludegraphics}{\includegraphics} %DIF PREAMBLE
+\newcommand{\DIFaddincludegraphics}[2][]{{\color{blue}\fbox{\DIFOincludegraphics[#1]{#2}}}} %DIF PREAMBLE
+\newcommand{\DIFdelincludegraphics}[2][]{% %DIF PREAMBLE
+\sbox{\DIFdelgraphicsbox}{\DIFOincludegraphics[#1]{#2}}% %DIF PREAMBLE
+\settoboxwidth{\DIFdelgraphicswidth}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\settoboxtotalheight{\DIFdelgraphicsheight}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\scalebox{\DIFscaledelfig}{% %DIF PREAMBLE
+\parbox[b]{\DIFdelgraphicswidth}{\usebox{\DIFdelgraphicsbox}\\[-\baselineskip] \rule{\DIFdelgraphicswidth}{0em}}\llap{\resizebox{\DIFdelgraphicswidth}{\DIFdelgraphicsheight}{% %DIF PREAMBLE
+\setlength{\unitlength}{\DIFdelgraphicswidth}% %DIF PREAMBLE
+\begin{picture}(1,1)% %DIF PREAMBLE
+\thicklines\linethickness{2pt} %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\framebox(1,1){}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\line( 1,1){1}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,1){\line(1,-1){1}}}% %DIF PREAMBLE
+\end{picture}% %DIF PREAMBLE
+}\hspace*{3pt}}} %DIF PREAMBLE
+} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbegin}{\DIFaddbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddend}{\DIFaddend} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbegin}{\DIFdelbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelend}{\DIFdelend} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbegin}{\DIFOaddbegin \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbegin}{\DIFOdelbegin \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbeginFL}{\DIFaddbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddendFL}{\DIFaddendFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbeginFL}{\DIFdelbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelendFL}{\DIFdelendFL} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbeginFL}{\DIFOaddbeginFL \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbeginFL}{\DIFOdelbeginFL \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+%DIF COLORLISTINGS PREAMBLE %DIF PREAMBLE
+\RequirePackage{listings} %DIF PREAMBLE
+\RequirePackage{color} %DIF PREAMBLE
+\lstdefinelanguage{DIFcode}{ %DIF PREAMBLE
+%DIF DIFCODE_UNDERLINE %DIF PREAMBLE
+  moredelim=[il][\color{red}\sout]{\%DIF\ <\ }, %DIF PREAMBLE
+  moredelim=[il][\color{blue}\uwave]{\%DIF\ >\ } %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstdefinestyle{DIFverbatimstyle}{ %DIF PREAMBLE
+	language=DIFcode, %DIF PREAMBLE
+	basicstyle=\ttfamily, %DIF PREAMBLE
+	columns=fullflexible, %DIF PREAMBLE
+	keepspaces=true %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim}{\lstset{style=DIFverbatimstyle}}{} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim*}{\lstset{style=DIFverbatimstyle,showspaces=true}}{} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
 
 \begin{document}
 \maketitle
@@ -61,13 +147,20 @@ Using the transit time of carbon to assess the timescales of carbon storage of n
 \noindent
 \textbf{Keywords}: Climate change mitigation, soil carbon sequestration, transit time, diffusion-advection-reaction, microbial decomposition, organic matter stabilization, radiocarbon
 
-%\newpage
-%
-%\tableofcontents
-%
+%DIF > \newpage
+%DIF > 
+%DIF > \tableofcontents
+%DIF > 
 \newpage
 
-\section{Introduction}
+\DIFdelbegin %DIFDELCMD < \tableofcontents
+%DIFDELCMD < 
+
+%DIFDELCMD < \newpage
+%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdelend \section{Introduction}
 Soil carbon stocks below the topsoil (below  0.2 m depth) are not only one of the largest carbon (C) reservoir of the terrestrial surface, but are also relatively old as demonstrated by radiocarbon measurements \citep{Mathieu2015, He2016, Shi2020, Heckman2022}. These radiocarbon measurements along the vertical profile have shown that the age of carbon increases significantly with depth, indicating that carbon may be stabilized for centuries to millennia in the subsoil. It is therefore reasonable to think that soils could act as a large sink for fossil-fuel derived carbon if subsoil carbon sequestration is promoted, particularly in agricultural and managed lands \citep{Rumpel2012, Button2022}. 
 
 % Parvin, Bolinder, Kaetterer
@@ -580,9 +673,8 @@ First, equation \ref{eq:simpleCase} shows that the vertical change of C in a soi
 
 \begin{figure}[h]
    \centering
-%   \includegraphics[scale=0.8]{Figures/AdvectionDiffusion.pdf} % requires the graphicx package
-   \includegraphics[scale=0.8]{Figure1.pdf} % requires the graphicx package
-   \caption{Schematic representation of the role of the Péclet number, which is the inverse of the ratio of diffusion to advection $\kappa/v$, on the type of vertical C transfer in a soil assuming a pulse of aboveground inputs. For a Péclet number of zero and $\kappa/v = \infty$, C entering the soil only moves due to diffusion (top); for a Péclet number and $\kappa/v = 1$, both diffusion and advection moves the carbon vertically (center); for a Péclet number of $\infty$ and $\kappa/v = 0$, C is only moved vertically by advective processes as in the case of DOC transport (bottom). }
+   \includegraphics[scale=0.8]{Figures/AdvectionDiffusion.pdf} % requires the graphicx package
+   \caption{Schematic representation of the role of the Péclet number, which is the inverse of the \DIFdelbeginFL \DIFdelFL{$\kappa/v$ }\DIFdelendFL ratio \DIFaddbeginFL \DIFaddFL{of diffusion to advection $\kappa/v$}\DIFaddendFL , on the type of vertical C transfer in a soil assuming a pulse of aboveground inputs. For a Péclet number of zero and $\kappa/v = \infty$, C entering the soil only moves due to diffusion (top); for a Péclet number and $\kappa/v = 1$, both diffusion and advection moves the carbon vertically (center); for a Péclet number of $\infty$ and $\kappa/v = 0$, C is only moved vertically by advective processes as in the case of DOC transport (bottom). }
    \label{fig:Peclet}
 \end{figure}
 
@@ -600,9 +692,8 @@ To investigate the effect of diffusion and advection, we ran simulations with va
 
 \begin{figure}[htbp]
    \centering
-%   \includegraphics[width=\textwidth]{Figures/simulationsKappaV.pdf} % requires the graphicx package
-   \includegraphics[width=\textwidth]{Figure2.pdf} % requires the graphicx package
-   \caption{Numerical simulations of soil C depth profiles using the linear model with constant coefficients of equation \ref{eq:simpleCase}. The top panels show the C concentration and the first derivative of C concentrations for different values of the diffusion coefficient $\kappa$ and a fixed value of advection velocity $v = 1$ cm yr$^{-1}$. The bottom panels show C concentrations and their first derivative for different values of $v$ and a constant value of $\kappa = 1$ cm$^2$ yr$^{-1}$. }
+   \includegraphics[width=\textwidth]{Figures/simulationsKappaV.pdf} % requires the graphicx package
+   \caption{Numerical simulations of soil C depth profiles using the linear model with constant coefficients of equation \ref{eq:simpleCase}. The top panels show the C concentration and the first derivative of C concentrations for different values of \DIFaddbeginFL \DIFaddFL{the diffusion coefficient }\DIFaddendFL $\kappa$ and a fixed value of \DIFaddbeginFL \DIFaddFL{advection velocity }\DIFaddendFL $v = 1$ cm yr$^{-1}$. The bottom panels show C concentrations and their first derivative for different values of $v$ and a constant value of $\kappa = 1$ cm$^2$ yr$^{-1}$. }
    \label{fig:AdvectionDiffusion}
 \end{figure}
 
@@ -625,8 +716,8 @@ The results from this second set of simulations evaluating the effect of lateral
 
 \begin{figure}[htbp]
    \centering
-%   \includegraphics[width=\textwidth]{Figures/rootDecomp.pdf} % requires the graphicx package
-   \includegraphics[width=\textwidth]{Figure3.pdf} % requires the graphicx package
+   \includegraphics[width=\textwidth]{Figures/rootDecomp.pdf} % requires the graphicx package
+%\input{Figures/rootDecomp.tex}
    \caption{Numerical simulations of soil C depth profiles using the linear model with constant coefficients of equation \ref{eq:simpleCase}. The top panels show C concentration and its first derivative with respect to depth for different functions representing decomposition rate $k(d)$ (equation \ref{eq:kd}). The different lines are the results of the model for different values of the maximum decomposition rate at the surface $k_0$, with the value of $k_0 =1$ yr$^{-1}$ representing fast decomposition and $k_0 = 0.01$ yr$^{-1}$ slow decomposition. The lower panels represent the results of simulation for different shapes of the root input profile according to equation \ref{eq:ud}, with the parameter $\beta = 0.98$ representing deep root inputs, and $\beta = 0.92$ shallow root inputs.}
    \label{fig:rootDecomp}
 \end{figure}
@@ -635,9 +726,8 @@ Parameter values for diffusion, advection, root input distribution, and decompos
 
 \begin{figure}[t]
    \centering
-%   \includegraphics[width=\textwidth]{Figures/uncertainty.pdf} % requires the graphicx package
-   \includegraphics[width=\textwidth]{Figure4.pdf} % requires the graphicx package
-   \caption{Uncertainty analysis based on the components of equation \eqref{eq:simpleCase} using a Monte Carlo uncertainty approach in which 1000 random variates of model parameters were chosen from a uniform distribution $U$. (a) Set of 1000 random variates of the diffusion coefficient $\kappa \sim U(0.09, 16.58)$ and the advection velocity $v \sim U(0.01, 6.51)$, and the set of values available from the literature (Table \ref{tab:Models}). (b) Prediction uncertainty in carbon concentration due to uncertainty in diffusion coefficient $\kappa$ and advection velocity $v$. (c) Uncertainty in the distribution of root inputs ($u(d)$) due to uncertainty in parameter $\beta \sim U(0.9, 1.0)$, and uncertainty in decomposition rate distribution ($k(d)$) due to uncertainty in parameter $d_e \sim U(10, 100)$. (d) Prediction uncertainty in carbon concentration due to uncertainty in root input distribution ($u(d)$) and decomposition rate distribution ($k(d)$). }
+   \includegraphics[width=\textwidth]{Figures/uncertainty.pdf} % requires the graphicx package
+   \caption{Uncertainty analysis based on the components of equation \eqref{eq:simpleCase} using a Monte Carlo uncertainty approach in which 1000 random variates of model parameters were chosen from a uniform distribution $U$. (a) Set of 1000 random variates of \DIFdelbeginFL \DIFdelFL{parameters }\DIFdelendFL \DIFaddbeginFL \DIFaddFL{the diffusion coefficient }\DIFaddendFL $\kappa \sim U(0.09, 16.58)$ and \DIFaddbeginFL \DIFaddFL{the advection velocity }\DIFaddendFL $v \sim U(0.01, 6.51)$, and the set of values available from the literature (Table \ref{tab:Models}). (b) Prediction uncertainty in carbon concentration due to uncertainty in diffusion coefficient $\kappa$ and advection velocity $v$. (c) Uncertainty in the distribution of root inputs ($u(d)$) due to uncertainty in parameter $\beta \sim U(0.9, 1.0)$, and uncertainty in decomposition rate distribution ($k(d)$) due to uncertainty in parameter $d_e \sim U(10, 100)$. (d) Prediction uncertainty in carbon concentration due to uncertainty in root input distribution ($u(d)$) and decomposition rate distribution ($k(d)$). }
    \label{fig:uncertainty}
 \end{figure}
 
@@ -714,8 +804,7 @@ Simulation results showed that most C inputs entering at any given time only sta
 
 \begin{figure}[htbp]
    \centering
-%   \includegraphics[width=\textwidth]{Figures/Mt.pdf} % requires the graphicx package
-   \includegraphics[width=\textwidth]{Figure5.pdf} % requires the graphicx package
+   \includegraphics[width=\textwidth]{Figures/Mt.pdf} % requires the graphicx package
    \caption{Proportion of C remaining in a soil profile of an amount of lateral inputs entering the soil at $t=0$ represented with equation \ref{eq:ud} with $\beta = 0.95$. After 50 years most of the carbon that entered at $t=0$ is not present in the soil, even for the scenario with slow transport and decomposition rates. }
    \label{fig:Mt}
 \end{figure}
@@ -726,8 +815,7 @@ At steady-state, significantly more carbon is stored in the case of slow decompo
 
 \begin{figure}[htbp]
    \centering
-%   \includegraphics[width=\textwidth]{Figures/transitTimes.pdf} % requires the graphicx package
-   \includegraphics[width=\textwidth]{Figure6.pdf} % requires the graphicx package
+   \includegraphics[width=\textwidth]{Figures/transitTimes.pdf} % requires the graphicx package
    \caption{(a) Transit time distributions for four different scenarios of transport and decomposition in the subsoil. These distributions represent the proportion of C leaving the soil system at different times since the C entered the soil. Note the logarithmic y axis. (b) Values of C concentration along the depth profile at steady-state.}
    \label{fig:transitTime}
 \end{figure}
@@ -741,8 +829,7 @@ The International Soil Radiocarbon Database (ISRaD) is a comprehensive and well 
 
 \begin{figure}[htbp]
    \centering
-%   \includegraphics[width=\textwidth]{Figures/profiles.pdf} % requires the graphicx package
-   \includegraphics[width=\textwidth]{Figure7.pdf} % requires the graphicx package
+   \includegraphics[width=\textwidth]{Figures/profiles.pdf} % requires the graphicx package
    \caption{Soil carbon concentrations with 1st and 2nd derivatives with respect to depth obtained from the International Soil Radiocarbon Database, with data from 600 profiles aggregated by biogeographical regions. Thick lines for each group represent the mean across available observations and fitted to a spline curve. Horizontal lines represent standard deviation across available observations. }
    \label{fig:Cprofiles}
 \end{figure}
@@ -772,8 +859,7 @@ However, it is important to keep in mind that productivity in these high-latitud
 
 \begin{figure}[htbp]
    \centering
-%   \includegraphics[scale=0.65]{Figures/biomeTT.pdf} % requires the graphicx package
-   \includegraphics[scale=0.65]{Figure8.pdf} % requires the graphicx package
+   \includegraphics[scale=0.65]{Figures/biomeTT.pdf} % requires the graphicx package
    \caption{Estimates of mean age and mean transit time of carbon based on measurements of root inputs and soil radiocarbon obtained from ISRaD. The left panel shows global-scale average values of mean age and mean transit time. The lower panel shows averages of mean transit time aggregated by biome.}
    \label{fig:AgeTTprofiles}
 \end{figure}
@@ -795,8 +881,7 @@ and because the derivative of a constant value of zero is equals to zero, the se
 
 \begin{figure}[htbp]
    \centering
-%   \includegraphics[width=\textwidth]{Figures/managementObjective.pdf} % requires the graphicx package
-   \includegraphics[width=\textwidth]{Figure9.pdf} % requires the graphicx package
+   \includegraphics[width=\textwidth]{Figures/managementObjective.pdf} % requires the graphicx package
    \caption{Graphical example for defining a management objective to increase C storage in the subsoil. By decreasing the ratio $g(d)/v$ as close to zero as possible, the decrease of C concentration with depth is less steep and more carbon can be stored in the subsoil. For this example, advection velocity was increased from 1 to 100 cm yr$^{1}$.}
    \label{fig:managementObjective}
 \end{figure}
@@ -813,7 +898,7 @@ Our main findings were:
 \item These processes can be expressed in models under the general paradigm of the diffusion-advection-reaction equation, with most previously proposed models being a special case of this general paradigm. 
 \item Advective and diffusive processes seem to be of secondary importance in explaining the shape of vertical soil C profiles. The difference between vertical carbon inputs and decomposition seems to play a primary role in explaining the decline of soil C with depth. 
 \item The transit time of C is only a few years to decades in most soils, which implies that promoting the addition of new C inputs to soils would only contribute to climate change mitigation in timescales of years to decades. Carbon sequestration at longer timescales is only possible in slow cycling systems such as tundra and boreal forest soils, but primary production is relatively low in these regions.
-\item Increasing C storage in the subsoil could be achieved by increasing rates of vertical transport through advective processes, or by reducing the difference between plant inputs and decomposition at all depths according to equation (\ref{eq:objective}). Innovative experiments and management practices are needed to test this prediction based on current theoretical understanding of carbon dynamics in the subsoil. 
+\item Increasing C storage in the subsoil could be achieved by increasing rates of vertical transport through advective processes, or by reducing the difference between plant inputs and decomposition at all depths \DIFaddbegin \DIFadd{according to equation (\ref{eq:objective})}\DIFaddend . Innovative experiments and management practices are needed to test this prediction based on current theoretical understanding of carbon dynamics in the subsoil. 
 \end{enumerate*}
 
 Although soils store large quantities of C in the subsoil and this carbon is hundreds to thousands of years old, our review suggest that new carbon that enters the soil is cycled quickly by the activity of microorganisms with relatively fast transit times. Therefore, promoting new C inputs to subsoil may not have a significant contribution to climate change mitigation as it could be inferred from carbon stocks and ages in the subsoil alone. Conservation of existing subsoil C stocks seems to be a more relevant and important aspect because the timescales required to form existing soil C stocks were on the order of centuries to millenia and there are important risks that through land use change, or non-sustainable agricultural practices, important portions of these existing stocks may be lost quickly. 
@@ -822,7 +907,9 @@ Although soils store large quantities of C in the subsoil and this carbon is hun
 CAS would like to acknowledge financial support provided by the Faculty of Forest Sciences at the Swedish University of Agricultural Sciences, and the Max Planck Society. SvF received funding from the International Max Planck Research School for Global Biogeochemical Cycles (IMPRS-gBGC). This study has also received funding from the European Unions’ Horizon 2020 research and innovation programme under grant agreement No. 862695 EJP SOIL.
 
 \section*{Data availability and reproducibility of results}
-All code and data required to reproduce the results of this manuscript is available at doi: 10.5281/zenodo.10457957. 
+All code and data required to reproduce the results of this manuscript is available at \DIFdelbegin %DIFDELCMD < \url{https://github.com/MPIBGC-TEE/subsoilCseq}%%%
+\DIFdel{. Upon acceptance, all files will be archived in }\href{https://zenodo.org/}{\DIFdel{Zenodo}} %DIFAUXCMD
+\DIFdel{with a corresponding digital object identifier}\DIFdelend \DIFaddbegin \DIFadd{doi: 10.5281/zenodo.10457957}\DIFaddend . 
 
 
 \bibliographystyle{apalike}
