@@ -108,3 +108,26 @@ par(mfrow=c(1,1))
 dev.off()
 
 #matplot(klines, -d, type="l", lty=1, col=1, lwd=0.5)
+
+### First derivatives
+Qs1d<-function(x){
+  t(apply(apply(x, 2, FUN=diff), 1, FUN=quantile, probs=c(0.05, 0.5, 0.95)))
+}
+D1ds<-Qs1d(Dxs)
+V1ds<-Qs1d(Vxs)
+In1ds<-Qs1d(Inxs)
+k1ds<-Qs1d(kxs)
+
+par(mfrow=c(2,2))
+plot(x=D1ds[,2], y=-d[-1], type="l", xlim=c(-0.001, 0))
+polygon(x=c(D1ds[,1], rev(D1ds[,3])),y=c(-d[-1], rev(-d[-1])),border = NA, col=pal[4])
+
+plot(x=V1ds[,2], y=-d[-1], type="l", xlim=c(-0.001, 0))
+polygon(x=c(V1ds[,1], rev(V1ds[,3])),y=c(-d[-1], rev(-d[-1])),border = NA, col=pal[4])
+
+plot(x=In1ds[,2], y=-d[-1], type="l", xlim=c(-0.001, 0))
+polygon(x=c(In1ds[,1], rev(In1ds[,3])),y=c(-d[-1], rev(-d[-1])),border = NA, col=pal[4])
+
+plot(x=k1ds[,2], y=-d[-1], type="l", xlim=c(-0.001, 0))
+polygon(x=c(k1ds[,1], rev(k1ds[,3])),y=c(-d[-1], rev(-d[-1])),border = NA, col=pal[4])
+par(mfrow=c(1,1))
