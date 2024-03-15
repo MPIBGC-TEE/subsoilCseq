@@ -118,16 +118,30 @@ V1ds<-Qs1d(Vxs)
 In1ds<-Qs1d(Inxs)
 k1ds<-Qs1d(kxs)
 
-par(mfrow=c(2,2))
-plot(x=D1ds[,2], y=-d[-1], type="l", xlim=c(-0.001, 0))
+pdf("Figures/Uncertainty_profiles.pdf")
+par(mfrow=c(2,2), mar=c(4,4,4,1))
+plot(x=D1ds[,2], y=-d[-1], type="l", xlim=c(-0.001, 0), ylim=c(-80, 0), ylab="Depth (cm)",
+     xlab="", yaxt="n", bty="n")
+axis(side=2,at=-ytm, labels=ytm)
+title(main=list("Uncertainty due to diffusion", font=1, cex=0.8))
 polygon(x=c(D1ds[,1], rev(D1ds[,3])),y=c(-d[-1], rev(-d[-1])),border = NA, col=pal[4])
 
-plot(x=V1ds[,2], y=-d[-1], type="l", xlim=c(-0.001, 0))
+plot(x=V1ds[,2], y=-d[-1], type="l", xlim=c(-0.001, 0), ylim=c(-80, 0), ylab="Depth (cm)", 
+     xlab="", yaxt="n", bty="n")
+axis(side=2,at=-ytm, labels=ytm)
+title(main=list("Uncertainty due to advection", font=1, cex=0.8))
 polygon(x=c(V1ds[,1], rev(V1ds[,3])),y=c(-d[-1], rev(-d[-1])),border = NA, col=pal[4])
 
-plot(x=In1ds[,2], y=-d[-1], type="l", xlim=c(-0.001, 0))
+plot(x=In1ds[,2], y=-d[-1], type="l", xlim=c(-0.001, 0), ylim=c(-80, 0), ylab="Depth (cm)", 
+     xlab=expression(paste("Change in C concentration (g c", m^-3, " c", m^-1, ")")), yaxt="n", bty="n")
+axis(side=2,at=-ytm, labels=ytm)
+title(main=list("Uncertainty due to root inputs", font=1, cex=0.8))
 polygon(x=c(In1ds[,1], rev(In1ds[,3])),y=c(-d[-1], rev(-d[-1])),border = NA, col=pal[4])
 
-plot(x=k1ds[,2], y=-d[-1], type="l", xlim=c(-0.001, 0))
+plot(x=k1ds[,2], y=-d[-1], type="l", xlim=c(-0.001, 0), ylim=c(-80, 0), ylab="Depth (cm)", 
+     xlab=expression(paste("Change in C concentration (g c", m^-3, " c", m^-1, ")")), yaxt="n", bty="n")
+axis(side=2,at=-ytm, labels=ytm)
+title(main=list("Uncertainty due to decomposition", font=1, cex=0.8))
 polygon(x=c(k1ds[,1], rev(k1ds[,3])),y=c(-d[-1], rev(-d[-1])),border = NA, col=pal[4])
 par(mfrow=c(1,1))
+dev.off()
